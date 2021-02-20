@@ -2,26 +2,35 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
-// import SignUpFormModal from './components/auth/SignUpFormModal/index';
+// import components
 import SignUpFormModal from './auth/SignUpFormModal';
 import LoginFormModal from './auth/LoginFormModal';
 
-const NavBar = ({ setAuthenticated }) => {
+// import context
+import { useModalAndAuthContext } from '../context/Modal';
+
+const NavBar = () => {
+  const { authenticated } = useModalAndAuthContext();
+
   return (
     <nav>
       <ul>
-        <li>
-          <SignUpFormModal />
-        </li>
-        <li>
-          <LoginFormModal />
-        </li>
+        {!authenticated && (
+          <li>
+            <SignUpFormModal />
+          </li>
+        )}
+        {!authenticated && (
+          <li>
+            <LoginFormModal />
+          </li>
+        )}
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
@@ -30,14 +39,14 @@ const NavBar = ({ setAuthenticated }) => {
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
         </li>
         <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
+          <LogoutButton />
         </li>
       </ul>
     </nav>
