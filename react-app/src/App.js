@@ -14,7 +14,6 @@ import { useModalAndAuthContext } from './context/Modal';
 import { authenticate } from './services/auth';
 
 function App() {
-  // const [authenticated, setAuthenticated] = useState(false);
   const { authenticated, setAuthenticated } = useModalAndAuthContext();
 
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +26,7 @@ function App() {
       }
       setLoaded(true);
     })();
-  }, []);
+  }, [setAuthenticated]);
 
   if (!loaded) {
     return null;
@@ -35,7 +34,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar authenticated={authenticated} />
+      <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm

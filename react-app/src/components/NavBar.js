@@ -4,6 +4,7 @@ import LogoutButton from './auth/LogoutButton';
 
 // import SignUpFormModal from './components/auth/SignUpFormModal/index';
 import SignUpFormModal from './auth/SignUpFormModal';
+import LoginFormModal from './auth/LoginFormModal';
 
 const NavBar = ({ setAuthenticated }) => {
   return (
@@ -11,6 +12,9 @@ const NavBar = ({ setAuthenticated }) => {
       <ul>
         <li>
           <SignUpFormModal />
+        </li>
+        <li>
+          <LoginFormModal />
         </li>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
