@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../services/auth';
-import { useModalAndAuthContext } from '../../../context/Modal';
+import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
   const { authenticated, setAuthenticated } = useModalAndAuthContext();

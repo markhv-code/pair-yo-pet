@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../../context/Modal';
+import { Modal } from '../../../context/ModalAndAuth';
 import LoginForm from './LoginForm';
 
 export default function LoginFormModal() {

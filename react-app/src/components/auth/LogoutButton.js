@@ -2,7 +2,7 @@ import React from 'react';
 import { logout } from '../../services/auth';
 
 // import context
-import { useModalAndAuthContext } from '../../context/Modal';
+import { useModalAndAuthContext } from '../../context/ModalAndAuth';
 
 const LogoutButton = () => {
   const { setAuthenticated } = useModalAndAuthContext();

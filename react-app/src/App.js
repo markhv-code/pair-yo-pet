@@ -4,12 +4,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // components
 // import LoginForm from './components/auth/LoginForm';
 // import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar'
+import NavBar from './components/NavBar/index.js'
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+import UsersList from './components/Users/UsersList';
+import User from './components/Users/User';
 
-import { useModalAndAuthContext } from './context/Modal';
+import { useModalAndAuthContext } from './context/ModalAndAuth';
 
 import { authenticate } from './services/auth';
 

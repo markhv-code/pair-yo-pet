@@ -5,7 +5,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../services/auth';
-import { useModalAndAuthContext } from '../../../context/Modal';
+import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function LoginForm() {
   const { authenticated, setAuthenticated } = useModalAndAuthContext();

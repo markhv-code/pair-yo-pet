@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
 
 // import components
-import SignUpFormModal from './auth/SignUpFormModal';
-import LoginFormModal from './auth/LoginFormModal';
+import SignUpFormModal from '../auth/SignUpFormModal';
+import LoginFormModal from '../auth/LoginFormModal';
 
 // import context
-import { useModalAndAuthContext } from '../context/Modal';
+import { useModalAndAuthContext } from '../../context/ModalAndAuth';
 
 const NavBar = () => {
   const { authenticated } = useModalAndAuthContext();
@@ -16,15 +16,16 @@ const NavBar = () => {
     <nav>
       <ul>
         {!authenticated && (
-          <li>
-            <SignUpFormModal />
-          </li>
+          <>
+            <li>
+              <SignUpFormModal />
+            </li>
+            <li>
+              <LoginFormModal />
+            </li>
+          </>
         )}
-        {!authenticated && (
-          <li>
-            <LoginFormModal />
-          </li>
-        )}
+
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
@@ -40,14 +41,18 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li> */}
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
+        {authenticated && (
+          <>
+            <li>
+              <NavLink to='/users' exact={true} activeClassName='active'>
+                Users
+              </NavLink>
+            </li>
+            <li>
+              <LogoutButton />
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );
