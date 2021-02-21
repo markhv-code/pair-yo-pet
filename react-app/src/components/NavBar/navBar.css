@@ -1,0 +1,21 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar {
+  background-color: grey;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar__links {
+  list-style: none;
+}
+
+.navbar__link {
+  display: inline;
+  padding: 0 1rem;
+}

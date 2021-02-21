@@ -9,29 +9,22 @@ import LoginFormModal from '../auth/LoginFormModal';
 // import context
 import { useModalAndAuthContext } from '../../context/ModalAndAuth';
 
+// import css
+import './navBar.css';
+
 const NavBar = () => {
   const { authenticated } = useModalAndAuthContext();
 
   return (
-    <nav>
-      <ul>
-        {!authenticated && (
-          <>
-            <li>
-              <SignUpFormModal />
-            </li>
-            <li>
-              <LoginFormModal />
-            </li>
-          </>
-        )}
-
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        {/* <li>
+    <header className='site-header'>
+      <nav className='navbar'>
+        <ul className='navbar__links'>
+          <li className='navbar__link'>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              Home
+            </NavLink>
+          </li>
+          {/* <li>
           <NavLink to='/login' exact={true} activeClassName='active'>
             Login
           </NavLink>
@@ -41,20 +34,31 @@ const NavBar = () => {
             Sign Up
           </NavLink>
         </li> */}
-        {authenticated && (
-          <>
-            <li>
-              <NavLink to='/users' exact={true} activeClassName='active'>
-                Users
-              </NavLink>
-            </li>
-            <li>
-              <LogoutButton />
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+          {authenticated && (
+            <>
+              <li className='navbar__link'>
+                <NavLink to='/users' exact={true} activeClassName='active'>
+                  Users
+                </NavLink>
+              </li>
+              <li className='navbar__link'>
+                <LogoutButton />
+              </li>
+            </>
+          )}
+          {!authenticated && (
+            <>
+              <li className='navbar__link'>
+                <SignUpFormModal />
+              </li>
+              <li className='navbar__link'>
+                <LoginFormModal />
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </header>
   );
 };
 

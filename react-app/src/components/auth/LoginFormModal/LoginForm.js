@@ -1,7 +1,3 @@
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import * as sessionActions from '../../store/session';
-
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../services/auth';
@@ -9,25 +5,9 @@ import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function LoginForm() {
   const { authenticated, setAuthenticated } = useModalAndAuthContext();
-
-  // const dispatch = useDispatch();
-  // const [credential, setCredential] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [errors, setErrors] = useState([]);
-
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setErrors([]);
-  //   return dispatch(sessionActions.login({ credential, password })).catch(
-  //     (res) => {
-  //       if (res.data && res.data.errors) setErrors(res.data.errors);
-  //     }
-  //   );
-  // };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -80,44 +60,6 @@ function LoginForm() {
         <button type='submit'>Login</button>
       </div>
     </form>
-    // <form onSubmit={handleSubmit}>
-    //   <div>
-    //     <label>
-    //       Username or Email
-    //       <input
-    //         type='text'
-    //         value={credential}
-    //         onChange={(e) => setCredential(e.target.value)}
-    //         required
-    //       />
-    //     </label>
-    //   </div>
-    //   <div>
-    //     <label>
-    //       Password
-    //       <input
-    //         type='password'
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         required
-    //       />
-    //     </label>
-    //   </div>
-
-    //   <div>
-    //     <button type='submit'>Log In</button>
-    //   </div>
-
-    //   {!!errors.length && (
-    //     <div>
-    //       <ul>
-    //         {errors.map((error, idx) => (
-    //           <li key={idx}>{error}</li>
-    //         ))}
-    //       </ul>
-    //     </div>
-    //   )}
-    // </form>
   );
 }
 

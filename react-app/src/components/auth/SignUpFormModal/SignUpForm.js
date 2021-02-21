@@ -1,6 +1,3 @@
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import * as sessionActions from '../../store/session';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../services/auth';
@@ -8,35 +5,11 @@ import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
   const { authenticated, setAuthenticated } = useModalAndAuthContext();
-  // const dispatch = useDispatch();
-  // const [email, setEmail] = useState('');
-  // const [username, setUsername] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
   // const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-
-  debugger;
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  // setErrors([]);
-  // return dispatch(sessionActions.signUp({ email, username, password })).catch(
-  //   (res) => {
-  //     if (res.data && res.data.errors) {
-  //       if (password !== confirmPassword) {
-  //         setErrors([...res.data.errors, 'Password fields must match']);
-  //       } else {
-  //         setErrors(res.data.errors);
-  //       }
-  //     }
-  //   }
-  // );
-  // };
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -44,6 +17,8 @@ function SignUpFormPage() {
       const user = await signUp(username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
+        // } else {
+        //   setErrors(user.errors);
       }
     }
   };
@@ -70,6 +45,11 @@ function SignUpFormPage() {
 
   return (
     <form onSubmit={onSignUp}>
+      {/* <div>
+        {errors.map((error) => (
+          <div>{error}</div>
+        ))}
+      </div> */}
       <div>
         <label>User Name</label>
         <input
@@ -110,70 +90,6 @@ function SignUpFormPage() {
       <button type='submit'>Sign Up</button>
     </form>
   );
-  //   <form onSubmit={handleSubmit}>
-  //     <div>
-  //       <label>
-  //         Email
-  //         <input
-  //           type='text'
-  //           value={email}
-  //           onChange={(e) => setEmail(e.target.value)}
-  //           required
-  //         />
-  //       </label>
-  //     </div>
-
-  //     <div>
-  //       <label>
-  //         Username
-  //         <input
-  //           type='text'
-  //           value={username}
-  //           onChange={(e) => setUsername(e.target.value)}
-  //           required
-  //         />
-  //       </label>
-  //     </div>
-
-  //     <div>
-  //       <label>
-  //         Password
-  //         <input
-  //           type='password'
-  //           value={password}
-  //           onChange={(e) => setPassword(e.target.value)}
-  //           required
-  //         />
-  //       </label>
-  //     </div>
-
-  //     <div>
-  //       <label>
-  //         Confirm Password
-  //         <input
-  //           type='password'
-  //           value={confirmPassword}
-  //           onChange={(e) => setConfirmPassword(e.target.value)}
-  //           required
-  //         />
-  //       </label>
-  //     </div>
-
-  //     <div>
-  //       <button type='submit'>Sign Up</button>
-  //     </div>
-
-  //     {!!errors.length && (
-  //       <div>
-  //         <ul>
-  //           {errors.map((error, idx) => (
-  //             <li key={idx}>{error}</li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     )}
-  //   </form>
-  // );
 }
 
 export default SignUpFormPage;
