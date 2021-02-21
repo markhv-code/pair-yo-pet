@@ -8,14 +8,22 @@
 .navbar {
   background-color: grey;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 70%;
+  padding: 0 0.5rem;
 }
 
 .navbar__links {
   list-style: none;
+  margin: 0;
 }
 
 .navbar__link {
   display: inline;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
+  vertical-align: middle;
 }

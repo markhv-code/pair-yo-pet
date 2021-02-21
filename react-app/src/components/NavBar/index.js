@@ -18,6 +18,9 @@ const NavBar = () => {
   return (
     <header className='site-header'>
       <nav className='navbar'>
+        <div>
+          <img className="logo" alt="pair yo' pet logo" src="/images/pyp-logo-cropped.png"></img>
+        </div>
         <ul className='navbar__links'>
           <li className='navbar__link'>
             <NavLink to='/' exact={true} activeClassName='active'>
