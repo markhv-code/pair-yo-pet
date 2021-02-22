@@ -3,9 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
 // components
-// import LoginForm from './components/auth/LoginForm';
-// import SignUpForm from './components/auth/SignUpForm';
-// import NavBar from './components/NavBar'
+
 import NavBar from './components/NavBar/index.js'
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
@@ -38,18 +36,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        {/* <Route path='/login' exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route> */}
         <ProtectedRoute
           path='/users'
           exact={true}
