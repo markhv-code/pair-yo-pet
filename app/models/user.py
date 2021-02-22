@@ -9,6 +9,8 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+  city = db.Column(db.String(255), nullable = False)
+  stateAbbr = db.Column(db.String(2), nullable = False)
 
 
   @property
@@ -30,4 +32,6 @@ class User(db.Model, UserMixin):
       "id": self.id,
       "username": self.username,
       "email": self.email
+      "city": self.city
+      "stateAbbr": self.stateAbbr
     }
