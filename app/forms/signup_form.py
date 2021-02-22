@@ -6,14 +6,14 @@ from app.models import User
 
 def user_exists(form, field):
     print("Checking if user exits", field.data)
-    email = field.data
-    user = User.query.filter(User.email == email).first()
+    data = field.data
+    user = User.query.filter(User.email == data or User.username == data).first()
     if user:
         raise ValidationError("User is already registered.")
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired(message='Username must be between 1 and 30 characters.')])
+    username = StringField('username', validators=[DataRequired(message='Username must be between 1 and 30 characters.'),user_exists])
     email = StringField('email', validators=[DataRequired(message='Must input valid email!'), user_exists])
     password = StringField('password', validators=[DataRequired()])
     city = StringField('city', validators=[DataRequired()])

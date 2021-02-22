@@ -12,7 +12,13 @@ class User(db.Model, UserMixin):
   city = db.Column(db.String(255), nullable = False)
   stateAbbr = db.Column(db.String(2), nullable = False)
 
-
+  pets = db.relationship("Pet", back_populates="user")
+  messages_sent = db.relationship('Message',
+                                    foreign_keys='Message.senderId',
+                                    back_populates='sender')
+  messages_received = db.relationship('Message',
+                                        foreign_keys='Message.receiverId',
+                                        back_populates='receiver')
   @property
   def password(self):
     return self.hashed_password
@@ -31,7 +37,7 @@ class User(db.Model, UserMixin):
     return {
       "id": self.id,
       "username": self.username,
-      "email": self.email
-      "city": self.city
+      "email": self.email,
+      "city": self.city,
       "stateAbbr": self.stateAbbr
     }
