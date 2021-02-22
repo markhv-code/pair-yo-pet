@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../services/auth';
 import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
-import { sessionLogin } from '../../../store/session'
+import { setUser } from '../../../store/session'
 
 function LoginForm() {
   const { authenticated, setAuthenticated } = useModalAndAuthContext();
@@ -17,7 +17,7 @@ function LoginForm() {
     const user = await login(email, password);
     if (!user.errors) {
       setAuthenticated(true);
-      dispatch(sessionLogin(user))
+      dispatch(setUser(user))
     } else {
       setErrors(user.errors);
     }
