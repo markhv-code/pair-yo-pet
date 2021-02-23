@@ -11,7 +11,7 @@ const LogoutButton = () => {
   const dispatch = useDispatch();
   const onLogout = async (e) => {
     await logout();
-    dispatch(removeUser())
+    dispatch(removeUser());
     setAuthenticated(false);
   };
 
