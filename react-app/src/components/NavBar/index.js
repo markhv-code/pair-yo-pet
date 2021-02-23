@@ -22,7 +22,7 @@ const NavBar = () => {
 
   let sessionLinks;
 
-  if (sessionUser) {
+  if (!!sessionUser) {
     if (width > 800) {
       sessionLinks = (
         <>
@@ -67,9 +67,6 @@ const NavBar = () => {
   return (
     <header
       className='site-header'
-      // style={{
-      //   position: window.location.pathname === '/' ? 'fixed' : 'sticky',
-      // }}
     >
       <div className='site-header__wrapper'>
         <a className='site-header__title' href='/'>
@@ -80,7 +77,6 @@ const NavBar = () => {
           ></img>
         </a>
         <nav className='nav'>
-          {/* <ul className='nav__wrapper'>{isLoaded && sessionLinks}</ul> */}
           <ul className='nav__wrapper'>{sessionLinks}</ul>
         </nav>
       </div>

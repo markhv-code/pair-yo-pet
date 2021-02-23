@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-// import * as sessionActions from '../../store/session';
 import { logout } from '../../services/auth';
 import { removeUser } from '../../store/session';
 
@@ -10,10 +9,11 @@ import { removeUser } from '../../store/session';
 import { useModalAndAuthContext } from '../../context/ModalAndAuth';
 
 export default function LoggedInDropdown() {
-  const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  const sessionUser = useSelector((state) => state.session.user);
   const { setAuthenticated } = useModalAndAuthContext();
+  
+  const [showMenu, setShowMenu] = useState(false);
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const openMenu = () => {
     let show = true;
@@ -23,7 +23,6 @@ export default function LoggedInDropdown() {
 
   const logoutUser = async (e) => {
     e.preventDefault();
-    // dispatch(sessionActions.logout());
     await logout();
     dispatch(removeUser());
     setAuthenticated(false);
