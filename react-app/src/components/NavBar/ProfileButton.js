@@ -4,13 +4,10 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../services/auth';
 import { removeUser } from '../../store/session';
 
-// import context
-import { useModalAndAuthContext } from '../../context/ModalAndAuth';
 
 export default function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const { setAuthenticated } = useModalAndAuthContext();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -33,7 +30,6 @@ export default function ProfileButton({ user }) {
     e.preventDefault();
     await logout();
     dispatch(removeUser());
-    setAuthenticated(false);
   };
 
   return (

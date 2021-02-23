@@ -5,11 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { logout } from '../../services/auth';
 import { removeUser } from '../../store/session';
 
-//import context
-import { useModalAndAuthContext } from '../../context/ModalAndAuth';
-
 export default function LoggedInDropdown() {
-  const { setAuthenticated } = useModalAndAuthContext();
   
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
@@ -25,7 +21,6 @@ export default function LoggedInDropdown() {
     e.preventDefault();
     await logout();
     dispatch(removeUser());
-    setAuthenticated(false);
   };
 
   return (

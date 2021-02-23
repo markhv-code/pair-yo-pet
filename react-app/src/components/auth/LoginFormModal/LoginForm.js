@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../../services/auth';
-import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 import { setUser } from '../../../store/session'
 
 function LoginForm() {
-  const { authenticated, setAuthenticated } = useModalAndAuthContext();
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +14,6 @@ function LoginForm() {
     e.preventDefault();
     const user = await login(email, password);
     if (!user.errors) {
-      setAuthenticated(true);
       dispatch(setUser(user))
     } else {
       setErrors(user.errors);
@@ -30,10 +27,6 @@ function LoginForm() {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  if (authenticated) {
-    return <Redirect to='/' />;
-  }
 
   return (
     <form onSubmit={onLogin}>

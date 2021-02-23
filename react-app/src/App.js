@@ -10,12 +10,10 @@ import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 
 // import other
-import { useModalAndAuthContext } from './context/ModalAndAuth';
 import { setUser } from './store/session';
 import { authenticate } from './services/auth';
 
 function App() {
-  const { authenticated, setAuthenticated } = useModalAndAuthContext();
 
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -25,12 +23,11 @@ function App() {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
-        setAuthenticated(true);
         dispatch(setUser(user));
       }
       setLoaded(true);
     })();
-  }, [setAuthenticated, dispatch]);
+  }, [dispatch]);
 
   if (!loaded) {
     return 'loading/';
