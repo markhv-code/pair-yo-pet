@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter, Switch } from 'react-router-dom';
 
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
+import SplashPage from './components/SplashPage';
 
 // import other
 import { setUser } from './store/session';
 import { authenticate } from './services/auth';
 
 function App() {
-
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -51,9 +50,9 @@ function App() {
         >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} authenticated={!!sessionUser}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path='/' exact={true} authenticated={!!sessionUser}>
+          <SplashPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 .site-header {
   position: sticky;
+  z-index: 10;
   width: 100%;
   top: 0;
   background-color: rgba(179, 179, 179, 0.8);

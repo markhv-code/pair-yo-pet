@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
 body {
   margin: 0;
+  background: url('./components/SplashPage/dog-silhouettes-vector.png') no-repeat center center fixed;
+  background-size: cover;
 }

@@ -9,7 +9,6 @@ import { useWindowWidth } from '../../services/windowWidth';
 import SignUpFormModal from '../auth/SignUpFormModal';
 import LoginFormModal from '../auth/LoginFormModal';
 import ProfileButton from './ProfileButton';
-import LogoutButton from '../auth/LogoutButton';
 import LoggedInDropdown from './LoggedInDropdown';
 import SessionLinksDropdown from './SessionLinksDropdown';
 
@@ -53,9 +52,6 @@ const NavBar = () => {
           </li>
           <li className='nav__item'>
             <SignUpFormModal />
-          </li>
-          <li className='nav__item'>
-            <LogoutButton />
           </li>
         </>
       );
