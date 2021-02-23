@@ -5,8 +5,10 @@ import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
   const { authenticated, setAuthenticated } = useModalAndAuthContext();
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [city, setCity] = useState('');
+  const [stateAbbr, setStateAbbr] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -17,8 +19,8 @@ function SignUpFormPage() {
       const user = await signUp(username, email, password);
       if (!user.errors) {
         setAuthenticated(true);
-        // } else {
-        //   setErrors(user.errors);
+        } else {
+          setErrors(user.errors);
       }
     }
   };
@@ -26,9 +28,17 @@ function SignUpFormPage() {
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
-
+  
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+  
+  const updateCity = (e) => {
+    setCity(e.target.value);
+  };
+  
+  const updateStateAbbr = (e) => {
+    setStateAbbr(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -45,11 +55,11 @@ function SignUpFormPage() {
 
   return (
     <form onSubmit={onSignUp}>
-      {/* <div>
+      <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
-      </div> */}
+      </div>
       <div>
         <label>User Name</label>
         <input
@@ -66,6 +76,24 @@ function SignUpFormPage() {
           name='email'
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+      <div>
+        <label>City</label>
+        <input
+          type='text'
+          name='city'
+          onChange={updateCity}
+          value={city}
+        ></input>
+      </div>
+      <div>
+        <label>State Abbreviation</label>
+        <input
+          type='text'
+          name='stateAbbr'
+          onChange={updateStateAbbr}
+          value={stateAbbr}
         ></input>
       </div>
       <div>
