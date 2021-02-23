@@ -8,6 +8,7 @@ import NavBar from './components/NavBar/index.js'
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
+import PetProfileForm from './components/PetProfile/petProfileForm';
 
 import { useModalAndAuthContext } from './context/ModalAndAuth';
 
@@ -37,20 +38,27 @@ function App() {
       <NavBar />
       <Switch>
         <ProtectedRoute
-          path='/users'
+          path="/petProfile"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <PetProfileForm />
+        </ProtectedRoute>
+        <ProtectedRoute
+          path="/users"
           exact={true}
           authenticated={authenticated}
         >
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute
-          path='/users/:userId'
+          path="/users/:userId"
           exact={true}
           authenticated={authenticated}
         >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} authenticated={authenticated}>
+        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
