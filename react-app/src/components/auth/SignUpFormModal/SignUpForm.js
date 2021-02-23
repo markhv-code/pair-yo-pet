@@ -15,17 +15,18 @@ function SignUpFormPage() {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setErrors([])
     if (password === repeatPassword) {
-      const user = await signUp(username, email, city, stateAbbr, password);
+      const user = await signUp(username, email, city, stateAbbr, password, repeatPassword);
       if (!user.errors) {
         setAuthenticated(true);
         } else {
           setErrors(user.errors);
       }
     }
-    // else{
-    //   setErrors(errors.password = "Password fields must match")
-    // }
+    else{
+      setErrors(prevErrors => [...prevErrors, "Password fields must match"])
+    }
   };
 
   const updateUsername = (e) => {

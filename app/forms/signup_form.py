@@ -22,8 +22,7 @@ class SignUpForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(message='Username must be between 1 and 30 characters.'),user_exists])
     email = StringField('email', validators=[DataRequired(
         message='Must input valid email!'), Email(message='Must input valid email!'), email_exists])
-    password = StringField('password', validators=[DataRequired(), EqualTo('repeat_password', message='Passwords must match')])
     city = StringField('city', validators=[DataRequired()])
     stateAbbr = StringField('stateAbbr', validators=[DataRequired(), Length(
         min=2, max=2, message='Must provide a two letter state abbreviation.')])
-    repeat_password = StringField("Repeat Password")
+    password = PasswordField('password', validators=[DataRequired()])
