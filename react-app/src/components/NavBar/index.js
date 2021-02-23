@@ -10,12 +10,13 @@ import SignUpFormModal from '../auth/SignUpFormModal';
 import LoginFormModal from '../auth/LoginFormModal';
 import ProfileButton from './ProfileButton';
 import LogoutButton from '../auth/LogoutButton';
+import LoggedInDropdown from './LoggedInDropdown';
+import SessionLinksDropdown from './SessionLinksDropdown';
 
 // import css
 import './navBar.css';
 
 const NavBar = () => {
-  // const { authenticated } = useModalAndAuthContext();
   const sessionUser = useSelector((state) => state.session.user);
   const width = useWindowWidth();
 
@@ -35,16 +36,13 @@ const NavBar = () => {
               Home
             </NavLink>
           </li>
-          {/* <li className='nav__item'>
-            <MyFavoritesModal />
-          </li> */}
           <li className='nav__item'>
             <ProfileButton user={sessionUser} />
           </li>
         </>
       );
-      // } else {
-      //   sessionLinks = <LoggedInDropdown />;
+    } else {
+      sessionLinks = <LoggedInDropdown />;
     }
   } else {
     if (width > 800) {
@@ -61,8 +59,8 @@ const NavBar = () => {
           </li>
         </>
       );
-      // } else {
-      //   sessionLinks = <SessionLinksDropdown />;
+    } else {
+      sessionLinks = <SessionLinksDropdown />;
     }
   }
 
@@ -79,7 +77,7 @@ const NavBar = () => {
             className='logo'
             alt="pair yo' pet logo"
             src='/images/pyp-logo-cropped.png'
-          ></img>{' '}
+          ></img>
         </a>
         <nav className='nav'>
           {/* <ul className='nav__wrapper'>{isLoaded && sessionLinks}</ul> */}
@@ -88,49 +86,6 @@ const NavBar = () => {
       </div>
     </header>
   );
-
-  // return (
-  //   <header className='site-header'>
-  //     <nav className='navbar'>
-  //       <div>
-  //         <img
-  //           className='logo'
-  //           alt="pair yo' pet logo"
-  //           src='/images/pyp-logo-cropped.png'
-  //         ></img>
-  //       </div>
-  //       <ul className='navbar__links'>
-  //         <li className='navbar__link'>
-  //           <NavLink to='/' exact={true} activeClassName='active'>
-  //             Home
-  //           </NavLink>
-  //         </li>
-  //         {authenticated && (
-  //           <>
-  //             <li className='navbar__link'>
-  //               <NavLink to='/users' exact={true} activeClassName='active'>
-  //                 Users
-  //               </NavLink>
-  //             </li>
-  // <li className='navbar__link'>
-  //   <LogoutButton />
-  // </li>
-  //           </>
-  //         )}
-  //         {!authenticated && (
-  //           <>
-  //             <li className='navbar__link'>
-  //               <SignUpFormModal />
-  //             </li>
-  //             <li className='navbar__link'>
-  //               <LoginFormModal />
-  //             </li>
-  //           </>
-  //         )}
-  //       </ul>
-  //     </nav>
-  //   </header>
-  // );
 };
 
 export default NavBar;
