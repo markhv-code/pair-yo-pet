@@ -47,7 +47,8 @@
   list-style: none;
   position: absolute;
   right: 0;
-  background-color: rgba(0, 29, 41, 0.719);
+  background-color: rgba(116, 116, 116, 0.9);
+  border-radius: 0.1rem;
   margin-top: 0.1rem;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
   font-weight: 600;

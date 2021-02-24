@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../services/auth';
-import { setUser } from '../../../store/session'
+import { setUser } from '../../../store/session';
 
 function LoginForm() {
   const [errors, setErrors] = useState([]);
@@ -13,7 +13,7 @@ function LoginForm() {
     e.preventDefault();
     const user = await login(email, password);
     if (!user.errors) {
-      dispatch(setUser(user))
+      dispatch(setUser(user));
     } else {
       setErrors(user.errors);
     }
@@ -53,8 +53,8 @@ function LoginForm() {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      <button type='submit'>Login</button>
     </form>
   );
 }
