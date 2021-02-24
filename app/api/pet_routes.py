@@ -10,6 +10,9 @@ pet_routes = Blueprint("pets", __name__)
 @pet_routes.route("/")
 # @login_required
 def get_pets():
+    """
+    Get all pets
+    """
     pets = Pet.query.all()
     return {"pets": [pet.to_dict() for pet in pets]}
 
@@ -22,6 +25,9 @@ def get_pets():
 
 @pet_routes.route("/", methods=["POST"])
 def create_pet():
+    """
+    Create new pets
+    """
     pass
 
 # @app.route("/simple-form", methods=["POST"])
