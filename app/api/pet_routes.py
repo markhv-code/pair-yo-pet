@@ -9,7 +9,7 @@ from app.api.auth_routes import validation_errors_to_error_messages
 pet_routes = Blueprint("pets", __name__)
 
 
-@pet_routes.route("/")
+@pet_routes.route("")
 # @login_required
 def get_pets():
     """

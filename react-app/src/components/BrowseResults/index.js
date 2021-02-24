@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getPets } from '../../store/pets';
-// import { useBrowseContext } from '../../context/BrowseContext';
 import './BrowseResults.css'
 
 const BrowseResults = () => {
@@ -23,11 +22,11 @@ const BrowseResults = () => {
         dispatch(getPets())
     }, [dispatch])
 
-    // const {setInput} = useBrowseContext();
+    // // const {setInput} = useBrowseContext();
 
-    // useEffect(() => {
-    //     setInput('');
-    // }, [setInput]);
+    // // useEffect(() => {
+    // //     setInput('');
+    // // }, [setInput]);
 
     return (
         <div className='browse__wrapper'>
