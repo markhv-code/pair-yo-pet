@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getMultipleProfiles } from '../../store/pets';
-import { useBrowseContext } from '../../context/BrowseContext';
+// import { useBrowseContext } from '../../context/BrowseContext';
 import './BrowseResults.css'
 
 const BrowseResults = () => {
@@ -24,11 +24,11 @@ const BrowseResults = () => {
         dispatch(getMultipleProfiles())
     }, [dispatch])
 
-    const {setInput} = useBrowseContext();
+    // const {setInput} = useBrowseContext();
 
-    useEffect(() => {
-        setInput('');
-    }, [setInput]);
+    // useEffect(() => {
+    //     setInput('');
+    // }, [setInput]);
 
     return (
         <div className='browse__wrapper'>

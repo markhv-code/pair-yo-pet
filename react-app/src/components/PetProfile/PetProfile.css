@@ -1,0 +1,69 @@
+.profile__container {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding: 25px 25px;
+    margin-top: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+    transition: transform 100ms ease-in;
+    text-align: left;
+}
+
+.profile__container > img {
+    flex-direction: column;
+    justify-content: left;
+    object-fit: cover;
+    min-width: 300px;
+    min-height: 250px;
+    text-align: center;
+    width: 100%;
+    margin: 5.5px 20px 10px 0;
+    border-radius: 5px;
+}
+
+.profile__info {
+    margin-top: -5.5px;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 15px;
+    border: 1;
+}
+
+.profile__info > h2, h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile__description {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.personality__scales {
+
+}
+
+.profile__sliders {
+
+}
+
+.profile__message-owner {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+i.fas {
+    padding-left: 15px;
+    padding-right: 15px;
+}
