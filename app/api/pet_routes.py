@@ -1,12 +1,14 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 
 # from flask_login import login_required
-from app.models import Pet
+from app.models import Pet, db
+from app.forms import CreatePetForm
+from app.api.auth_routes import validation_errors_to_error_messages
+
 
 pet_routes = Blueprint("pets", __name__)
 
 
-# get all pets
 @pet_routes.route("/")
 # @login_required
 def get_pets():
@@ -17,29 +19,28 @@ def get_pets():
     return {"pets": [pet.to_dict() for pet in pets]}
 
 
-# @pet_routes.route("/<int:id>")
-# # @login_required
-# def pet(id):
-#     pet = Pet.query.get(id)
-#     return pet.to_dict()
-
-@pet_routes.route("/", methods=["POST"])
+@pet_routes.route("", methods=["POST"])
 def create_pet():
     """
-    Create new pets
+    Create new pet
     """
-    pass
-
-# @app.route("/simple-form", methods=["POST"])
-# def simple_form_post():
-#     form = SimpleForm()
-#     if form.validate_on_submit():
-#         new_person = SimplePerson(
-#             name=form.data["name"],
-#             age=form.data["age"],
-#             bio=form.data["bio"],
-#         )
-#         db.session.add(new_person)
-#         db.session.commit()
-#         return redirect("/")
-#     return "Bad Data"
+    form = CreatePetForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        new_pet = Pet(
+            userId=form.data["userId"],
+            name=form.data["name"],
+            petType=form.data["petType"],
+            age=form.data["age"],
+            imageURL=form.data["imageURL"],
+            energy=form.data["energy"],
+            social=form.data["social"],
+            behaved=form.data["behaved"],
+            size=form.data["size"],
+            env=form.data["env"],
+            description=form.data["description"],
+        )
+        db.session.add(new_pet)
+        db.session.commit()
+        return new_pet.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}

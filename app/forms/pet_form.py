@@ -30,8 +30,8 @@ class CreatePetForm(FlaskForm):
         ],
     )
     imageURL = StringField(
-        "petType",
-        imageURL=[
+        "imageURL",
+        validators=[
             DataRequired(message="Must upload an image"),
         ],
     )
