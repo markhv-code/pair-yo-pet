@@ -6,7 +6,7 @@ from app.forms import SearchForm
 browse_routes = Blueprint('browse', __name__)
 
 
-@browse_routes('/search', methods=['GET', 'POST'])
+@browse_routes('/browsepets', methods=['GET', 'POST'])
 def search():
     form = SearchForm()
     if form.validate_on_submit():
