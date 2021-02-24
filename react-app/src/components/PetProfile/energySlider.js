@@ -20,26 +20,29 @@ const marks = [
   },
 ];
 
-export default function Energy() {
+export default function Energy({setEnergy, energy}) {
     const classes = useStyles();
-    const [energy, setEnergy] = useState(1);
 
     const updateEnergyLevel = (e) => {
         setEnergy(e.target.value);
     }
     
     return (
-    <div className={classes.root}>
-      <Typography gutterBottom>Pet Energy Level</Typography>
-      <Slider
-        defaultValue={1}
-        min={1}
-        max={5}
-        onChange={updateEnergyLevel}
-        valueLabelDisplay="auto"
-        marks={marks}
-        value={energy}
-      />
-    </div>
-  );
+      <div className={classes.root}>
+        <Typography gutterBottom>Pet Energy Level</Typography>
+        <Slider
+          defaultValue={1}
+          min={1}
+          max={5}
+          onChange={updateEnergyLevel}
+          valueLabelDisplay="auto"
+          marks={marks}
+          value={energy}
+          type="number"
+          name="energy"
+          className="energy-slider"
+          step={1}
+        />
+      </div>
+    );
 }

@@ -24,9 +24,8 @@ const marks = [
   },
 ];
 
-export default function Size() {
+export default function Size({setSize, size}) {
   const classes = useStyles();
-  const [size, setSize] = useState(1);
 
   const updateSizeLevel = (e) => {
     setSize(e.target.value);
@@ -43,6 +42,10 @@ export default function Size() {
         valueLabelDisplay="auto"
         marks={marks}
         value={size}
+        type="number"
+        name="size"
+        className="size-slider"
+        step={1}
       />
     </div>
   );

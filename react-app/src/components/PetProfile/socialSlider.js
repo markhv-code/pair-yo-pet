@@ -20,9 +20,8 @@ const marks = [
   },
 ];
 
-export default function Social() {
+export default function Social({setSocial, social}) {
   const classes = useStyles();
-  const [social, setSocial] = useState(1);
 
   const updateSocialLevel = (e) => {
     setSocial(e.target.value);
@@ -39,6 +38,10 @@ export default function Social() {
         valueLabelDisplay="auto"
         marks={marks}
         value={social}
+        type="number"
+        name="social"
+        className="social-slider"
+        step={1}
       />
     </div>
   );

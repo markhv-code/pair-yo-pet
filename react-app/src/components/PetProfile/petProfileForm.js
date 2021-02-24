@@ -5,7 +5,7 @@ import Energy from './energySlider';
 import Social from './socialSlider';
 import Behavior from './behaviorSlider';
 import Size from './sizeSlider';
-import Enviornment from './enviornmentSlider';
+import Environment from './enviornmentSlider';
 
 function PetProfileForm() {
     // const { userId } = useParams();
@@ -13,10 +13,15 @@ function PetProfileForm() {
 
     const [petName, setPetName] = useState('');
     const [petType, setPetType] = useState('');
-    const [age, setAge] = useState();
+    const [age, setAge] = useState(null);
     const [imgUrl, setImgUrl] = useState(null);
+    const [energy, setEnergy] = useState(null);
+    const [social, setSocial] = useState(null);
+    const [behaved , setBehaved] = useState(null);
+    const [size, setSize] = useState(null);
+    const [env, setEnv] = useState(null);
     const [description, setDescription] = useState('')
-
+    
     const updatePetName = (e) => {
       setPetName(e.target.value);
     };
@@ -81,19 +86,19 @@ function PetProfileForm() {
           ></input>
         </div>
         <div>
-          <Energy />
+          <Energy setEnergy={setEnergy} energy={energy} />
         </div>
         <div>
-          <Social />
+          <Social setSocial={setSocial} social={social} />
         </div>
         <div>
-          <Behavior />
+          <Behavior setBehaved={setBehaved} behaved={behaved} />
         </div>
         <div>
-          <Size />
+          <Size setSize={setSize} size={size} />
         </div>
         <div>
-          <Enviornment />
+          <Environment setEnv={setEnv} env={env} />
         </div>
         <div>
           <label>Pet description</label>

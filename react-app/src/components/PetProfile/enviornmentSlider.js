@@ -24,9 +24,8 @@ const marks = [
   },
 ];
 
-export default function Enviornment() {
+export default function Environment({setEnv, env}) {
   const classes = useStyles();
-  const [env, setEnv] = useState(1);
 
   const updateEnviornmentLevel = (e) => {
     setEnv(e.target.value);
@@ -43,6 +42,10 @@ export default function Enviornment() {
         valueLabelDisplay="auto"
         marks={marks}
         value={env}
+        type="number"
+        name="env"
+        className="env-slider"
+        step={1}
       />
     </div>
   );

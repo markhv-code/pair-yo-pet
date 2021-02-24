@@ -15,16 +15,27 @@ const marks = [
     label: "Wild",
   },
   {
+    value: 2,
+    label: "",
+  },
+  {
+    value: 3,
+    label: "Moderate",
+  },
+  {
+    value: 4,
+    label: "",
+  },
+  {
     value: 5,
     label: "Obedient",
   }
 ];
 
-export default function Behavior() {
+export default function Behavior({ setBehaved, behaved }) {
   const classes = useStyles();
-  const [behaved, setBehaved] = useState();
 
-  const updateBehaviorLevel = (e, newValue) => {
+  const updateBehaviorLevel = (e) => {
     setBehaved(e.target.value);
   };
 
@@ -39,6 +50,10 @@ export default function Behavior() {
         valueLabelDisplay="auto"
         marks={marks}
         value={behaved}
+        type="number"
+        name="behaved"
+        className="behavior-slider"
+        step={1} 
       />
     </div>
   );
