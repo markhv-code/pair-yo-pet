@@ -23,17 +23,9 @@ function LoginForm() {
     e.preventDefault();
     setEmail("demo@aa.io");
     setPassword("password");
-    let user;
-    setTimeout(() => {
-      user = login(email, password)
-      
-    }, 500)
+    setTimeout(() => {}, 10)
+    const user = await login(email, password)
     dispatch(setUser(user));
-    // if(!user.errors){
-    //   dispatch(setUser(user));
-    // } else {
-    //   setErrors(user.errors);
-    // }
   }
 
   const updateEmail = (e) => {

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../services/auth';
+import { login } from '../../../services/auth';
+import { setUser } from '../../../store/session';
 import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
@@ -12,6 +15,7 @@ function SignUpFormPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -28,6 +32,15 @@ function SignUpFormPage() {
       setErrors(prevErrors => [...prevErrors, "Password fields must match"])
     }
   };
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    setEmail("demo@aa.io");
+    setPassword("password");
+    setTimeout(() => { }, 10)
+    const user = await login(email, password)
+    dispatch(setUser(user));
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -58,69 +71,74 @@ function SignUpFormPage() {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>City</label>
-        <input
-          type='text'
-          name='city'
-          onChange={updateCity}
-          value={city}
-        ></input>
-      </div>
-      <div>
-        <label>State Abbreviation</label>
-        <input
-          type='text'
-          name='stateAbbr'
-          onChange={updateStateAbbr}
-          value={stateAbbr}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+    <>
+      <form onSubmit={onSignUp}>
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
+        <div>
+          <label>User Name</label>
+          <input
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type='text'
+            name='email'
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <label>City</label>
+          <input
+            type='text'
+            name='city'
+            onChange={updateCity}
+            value={city}
+          ></input>
+        </div>
+        <div>
+          <label>State Abbreviation</label>
+          <input
+            type='text'
+            name='stateAbbr'
+            onChange={updateStateAbbr}
+            value={stateAbbr}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type='password'
+            name='password'
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <label>Repeat Password</label>
+          <input
+            type='password'
+            name='repeat_password'
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <button type='submit'>Sign Up</button>
+      </form>
+      <form onSubmit={demoLogin}>
+        <button type='submit'>Demo Login</button>
+      </form>
+    </>
   );
 }
 
