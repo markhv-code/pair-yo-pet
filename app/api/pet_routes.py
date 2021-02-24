@@ -18,7 +18,6 @@ def get_pets():
     pets = Pet.query.all()
     return {"pets": [pet.to_dict() for pet in pets]}
 
-
 @pet_routes.route("", methods=["POST"])
 def create_pet():
     """
@@ -42,5 +41,6 @@ def create_pet():
         )
         db.session.add(new_pet)
         db.session.commit()
+        # return jsonify(new_pet.to_dict())
         return new_pet.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}
