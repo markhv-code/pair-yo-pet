@@ -65,7 +65,7 @@ function PetProfileForm() {
         <div>
           <label>Pet Age</label>
           <input
-            type="text"
+            type="number"
             name="age"
             onchange={updatePetAge}
             value={age}

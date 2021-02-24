@@ -1,12 +1,15 @@
-from app.models import db, Message
+from app.models import db, Message, User
 
 # Adds a demo user
 def seed_messages():
 
+    user1 = User.query.filter_by(username="Demo").first()
+    user2 = User.query.filter_by(username="Demo2").first()
+
     messages = [
         Message(
-            senderId=2,
-            receiverId=1,
+            senderId=user2.id,
+            receiverId=user1.id,
             message="I love your dog Bruno",
         ),
     ]

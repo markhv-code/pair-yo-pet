@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from 'react';
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 // components
-
-import NavBar from './components/NavBar/index.js'
+import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import PetProfileForm from './components/PetProfile/petProfileForm';
+import SplashPage from './components/SplashPage';
 
-import { useModalAndAuthContext } from './context/ModalAndAuth';
-
+// import other
+import { setUser } from './store/session';
+import { getPets } from './store/pets';
 import { authenticate } from './services/auth';
 
 function App() {
-  const { authenticated, setAuthenticated } = useModalAndAuthContext();
-
   const [loaded, setLoaded] = useState(false);
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
-        setAuthenticated(true);
+        dispatch(setUser(user));
+        dispatch(getPets());
       }
       setLoaded(true);
     })();
-  }, [setAuthenticated]);
+  }, [dispatch]);
 
   if (!loaded) {
-    return null;
+    return 'loading/';
   }
 
   return (
@@ -40,27 +42,27 @@ function App() {
         <ProtectedRoute
           path="/petProfile"
           exact={true}
-          authenticated={authenticated}
+          authenticated={!!sessionUser}
         >
           <PetProfileForm />
         </ProtectedRoute>
         <ProtectedRoute
           path="/users"
           exact={true}
-          authenticated={authenticated}
+          authenticated={!!sessionUser}
         >
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
-          authenticated={authenticated}
+          authenticated={!!sessionUser}
         >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path='/' exact={true} authenticated={!!sessionUser}>
+          <SplashPage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
