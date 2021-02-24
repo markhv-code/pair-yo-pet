@@ -11,6 +11,7 @@ import SplashPage from './components/SplashPage';
 
 // import other
 import { setUser } from './store/session';
+import { getPets } from './store/pets';
 import { authenticate } from './services/auth';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       const user = await authenticate();
       if (!user.errors) {
         dispatch(setUser(user));
+        dispatch(getPets());
       }
       setLoaded(true);
     })();
