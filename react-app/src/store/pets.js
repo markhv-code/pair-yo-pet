@@ -24,9 +24,9 @@ const remove = (petId) => ({
 // Thunks
 export const getPets = () => async (dispatch) => {
   const res = await fetch('/api/pets');
-  const pets = await res.json();
+  const json = await res.json();
   if (res.ok) {
-    dispatch(load(pets));
+    dispatch(load(json.pets));
   }
 };
 
@@ -129,7 +129,7 @@ const petReducer = (state = initState, action) => {
 
   switch (action.type) {
     case LOAD_PETS:
-      for (let pet of action.pets.pets) {
+      for (let pet of action.pets) {
         console.log('pet', pet);
         newState[pet.id] = pet;
       }
