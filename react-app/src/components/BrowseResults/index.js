@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getMultiplePetProfiles } from '../../store/pets';
+import { getMultipleProfiles } from '../../store/pets';
 import { useBrowseContext } from '../../context/BrowseContext';
 import './BrowseResults.css'
 
@@ -21,8 +21,14 @@ const BrowseResults = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getMultiplePetProfiles())
+        dispatch(getMultipleProfiles())
     }, [dispatch])
+
+    const {setInput} = useBrowseContext();
+
+    useEffect(() => {
+        setInput('');
+    }, [setInput]);
 
     return (
         <div className='browse__wrapper'>
@@ -32,20 +38,19 @@ const BrowseResults = () => {
                         <input placeholder='Filter by' type='text' />
                     </div>
                     <div className='tile__results'>
-                        {}
-                    </div>
-                    {petResults.map(pet => {
-                        const { id, imgURL, name } = pet;
-                    return (
-                        <Link to={`/pets/${id}`}>
-                            <div className='pet__card'>
-                                <img src={imgURL} alt=""/>
-                                <div className='pet__card-info'>
-                                    <h2>{name}</h2>
+                        {petResults.map(pet => {
+                            const { id, imgURL, name } = pet;
+                            return (
+                                <Link to={`/pets/${id}`}>
+                                <div className='pet__card'>
+                                    <img src={imgURL} alt=""/>
+                                    <div className='pet__card-info'>
+                                        <h2>{name}</h2>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>       
-                    )})}
+                            </Link>       
+                        )})}
+                    </div>
                 </div>
             </div>
 
