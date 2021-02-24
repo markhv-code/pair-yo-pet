@@ -4,10 +4,10 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
 const useStyles = makeStyles({
-  root: {
-    width: 300,
-  },
-});
+   root: {
+     width: 300,
+   },
+ });
 
 const marks = [
   {
@@ -17,14 +17,14 @@ const marks = [
   {
     value: 5,
     label: "Obedient",
-  },
+  }
 ];
 
 export default function Behavior() {
   const classes = useStyles();
-  const [behaved, setBehaved] = useState(1);
+  const [behaved, setBehaved] = useState();
 
-  const updateBehaviorLevel = (e) => {
+  const updateBehaviorLevel = (e, newValue) => {
     setBehaved(e.target.value);
   };
 

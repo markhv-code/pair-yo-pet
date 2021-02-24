@@ -22,7 +22,7 @@ const marks = [
 
 export default function Social() {
   const classes = useStyles();
-   const [social, setSocial] = useState(1);
+  const [social, setSocial] = useState(1);
 
   const updateSocialLevel = (e) => {
     setSocial(e.target.value);
