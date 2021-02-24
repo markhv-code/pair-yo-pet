@@ -4,6 +4,7 @@
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,11 +20,10 @@
 }
 
 #modal-content {
-  /* width: min-content; */
-  color: rgb(202, 202, 202);
+  color: rgb(13, 51, 223);
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 0.25rem;
+  background-color: rgba(179, 179, 179, 0.9);
+  border-radius: .1rem;
   padding: 1.5rem;
 }
 

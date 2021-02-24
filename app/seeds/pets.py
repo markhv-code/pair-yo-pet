@@ -5,7 +5,7 @@ def seed_pets():
 
     user1 = User.query.filter_by(username="Demo").first()
     user2 = User.query.filter_by(username="Demo2").first()
-   
+
     bruno = Pet(
                 owner=user1,
                 name="Bruno",
