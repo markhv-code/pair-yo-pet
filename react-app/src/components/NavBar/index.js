@@ -11,6 +11,7 @@ import LoginFormModal from '../auth/LoginFormModal';
 import ProfileButton from './ProfileButton';
 import LoggedInDropdown from './LoggedInDropdown';
 import SessionLinksDropdown from './SessionLinksDropdown';
+import BrowsePetsBar from '../BrowsePetsBar';
 
 // import css
 import './navBar.css';
@@ -47,6 +48,9 @@ const NavBar = () => {
     if (width > 800) {
       sessionLinks = (
         <>
+          <li>
+            <BrowsePetsBar />
+          </li>
           <li className='nav__item'>
             <LoginFormModal />
           </li>

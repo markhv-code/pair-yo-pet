@@ -1,19 +1,19 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getPetProfile } from '../../store/pets';
+import { getPets } from '../../store/pets';
 import './PetProfile.css';
 
 
 const PetProfile = () => {
     const dispatch = useDispatch();
-    const {id} = useParams();
+    const {petId} = useParams();
 
-    const pet = useSelector(state => state.pets[id]);
+    const pet = useSelector(state => state.pets[petId]);
 
     useEffect(() => {
-        dispatch(getPetProfile(id))
-    }, [dispatch, id])
+        dispatch(getPets(petId))
+    }, [dispatch, petId])
 
     if (!pet) return null;
     const {

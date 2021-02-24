@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getMultipleProfiles } from '../../store/pets';
+import { getPets } from '../../store/pets';
 // import { useBrowseContext } from '../../context/BrowseContext';
 import './BrowseResults.css'
 
@@ -12,7 +12,6 @@ const BrowseResults = () => {
         return (
             pet.name.toLowerCase().search() !== -1 ||
             pet.petType.toLowerCase().search() !== -1 ||
-            pet.age.search() !== -1 ||
             pet.owner.city.toLowerCase().search() !== -1 ||
             pet.owner.stateAbbr.toLowerCase().search() !== -1 
             );
@@ -21,7 +20,7 @@ const BrowseResults = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getMultipleProfiles())
+        dispatch(getPets())
     }, [dispatch])
 
     // const {setInput} = useBrowseContext();
