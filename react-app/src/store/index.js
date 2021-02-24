@@ -1,10 +1,13 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import sessionReducer from './session'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+
+import sessionReducer from './session';
+import petReducer from './pets';
 
 const rootReducer = combineReducers({
-    session: sessionReducer,
-})
+  session: sessionReducer,
+  pets: petReducer,
+});
 
 let enhancer;
 
@@ -18,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const configureStore = (preLoadedState) => {
-    return createStore(rootReducer,preLoadedState,enhancer)
-}
+  return createStore(rootReducer, preLoadedState, enhancer);
+};
 
 export default configureStore;
