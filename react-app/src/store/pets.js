@@ -82,7 +82,14 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
       body: formData,
     });
     const pet = await res.json()
-    if (res.ok) dispatch(create(pet));
+    console.log("------------- errors -------------", pet.errors);
+    if (!pet.errors) {
+      dispatch(create(pet))
+      return pet
+    } else {
+      const errors = pet
+      return errors
+    };
   }
 };
 
