@@ -107,9 +107,30 @@ export const deletemessage = (messageId) => async (dispatch) => {
 // Reducer
 const initState = {
   1: {
-    id: 1,
-    userId: 1,
-    name: '',
+    senderId: 1,
+    receiverId: 2,
+    message: 'This is me saying HI to Zach!',
+    timestamp: "2021-02-25 21:31:00.327159",
+    sender: {
+      username: "Mark"
+    },
+    receiver: {
+      username: "Zach"
+    },
+
+  },
+  2: {
+    senderId: 2,
+    receiverId: 1,
+    message: 'Thanks for saying HI Mark, this is Zach!',
+    timestamp: "2021-02-25 21:32:00.327159",
+    sender: {
+      username: "Zach"
+    },
+    receiver: {
+      username: "Mark"
+    },
+
   },
 };
 
@@ -118,9 +139,9 @@ const messageReducer = (state = initState, action) => {
 
   switch (action.type) {
     case LOAD_MESSAGES:
-      for (let message of action.messages) {
-        newState[message.id] = message;
-      }
+      // for (let message of action.messages) {
+      //   newState[message.id] = message;
+      // }
       return newState;
     case CREATE_MESSAGE:
       newState[action.message.id] = action.message;
