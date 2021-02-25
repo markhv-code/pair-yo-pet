@@ -1,3 +1,5 @@
+import re
+
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from werkzeug.utils import secure_filename
@@ -26,15 +28,26 @@ def create_pet():
     """
     Create new pet
     """
-    print("---------- here is the image ----------", request.files["image"])
-    image = request.files["image"]
-    image.filename = secure_filename(image.filename)
-    output_link = upload_file_to_s3(image)
-    print("-----------------link here----------------------", output_link)
-
     form = CreatePetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
+
+    image = request.files["image"]
+    image.filename = secure_filename(image.filename)
+
+    image_error = []
+    print("--------------image type----------------", image.mimetype)
+    pattern = re.compile(".*(apng|avif|jpe?g|png|svg|webp)$", re.IGNORECASE)
+    is_image = bool(pattern.match(image.mimetype))
+
+    if not is_image:
+        image_error.append(
+            "Upload must be an image (apng, avif, jpeg/jpg, png, svg, webp)."
+        )
+
+    if form.validate_on_submit() and not image_error:
+
+        output_link = upload_file_to_s3(image)
+
         new_pet = Pet(
             userId=form.data["userId"],
             name=form.data["name"],
@@ -51,4 +64,8 @@ def create_pet():
         db.session.add(new_pet)
         db.session.commit()
         return new_pet.to_dict()
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+
+    errors = validation_errors_to_error_messages(form.errors)
+    errors += image_error
+
+    return {"errors": errors}

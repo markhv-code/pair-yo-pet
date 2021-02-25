@@ -105,15 +105,6 @@ function PetProfileForm({ setShowModal }) {
             required
           />
         </div>
-        {/* <div>
-          <label>Pet Pic</label>
-          <input
-            name='imgUrl'
-            value={imgUrl}
-            onChange={(e) => setImgUrl(e.target.value)}
-            required
-          />
-        </div> */}
         <label>
           Image
           <input className='image-upload' type='file' onChange={updateFile} />
@@ -213,7 +204,7 @@ function PetProfileForm({ setShowModal }) {
             required={true}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            placeholder='please keep it under 500 characters'
+            placeholder='(please keep it under 500 characters)'
           ></textarea>
         </div>
         <div>
