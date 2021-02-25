@@ -2,5 +2,6 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "python.linting.pycodestyleEnabled": false,
-    "python.linting.pydocstyleEnabled": false
+    "python.linting.pydocstyleEnabled": false,
+    "python.pythonPath": ".venv/bin/python"
 }

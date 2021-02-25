@@ -14,32 +14,16 @@ function PetProfileForm({ setShowModal }) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  const [petName, setPetName] = useState('Bob');
-  const [petType, setPetType] = useState('Dog');
-  const [age, setAge] = useState(1);
-  const [imgUrl, setImgUrl] = useState(
-    'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=1100&format=jpeg&auto=webp'
-  );
+  const [petName, setPetName] = useState('');
+  const [petType, setPetType] = useState('');
+  const [age, setAge] = useState('');
   const [image, setImage] = useState(null);
   const [energy, setEnergy] = useState(1);
   const [social, setSocial] = useState(1);
   const [behaved, setBehaved] = useState(1);
-  const [size, setSize] = useState(1);
-  const [env, setEnv] = useState(1);
-  const [description, setDescription] = useState('desc');
-  // const [petName, setPetName] = useState('');
-  // const [petType, setPetType] = useState('');
-  // const [age, setAge] = useState('');
-  // const [imgUrl, setImgUrl] = useState(
-  //   'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=1100&format=jpeg&auto=webp'
-  // );
-  // const [image, setImage] = useState(null);
-  // const [energy, setEnergy] = useState(1);
-  // const [social, setSocial] = useState(1);
-  // const [behaved, setBehaved] = useState(1);
-  // const [size, setSize] = useState('');
-  // const [env, setEnv] = useState('');
-  // const [description, setDescription] = useState('');
+  const [size, setSize] = useState('');
+  const [env, setEnv] = useState('');
+  const [description, setDescription] = useState('');
 
   const [errors, setErrors] = useState([]);
 
@@ -53,7 +37,7 @@ function PetProfileForm({ setShowModal }) {
       name: petName,
       petType,
       age,
-      imageURL: imgUrl,
+      // imageURL: imgUrl,
       image,
       energy,
       social,
@@ -121,7 +105,7 @@ function PetProfileForm({ setShowModal }) {
             required
           />
         </div>
-        <div>
+        {/* <div>
           <label>Pet Pic</label>
           <input
             name='imgUrl'
@@ -129,7 +113,7 @@ function PetProfileForm({ setShowModal }) {
             onChange={(e) => setImgUrl(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         <label>
           Image
           <input className='image-upload' type='file' onChange={updateFile} />

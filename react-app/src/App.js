@@ -31,7 +31,7 @@ function App() {
   }, [dispatch]);
 
   if (!loaded) {
-    return 'loading/';
+    return 'loading...';
   }
 
   return (

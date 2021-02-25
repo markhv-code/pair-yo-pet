@@ -1,13 +1,11 @@
-import os
-
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
+from werkzeug.utils import secure_filename
 
-# from flask_login import login_required
+from app.helpers import upload_file_to_s3
 from app.models import Pet, db
 from app.forms import CreatePetForm
 from app.api.auth_routes import validation_errors_to_error_messages
-
 
 pet_routes = Blueprint("pets", __name__)
 
@@ -28,7 +26,12 @@ def create_pet():
     """
     Create new pet
     """
-    print("---------- here is the request ----------", request.files)
+    print("---------- here is the image ----------", request.files["image"])
+    image = request.files["image"]
+    image.filename = secure_filename(image.filename)
+    output_link = upload_file_to_s3(image)
+    print("-----------------link here----------------------", output_link)
+
     form = CreatePetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
@@ -37,7 +40,7 @@ def create_pet():
             name=form.data["name"],
             petType=form.data["petType"],
             age=form.data["age"],
-            imageURL=form.data["imageURL"],
+            imageURL=output_link,
             energy=form.data["energy"],
             social=form.data["social"],
             behaved=form.data["behaved"],
@@ -48,5 +51,4 @@ def create_pet():
         db.session.add(new_pet)
         db.session.commit()
         return new_pet.to_dict()
-        # return new_pet.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}
