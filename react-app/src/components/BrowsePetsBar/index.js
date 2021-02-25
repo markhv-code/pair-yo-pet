@@ -20,12 +20,12 @@ const BrowsePetsBar = () => {
     
     useEffect(() => {
         setFilteredPets(
-            petsFromStore.filter((pet) => {
-            return pet.name.toLowerCase().includes(search.toLowerCase()) ||
+            petsFromStore.filter((pet) => 
+            pet.name.toLowerCase().includes(search.toLowerCase()) ||
             pet.petType.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
-            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase())
-            }))
+            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
+        )
     }, [search, petsFromStore])
     
 return (

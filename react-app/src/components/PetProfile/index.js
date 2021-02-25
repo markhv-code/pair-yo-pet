@@ -19,7 +19,7 @@ const PetProfile = () => {
 
     if (!pet) return null;
     const {
-        name, petType, age, imageURL, city, stateAbbr, energy, social, behaved, size, env, description} = pet;
+        name, petType, age, imageURL, energy, social, behaved, size, env, description} = pet;
 
     return (
         <>
@@ -29,16 +29,16 @@ const PetProfile = () => {
                     <div className='profile__info'>
                         <h2>{name}</h2>
                         <h3>{petType}</h3>
-                        <h3>{age}</h3>
-                        <h3>{city}, {stateAbbr}</h3>
+                        <h3>Age: {age}</h3>
+                        <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
                         <h4 className='profile__description'>{description}</h4>
                     </div>
                     <div className='personality__scales'>
-                        <h3 className='profile__sliders'>{energy}</h3>
-                        <h3 className='profile__sliders'>{social}</h3>
-                        <h3 className='profile__sliders'>{behaved}</h3>
-                        <h3 className='profile__sliders'>{size}</h3>
-                        <h3 className='profile__sliders'>{env}</h3>
+                        <h3 className='profile__sliders'>Energy Level: {energy} / 5</h3>
+                        <h3 className='profile__sliders'>Social Level: {social} / 5</h3>
+                        <h3 className='profile__sliders'>Behavior Level: {behaved} / 5</h3>
+                        <h3 className='profile__sliders'>Size: {size}</h3>
+                        <h3 className='profile__sliders'>Environment: {env}</h3>
                     </div>
                     <div className='profile__message-owner'>
                         <div>Want To Set Up A Play Date With Me?
