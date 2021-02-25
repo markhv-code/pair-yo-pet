@@ -9,6 +9,7 @@
     box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
     transition: transform 100ms ease-in;
     text-align: left;
+    background-color: whitesmoke;
 }
 
 .profile__container > img {
@@ -48,19 +49,25 @@
 }
 
 .profile__sliders {
-
+    text-align: center;
 }
 
 .profile__message-owner {
     display: flex;
     justify-content: center;
+    text-align: center;
+    font-weight: 600;
 }
 
-button {
-    padding-left: 20px;
-    padding-right: 20px;
+button.message {
+    padding-left: 40px;
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 5px;
     font-weight: 600;
     cursor: pointer;
+    background-color: rgb(171, 172, 175);
+    border-radius: 10px;
 }
 
 i.fas {

@@ -7,17 +7,14 @@ import PetProfile from '../PetProfile'
 import './BrowsePetsBar.css';
 
 const BrowsePetsBar = () => {
-    // const [pets] = useState([]);
-    // const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
     const [filteredPets, setFilteredPets] = useState([]);
     const petsFromStore = useSelector((state) => Object.values(state.pets));
-    // console.log('pets-----', petsFromStore);
+  
     const dispatch = useDispatch();
     
     
     useEffect(() => {
-        // setLoading(true);
         dispatch(getPets())
     }, [dispatch]);
     
@@ -31,10 +28,6 @@ const BrowsePetsBar = () => {
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
     }, [search, petsFromStore])
-
-    // if (loading) {
-    //     return <p>Loading pets...</p>
-    // }
 
 return (
     <div className='browse__container'>

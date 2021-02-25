@@ -15,6 +15,8 @@ const PetProfile = () => {
         dispatch(getPets(petId))
     }, [dispatch, petId])
 
+    
+
     if (!pet) return null;
     const {
         name, petType, age, imgURL, city, stateAbbr, energy, social, behaved, size, env, description} = pet;
@@ -23,26 +25,29 @@ const PetProfile = () => {
         <>
             <div className='profile__container'>
                 <img src={imgURL} alt="Pet Profile"/>
-                <div className='profile__info'>
-                    <h2>{name}</h2>
-                    <h3>{petType}</h3>
-                    <h3>{age}</h3>
-                    <h3>{city}, {stateAbbr}</h3>
-                    <h4 className='profile__description'>{description}</h4>
-                </div>
-                <div className='personality__scales'>
-                    <h3 className='profile__sliders'>{energy}</h3>
-                    <h3 className='profile__sliders'>{social}</h3>
-                    <h3 className='profile__sliders'>{behaved}</h3>
-                    <h3 className='profile__sliders'>{size}</h3>
-                    <h3 className='profile__sliders'>{env}</h3>
-                </div>
+                <div className='profile'>
+                    <div className='profile__info'>
+                        <h2>{name}</h2>
+                        <h3>{petType}</h3>
+                        <h3>{age}</h3>
+                        <h3>{city}, {stateAbbr}</h3>
+                        <h4 className='profile__description'>{description}</h4>
+                    </div>
+                    <div className='personality__scales'>
+                        <h3 className='profile__sliders'>{energy}</h3>
+                        <h3 className='profile__sliders'>{social}</h3>
+                        <h3 className='profile__sliders'>{behaved}</h3>
+                        <h3 className='profile__sliders'>{size}</h3>
+                        <h3 className='profile__sliders'>{env}</h3>
+                    </div>
                     <div className='profile__message-owner'>
-                        <p>Want To Set Up A Play Date With Me?</p>
-                            <button>Message My Owner!
+                        <div>Want To Set Up A Play Date With Me?
+                            <button className='message' >Message My Owner!
                                 <i className="fas fa-paw"></i>
                             </button>
+                        </div>
                     </div>
+                </div>
             </div>
         </>
     )

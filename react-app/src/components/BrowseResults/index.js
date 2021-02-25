@@ -5,54 +5,35 @@ import { getPets } from '../../store/pets';
 import './BrowseResults.css'
 
 const BrowseResults = () => {
-    
-    const pets = useSelector((state) => state.pets);
-    const petResults = Object.values(pets).filter((pet) => {
-        return (
-            pet.name.toLowerCase().search() !== -1 ||
-            pet.petType.toLowerCase().search() !== -1 ||
-            pet.owner.city.toLowerCase().search() !== -1 ||
-            pet.owner.stateAbbr.toLowerCase().search() !== -1 
-            );
-        })
-        
     const dispatch = useDispatch();
-
+    const petResults = useSelector((state) => Object.values(state.pets));
+  
     useEffect(() => {
         dispatch(getPets())
     }, [dispatch])
 
-    // // const {setInput} = useBrowseContext();
-
-    // // useEffect(() => {
-    // //     setInput('');
-    // // }, [setInput]);
-
+    if (!petResults) return null;
     return (
-        <div className='browse__wrapper'>
-            <div>
-                <div clasName='results__container'>
-                    <div className='browse__bar'>
-                        <input placeholder='Filter by' type='text' />
-                    </div>
-                    <div className='tile__results'>
-                        {petResults.map(pet => {
-                            const { id, imgURL, name } = pet;
-                            return (
+            <>
+                { petResults.map(petResult => {
+                    const { id, imgURL, name } = petResult;
+                    console.log(petResult);
+                    return (
+                        <div className='result__container' key={id}>
+                            <div className='tile__results'>
                                 <Link to={`/pets/${id}`}>
-                                <div className='pet__card'>
-                                    <img src={imgURL} alt=""/>
-                                    <div className='pet__card-info'>
-                                        <h2>{name}</h2>
+                                    <div className='pet__card'>
+                                        <img src={imgURL} alt=""/>
+                                        <div className='pet__card-info'>
+                                            <h2>{name}</h2>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>       
-                        )})}
-                    </div>
-                </div>
-            </div>
-
-        </div>
+                                </Link>       
+                            </div>
+                        </div>
+                    )
+                })}
+            </>
     )
 }
 
