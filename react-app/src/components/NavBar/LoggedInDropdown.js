@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 import { logout } from '../../services/auth';
 import { removeUser } from '../../store/session';
+import PetProfileForm from '../PetProfileForm';
 
 export default function LoggedInDropdown() {
-  
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -42,9 +42,7 @@ export default function LoggedInDropdown() {
             </NavLink>
           </li>
           <li className='navbar__dropdown__button'>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              Home
-            </NavLink>
+            <PetProfileForm user={sessionUser} />
           </li>
           <li>
             <button className='navbar__dropdown__button' onClick={logoutUser}>

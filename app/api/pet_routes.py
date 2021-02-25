@@ -1,6 +1,7 @@
 import os
 
 from flask import Blueprint, jsonify, request
+from flask_login import login_required
 
 # from flask_login import login_required
 from app.models import Pet, db
@@ -22,6 +23,7 @@ def get_pets():
 
 
 @pet_routes.route("", methods=["POST"])
+@login_required
 def create_pet():
     """
     Create new pet

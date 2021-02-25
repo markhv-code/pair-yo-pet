@@ -8,6 +8,11 @@ s3 = boto3.client(
 )
 
 def upload_file_to_s3(file, bucket_name, acl="public-read"):
+
+    """
+    Docs: http://boto3.readthedocs.io/en/latest/guide/s3.html
+    """
+
     try:
 
         s3.upload_fileobj(
