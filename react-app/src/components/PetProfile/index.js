@@ -19,12 +19,12 @@ const PetProfile = () => {
 
     if (!pet) return null;
     const {
-        name, petType, age, imgURL, city, stateAbbr, energy, social, behaved, size, env, description} = pet;
+        name, petType, age, imageURL, city, stateAbbr, energy, social, behaved, size, env, description} = pet;
 
     return (
         <>
             <div className='profile__container'>
-                <img src={imgURL} alt="Pet Profile"/>
+                <img src={imageURL} alt="Pet Profile"/>
                 <div className='profile'>
                     <div className='profile__info'>
                         <h2>{name}</h2>

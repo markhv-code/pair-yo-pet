@@ -1,5 +1,4 @@
 import React from 'react';
-// import BrowsePetsBar from '../BrowsePetsBar/index';
 import './splashPage.css';
 
 export default function SplashPage() {
@@ -12,7 +11,6 @@ export default function SplashPage() {
         <h1 className='home__greeting__text'>
           Your pet will never be lonely again
         </h1>
-        {/* <BrowsePetsBar /> */}
       </div>
     </div>
   );

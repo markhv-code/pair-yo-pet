@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {getPets} from '../../store/pets'
@@ -10,7 +9,7 @@ const BrowsePetsBar = () => {
     const [search, setSearch] = useState("");
     const [filteredPets, setFilteredPets] = useState([]);
     const petsFromStore = useSelector((state) => Object.values(state.pets));
-  
+    
     const dispatch = useDispatch();
     
     
@@ -21,14 +20,14 @@ const BrowsePetsBar = () => {
     
     useEffect(() => {
         setFilteredPets(
-            petsFromStore.filter((pet) => 
-            pet.name.toLowerCase().includes(search.toLowerCase()) ||
+            petsFromStore.filter((pet) => {
+            return pet.name.toLowerCase().includes(search.toLowerCase()) ||
             pet.petType.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
-            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
-        )
+            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase())
+            }))
     }, [search, petsFromStore])
-
+    
 return (
     <div className='browse__container'>
         <div className='browse__bar'>
