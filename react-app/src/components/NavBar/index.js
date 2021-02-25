@@ -8,6 +8,7 @@ import { useWindowWidth } from '../../services/windowWidth';
 // import components
 import SignUpFormModal from '../auth/SignUpFormModal';
 import LoginFormModal from '../auth/LoginFormModal';
+import PetProfileForm from '../PetProfileForm';
 import ProfileButton from './ProfileButton';
 import LoggedInDropdown from './LoggedInDropdown';
 import SessionLinksDropdown from './SessionLinksDropdown';
@@ -29,6 +30,9 @@ const NavBar = () => {
             <NavLink to='/users' exact={true} activeClassName='active'>
               Users
             </NavLink>
+          </li>
+          <li className='nav__item'>
+            <PetProfileForm user={sessionUser} />
           </li>
           {/* <li className='nav__item'>
             <NavLink to='/' exact={true} activeClassName='active'>
@@ -61,9 +65,7 @@ const NavBar = () => {
   }
 
   return (
-    <header
-      className='site-header'
-    >
+    <header className='site-header'>
       <div className='site-header__wrapper'>
         <a className='site-header__title' href='/'>
           <img

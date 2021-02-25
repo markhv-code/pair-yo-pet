@@ -7,7 +7,6 @@ import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
-import PetProfileForm from './components/PetProfile/petProfileForm';
 import SplashPage from './components/SplashPage';
 
 // import other
@@ -40,21 +39,14 @@ function App() {
       <NavBar />
       <Switch>
         <ProtectedRoute
-          path="/petProfile"
-          exact={true}
-          authenticated={!!sessionUser}
-        >
-          <PetProfileForm />
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users"
+          path='/users'
           exact={true}
           authenticated={!!sessionUser}
         >
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute
-          path="/users/:userId"
+          path='/users/:userId'
           exact={true}
           authenticated={!!sessionUser}
         >

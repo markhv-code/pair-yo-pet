@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -12,15 +12,15 @@ const useStyles = makeStyles({
 const marks = [
   {
     value: 1,
-    label: "Indoor",
+    label: 'Indoor',
   },
   {
     value: 2,
-    label: "Outdoor",
+    label: 'Both',
   },
   {
     value: 3,
-    label: "Both",
+    label: 'Outdoor',
   },
 ];
 

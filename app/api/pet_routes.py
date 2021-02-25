@@ -1,3 +1,5 @@
+import os
+
 from flask import Blueprint, jsonify, request
 
 # from flask_login import login_required
@@ -9,7 +11,7 @@ from app.api.auth_routes import validation_errors_to_error_messages
 pet_routes = Blueprint("pets", __name__)
 
 
-@pet_routes.route("/")
+@pet_routes.route("")
 # @login_required
 def get_pets():
     """
@@ -17,6 +19,7 @@ def get_pets():
     """
     pets = Pet.query.all()
     return {"pets": [pet.to_dict() for pet in pets]}
+
 
 @pet_routes.route("", methods=["POST"])
 def create_pet():
@@ -41,6 +44,6 @@ def create_pet():
         )
         db.session.add(new_pet)
         db.session.commit()
-        # return jsonify(new_pet.to_dict())
-        return new_pet.to_dict()
+        return jsonify(new_pet.to_dict())
+        # return new_pet.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}

@@ -33,11 +33,11 @@ export const getPets = () => async (dispatch) => {
 // create is also used to update if petId is passed in as second argument
 export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
   const {
-    // images,
-    image,
     userId,
     name,
     age,
+    image,
+    imageURL,
     petType,
     energy,
     social,
@@ -46,10 +46,12 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
     env,
     description,
   } = pet;
+
   const formData = new FormData();
   formData.append('userId', userId);
   formData.append('name', name);
   formData.append('age', age);
+  formData.append('imageURL', imageURL);
   formData.append('petType', petType);
   formData.append('energy', energy);
   formData.append('social', social);
@@ -57,13 +59,6 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
   formData.append('size', size);
   formData.append('env', env);
   formData.append('description', description);
-
-  // for multiple files
-  // if (images && images.length !== 0) {
-  //   for (var i = 0; i < images.length; i++) {
-  //     formData.append('images', images[i]);
-  //   }
-  // }
 
   // for single file
   if (image) formData.append('image', image);
@@ -90,8 +85,8 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
       },
       body: formData,
     });
-
-    if (res.ok) dispatch(create(res.data.pet));
+    console.log('----------- here is the response ------------', res);
+    // if (res.ok) dispatch(create(res.data.pet));
   }
 };
 
