@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { useParams } from "react-router-dom";
 import { createPet } from '../../store/pets';
 
 // // Material UI compenents, try later to get them to work
@@ -37,7 +36,6 @@ function PetProfileForm({ setShowModal }) {
       name: petName,
       petType,
       age,
-      // imageURL: imgUrl,
       image,
       energy,
       social,
