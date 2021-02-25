@@ -63,9 +63,11 @@
   color: rgb(202, 202, 202);
   padding: 0.25rem;
 }
+
 .navbar__dropdown__button {
   color: rgb(223, 132, 13);
   margin: 0.25rem;
+  font-weight: 500;
 }
 
 button {

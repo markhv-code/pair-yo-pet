@@ -22,18 +22,18 @@ function App() {
   const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
+    dispatch(getPets());
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
         dispatch(setUser(user));
-        dispatch(getPets());
       }
       setLoaded(true);
     })();
   }, [dispatch]);
 
   if (!loaded) {
-    return 'loading/';
+    return 'loading...';
   }
 
   return (

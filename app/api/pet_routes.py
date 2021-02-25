@@ -1,10 +1,13 @@
-from flask import Blueprint, jsonify, request
+import re
 
-# from flask_login import login_required
+from flask import Blueprint, jsonify, request
+from flask_login import login_required
+from werkzeug.utils import secure_filename
+
+from app.helpers import upload_file_to_s3
 from app.models import Pet, db
 from app.forms import CreatePetForm
 from app.api.auth_routes import validation_errors_to_error_messages
-
 
 pet_routes = Blueprint("pets", __name__)
 
@@ -18,20 +21,42 @@ def get_pets():
     pets = Pet.query.all()
     return {"pets": [pet.to_dict() for pet in pets]}
 
+
 @pet_routes.route("", methods=["POST"])
+@login_required
 def create_pet():
     """
     Create new pet
     """
     form = CreatePetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    if form.validate_on_submit():
+
+    image_error = []
+    image = request.files.get("image", None)
+
+    if image != None:
+        image.filename = secure_filename(image.filename)
+        pattern = re.compile(".*(apng|avif|jpe?g|png|svg|webp)$", re.IGNORECASE)
+        is_image = bool(pattern.match(image.mimetype))
+        if not is_image:
+            image_error.append(
+                "Upload must be an image (apng, avif, jpeg/jpg, png, svg, webp)."
+            )
+
+    if form.validate_on_submit() and not image_error:
+
+        output_link = (
+            upload_file_to_s3(image)
+            if image
+            else "https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/default-dog.png"
+        )
+
         new_pet = Pet(
             userId=form.data["userId"],
             name=form.data["name"],
             petType=form.data["petType"],
             age=form.data["age"],
-            imageURL=form.data["imageURL"],
+            imageURL=output_link,
             energy=form.data["energy"],
             social=form.data["social"],
             behaved=form.data["behaved"],
@@ -41,6 +66,9 @@ def create_pet():
         )
         db.session.add(new_pet)
         db.session.commit()
-        # return jsonify(new_pet.to_dict())
         return new_pet.to_dict()
-    return {"errors": validation_errors_to_error_messages(form.errors)}
+
+    errors = validation_errors_to_error_messages(form.errors)
+    errors += image_error
+
+    return {"errors": errors}
