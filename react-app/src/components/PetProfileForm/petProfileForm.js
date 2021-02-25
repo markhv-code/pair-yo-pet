@@ -10,13 +10,13 @@ import { createPet } from '../../store/pets';
 // import Size from './sizeSlider';
 // import Environment from './environmentSlider';
 
-function PetProfileForm() {
+function PetProfileForm({ setShowModal }) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  const [petName, setPetName] = useState('');
-  const [petType, setPetType] = useState('');
-  const [age, setAge] = useState('');
+  const [petName, setPetName] = useState('Bob');
+  const [petType, setPetType] = useState('Dog');
+  const [age, setAge] = useState(1);
   const [imgUrl, setImgUrl] = useState(
     'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=1100&format=jpeg&auto=webp'
   );
@@ -24,14 +24,30 @@ function PetProfileForm() {
   const [energy, setEnergy] = useState(1);
   const [social, setSocial] = useState(1);
   const [behaved, setBehaved] = useState(1);
-  const [size, setSize] = useState('');
-  const [env, setEnv] = useState('');
-  const [description, setDescription] = useState('');
+  const [size, setSize] = useState(1);
+  const [env, setEnv] = useState(1);
+  const [description, setDescription] = useState('desc');
+  // const [petName, setPetName] = useState('');
+  // const [petType, setPetType] = useState('');
+  // const [age, setAge] = useState('');
+  // const [imgUrl, setImgUrl] = useState(
+  //   'https://i.insider.com/5484d9d1eab8ea3017b17e29?width=1100&format=jpeg&auto=webp'
+  // );
+  // const [image, setImage] = useState(null);
+  // const [energy, setEnergy] = useState(1);
+  // const [social, setSocial] = useState(1);
+  // const [behaved, setBehaved] = useState(1);
+  // const [size, setSize] = useState('');
+  // const [env, setEnv] = useState('');
+  // const [description, setDescription] = useState('');
 
-  // DO ERRORS!!!!!!
+  const [errors, setErrors] = useState([]);
 
   const createProfile = (e) => {
     e.preventDefault();
+    // setErrors([]);
+    // let newErrors = [];
+    
     const pet = {
       userId: currentUser.id,
       name: petName,
@@ -46,7 +62,16 @@ function PetProfileForm() {
       env,
       description,
     };
-    dispatch(createPet(pet));
+    dispatch(createPet(pet))
+      // .then((res) => {
+      //   setShowModal(false);
+      // })
+      // .catch((res) => {
+      //   if (res.data && res.data.errors) {
+      //     newErrors = res.data.errors;
+      //     setErrors(newErrors);
+      //   }
+      // });
   };
 
   const updateFile = (e) => {
@@ -74,7 +99,7 @@ function PetProfileForm() {
           required
         >
           <option value='' disabled>
-            -Select Type-
+            -Select One-
           </option>
           <option value='Dog'>Dog</option>
         </select>
@@ -85,7 +110,7 @@ function PetProfileForm() {
           type='number'
           name='age'
           value={age}
-          onChange={(e) => setAge(e.target.value)}
+          onChange={(e) => setAge(Number(e.target.value))}
           required
         />
       </div>
@@ -107,10 +132,10 @@ function PetProfileForm() {
           Energy
           <input
             type='range'
-            min='1'
-            max='5'
+            min={1}
+            max={5}
             value={energy}
-            onChange={(e) => setEnergy(e.target.value)}
+            onChange={(e) => setEnergy((Number(e.target.value)))}
             required
           />
         </label>
@@ -120,10 +145,10 @@ function PetProfileForm() {
           Social
           <input
             type='range'
-            min='1'
-            max='5'
+            min={1}
+            max={5}
             value={social}
-            onChange={(e) => setSocial(e.target.value)}
+            onChange={(e) => setSocial(Number(e.target.value))}
             required
           />
         </label>
@@ -133,10 +158,10 @@ function PetProfileForm() {
           Behaved
           <input
             type='range'
-            min='1'
-            max='5'
+            min={1}
+            max={5}
             value={behaved}
-            onChange={(e) => setBehaved(e.target.value)}
+            onChange={(e) => setBehaved(Number(e.target.value))}
             required
           />
         </label>
@@ -146,11 +171,11 @@ function PetProfileForm() {
           Size
           <select
             value={size}
-            onChange={(e) => setSize(e.target.value)}
+            onChange={(e) => setSize(Number(e.target.value))}
             required
           >
             <option value='' disabled>
-              -Select Size-
+              -Select One-
             </option>
             <option value={1}>Small</option>
             <option value={2}>Medium</option>
@@ -161,9 +186,9 @@ function PetProfileForm() {
       <div>
         <label>
           Environment
-          <select value={env} onChange={(e) => setEnv(e.target.value)} required>
+          <select value={env} onChange={(e) => setEnv(Number(e.target.value))} required>
             <option value='' disabled>
-              -Select Environment-
+              -Select One-
             </option>
             <option value={1}>Outdoor</option>
             <option value={2}>Both</option>
@@ -199,6 +224,11 @@ function PetProfileForm() {
       <div>
         <button type='submit'>Submit</button>
       </div>
+      {/* <div>
+        {errors.map((error) => (
+          <div>{error}</div>
+        ))}
+      </div> */}
     </form>
   );
 }

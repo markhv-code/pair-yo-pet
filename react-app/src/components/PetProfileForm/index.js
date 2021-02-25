@@ -10,7 +10,7 @@ export default function PetProfileModal() {
       <button onClick={() => setShowModal(true)}>Add Pet</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PetProfileForm />
+          <PetProfileForm setShowModal={setShowModal} />
         </Modal>
       )}
     </>

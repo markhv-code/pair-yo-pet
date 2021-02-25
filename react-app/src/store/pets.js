@@ -32,12 +32,13 @@ export const getPets = () => async (dispatch) => {
 
 // create is also used to update if petId is passed in as second argument
 export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
+  // console.log("------------- here is the pet -----------------", pet)
   const {
     userId,
     name,
     age,
-    image,
     imageURL,
+    image,
     petType,
     energy,
     social,
@@ -46,6 +47,8 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
     env,
     description,
   } = pet;
+
+  // console.log('------------- here is the image -----------------', image);
 
   const formData = new FormData();
   formData.append('userId', userId);
@@ -60,8 +63,11 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
   formData.append('env', env);
   formData.append('description', description);
 
+  
   // for single file
   if (image) formData.append('image', image);
+  
+  // console.log('----------- here is the formData ------------', formData);
 
   if (petIDtoUpdate) {
     // for updating pet
@@ -80,13 +86,29 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
     // for creating pet
     const res = await fetch(`/api/pets`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      //   // 'Content-Type': 'application/json',
+      // },
       body: formData,
+      // body: JSON.stringify({
+      //   userId,
+      //   name,
+      //   petType,
+      //   age,
+      //   image,
+      //   imageURL,
+      //   energy,
+      //   social,
+      //   behaved,
+      //   size,
+      //   env,
+      //   description,
+      // }),
     });
-    console.log('----------- here is the response ------------', res);
-    // if (res.ok) dispatch(create(res.data.pet));
+    const pet = await res.json()
+    console.log('----------- here is the response ------------', pet);
+    if (res.ok) dispatch(create(pet));
   }
 };
 

@@ -26,6 +26,7 @@ def create_pet():
     """
     Create new pet
     """
+    print("---------- here is the request ----------", request.files)
     form = CreatePetForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
@@ -44,6 +45,6 @@ def create_pet():
         )
         db.session.add(new_pet)
         db.session.commit()
-        return jsonify(new_pet.to_dict())
+        return new_pet.to_dict()
         # return new_pet.to_dict()
     return {"errors": validation_errors_to_error_messages(form.errors)}
