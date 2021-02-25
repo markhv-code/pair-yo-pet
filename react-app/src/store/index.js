@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import sessionReducer from './session';
 import petReducer from './pets';
+import messageReducer from './messages';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   pets: petReducer,
+  messages: messageReducer,
 });
 
 let enhancer;
