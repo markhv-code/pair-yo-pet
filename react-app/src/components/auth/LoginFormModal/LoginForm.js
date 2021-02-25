@@ -21,12 +21,13 @@ function LoginForm() {
 
   const demoLogin = async (e) => {
     e.preventDefault();
-    setEmail("demo@aa.io");
-    setPassword("password");
-    setTimeout(() => {}, 10)
-    const user = await login(email, password)
+    // setEmail("demo@aa.io");
+    // setPassword("password");
+    // setTimeout(() => {}, 10)
+    // const user = await login(email, password)
+    const user = await login('demo@aa.io', 'password');
     dispatch(setUser(user));
-  }
+  };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -69,7 +70,7 @@ function LoginForm() {
       <form onSubmit={demoLogin}>
         <button type='submit'>Demo Login</button>
       </form>
-  </>
+    </>
   );
 }
 
