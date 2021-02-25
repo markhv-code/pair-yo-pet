@@ -1,0 +1,23 @@
+.messages {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10rem;
+}
+
+.messages_users-holder {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(171, 172, 175);
+  border-radius: 1rem;
+  margin: .25rem;
+}
+
+.messages_texts-holder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(171, 172, 175);
+  border-radius: 1rem;
+  margin: .25rem;
+}

@@ -1,7 +1,7 @@
 // Action types
 const LOAD_MESSAGES = '/messages/LOAD_MESSAGES';
-const CREATE_MESSAGE = '/messages/CREATE_MESSAGE'; // also used for update
-const REMOVE_MESSAGE = '/messages/REMOVE_MESSAGE'; // also used for update
+const CREATE_MESSAGE = '/messages/CREATE_MESSAGE';
+// const REMOVE_MESSAGE = '/messages/REMOVE_MESSAGE';
 
 // Action creators
 const load = (messages) => ({
@@ -10,16 +10,14 @@ const load = (messages) => ({
 });
 
 const create = (message) => ({
-  // also used for update
   type: CREATE_MESSAGE,
   message,
 });
 
-const remove = (messageId) => ({
-  // also used for update
-  type: REMOVE_MESSAGE,
-  messageId,
-});
+// const remove = (messageId) => ({
+//   type: REMOVE_MESSAGE,
+//   messageId,
+// });
 
 // Thunks
 export const getMessages = () => async (dispatch) => {
@@ -30,79 +28,39 @@ export const getMessages = () => async (dispatch) => {
   }
 };
 
-// create is also used to update if messageId is passed in as second argument
-export const createMessage = (message, messageIDtoUpdate = null) => async (
-  dispatch
-) => {
-  const {
-    userId,
-    name,
-    age,
-    imageURL,
-    image,
-    messageType,
-    energy,
-    social,
-    behaved,
-    size,
-    env,
-    description,
-  } = message;
+export const createMessage = (newMessage) => async (dispatch) => {
+  const { senderId, receiverId, message } = newMessage;
 
-  const formData = new FormData();
-  formData.append('userId', userId);
-  formData.append('name', name);
-  formData.append('age', age);
-  formData.append('imageURL', imageURL);
-  formData.append('messageType', messageType);
-  formData.append('energy', energy);
-  formData.append('social', social);
-  formData.append('behaved', behaved);
-  formData.append('size', size);
-  formData.append('env', env);
-  formData.append('description', description);
-
-  if (image) formData.append('image', image);
-
-  if (messageIDtoUpdate) {
-    // for updating message
-    const res = await fetch(`/api/messages/${messageIDtoUpdate}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      body: formData,
-    });
-
-    if (res.ok) {
-      dispatch(create(res.data.updatedmessage));
-    }
-  } else {
-    // for creating message
-    const res = await fetch(`/api/messages`, {
-      method: 'POST',
-      body: formData,
-    });
-    const message = await res.json();
-
-    if (!message.errors) {
-      dispatch(create(message));
-      return message;
-    } else {
-      const errors = message;
-      return errors;
-    }
-  }
-};
-
-export const deletemessage = (messageId) => async (dispatch) => {
-  const res = await fetch(`/api/messages/${messageId}`, {
-    method: 'DELETE',
+  const res = await fetch(`/api/messages`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      senderId,
+      receiverId,
+      message,
+    }),
   });
-  if (res.ok) {
-    dispatch(remove(messageId));
+  const returnedMessage = await res.json();
+
+  if (!returnedMessage.errors) {
+    dispatch(create(returnedMessage));
+    return returnedMessage;
+  } else {
+    const errors = returnedMessage;
+    return errors;
   }
 };
+
+// export const deletemessage = (messageId) => async (dispatch) => {
+//   const res = await fetch(`/api/messages/${messageId}`, {
+//     method: 'DELETE',
+//   });
+//   if (res.ok) {
+//     dispatch(remove(messageId));
+//   }
+// };
 
 // Reducer
 const initState = {
@@ -110,27 +68,25 @@ const initState = {
     senderId: 1,
     receiverId: 2,
     message: 'This is me saying HI to Zach!',
-    timestamp: "2021-02-25 21:31:00.327159",
+    timestamp: '2021-02-25 21:31:00.327159',
     sender: {
-      username: "Mark"
+      username: 'Mark',
     },
     receiver: {
-      username: "Zach"
+      username: 'Zach',
     },
-
   },
   2: {
     senderId: 2,
     receiverId: 1,
     message: 'Thanks for saying HI Mark, this is Zach!',
-    timestamp: "2021-02-25 21:32:00.327159",
+    timestamp: '2021-02-25 21:32:00.327159',
     sender: {
-      username: "Zach"
+      username: 'Zach',
     },
     receiver: {
-      username: "Mark"
+      username: 'Mark',
     },
-
   },
 };
 
@@ -139,16 +95,16 @@ const messageReducer = (state = initState, action) => {
 
   switch (action.type) {
     case LOAD_MESSAGES:
-      // for (let message of action.messages) {
-      //   newState[message.id] = message;
-      // }
+      for (let message of action.messages) {
+        newState[message.id] = message;
+      }
       return newState;
     case CREATE_MESSAGE:
       newState[action.message.id] = action.message;
       return newState;
-    case REMOVE_MESSAGE:
-      delete newState[Number(action.messageId)];
-      return newState;
+    // case REMOVE_MESSAGE:
+    //   delete newState[Number(action.messageId)];
+    //   return newState;
     default:
       return newState;
   }

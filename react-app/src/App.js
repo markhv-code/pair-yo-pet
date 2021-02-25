@@ -10,10 +10,12 @@ import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import BrowseResults from './components/BrowseResults';
 import PetProfile from './components/PetProfile';
+import Messages from './components/Messages';
 
 // import other
 import { setUser } from './store/session';
 import { getPets } from './store/pets';
+import { getMessages } from './store/messages';
 import { authenticate } from './services/auth';
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getPets());
+    dispatch(getMessages());
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
@@ -60,10 +63,17 @@ function App() {
         <Route path='/pets/:petId' authenticated={!!sessionUser}>
           <PetProfile />
         </Route>
-        <Route path="/results">
+        <Route path='/results'>
           <BrowseResults />
         </Route>
       </Switch>
+      <ProtectedRoute
+        path='/messages'
+        exact={true}
+        authenticated={!!sessionUser}
+      >
+        <Messages />
+      </ProtectedRoute>
     </BrowserRouter>
   );
 }
