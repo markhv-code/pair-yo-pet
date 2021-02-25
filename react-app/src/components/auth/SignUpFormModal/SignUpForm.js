@@ -19,41 +19,48 @@ function SignUpFormPage() {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    setErrors([])
+    setErrors([]);
     if (password === repeatPassword) {
-      const user = await signUp(username, email, city, stateAbbr, password, repeatPassword);
+      const user = await signUp(
+        username,
+        email,
+        city,
+        stateAbbr,
+        password,
+        repeatPassword
+      );
       if (!user.errors) {
         setAuthenticated(true);
-        } else {
-          setErrors(user.errors);
+      } else {
+        setErrors(user.errors);
       }
-    }
-    else{
-      setErrors(prevErrors => [...prevErrors, "Password fields must match"])
+    } else {
+      setErrors((prevErrors) => [...prevErrors, 'Password fields must match']);
     }
   };
 
   const demoLogin = async (e) => {
     e.preventDefault();
-    setEmail("demo@aa.io");
-    setPassword("password");
-    setTimeout(() => { }, 10)
-    const user = await login(email, password)
+    setEmail('demo@aa.io');
+    setPassword('password');
+    // setTimeout(() => {}, 10)
+    // const user = await login(email, password)
+    const user = await login('demo@aa.io', 'password');
     dispatch(setUser(user));
-  }
+  };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
-  
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
-  
+
   const updateCity = (e) => {
     setCity(e.target.value);
   };
-  
+
   const updateStateAbbr = (e) => {
     setStateAbbr(e.target.value);
   };

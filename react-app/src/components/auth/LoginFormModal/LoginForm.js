@@ -21,8 +21,8 @@ function LoginForm() {
 
   const demoLogin = async (e) => {
     e.preventDefault();
-    // setEmail("demo@aa.io");
-    // setPassword("password");
+    setEmail('demo@aa.io');
+    setPassword('password');
     // setTimeout(() => {}, 10)
     // const user = await login(email, password)
     const user = await login('demo@aa.io', 'password');
