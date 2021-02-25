@@ -36,11 +36,11 @@ export default function LoggedInDropdown() {
         <ul className='navbar__dropdown navbar__dropdown-collapse'>
           <li className='navbar__dropdown__info'>{sessionUser.username}</li>
           <li className='navbar__dropdown__info'>{sessionUser.email}</li>
-          <li className='navbar__dropdown__button'>
+          {/* <li className='navbar__dropdown__button'>
             <NavLink to='/users' exact={true} activeClassName='active'>
               Users
             </NavLink>
-          </li>
+          </li> */}
           <li className='navbar__dropdown__button'>
             <PetProfileForm user={sessionUser} />
           </li>

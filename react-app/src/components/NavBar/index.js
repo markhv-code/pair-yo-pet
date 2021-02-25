@@ -26,19 +26,14 @@ const NavBar = () => {
     if (width > 800) {
       sessionLinks = (
         <>
-          <li className='nav__item'>
+          {/* <li className='nav__item'>
             <NavLink to='/users' exact={true} activeClassName='active'>
               Users
             </NavLink>
-          </li>
+          </li> */}
           <li className='nav__item'>
             <PetProfileForm user={sessionUser} />
           </li>
-          {/* <li className='nav__item'>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              Home
-            </NavLink>
-          </li> */}
           <li className='nav__item'>
             <ProfileButton user={sessionUser} />
           </li>
