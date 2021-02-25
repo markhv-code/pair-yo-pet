@@ -47,4 +47,5 @@ class Pet(db.Model):
             "size": self.size,
             "env": self.env,
             "description": self.description,
+            "owner": self.owner.to_dict()
         }

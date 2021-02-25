@@ -1,0 +1,14 @@
+.browse__container {
+    display: flex;
+    align-content: center;
+}
+
+.browse__bar {
+    width: 600px;
+    height: 100px;
+    
+}
+
+.search__text {
+    font-size: 14px;
+}

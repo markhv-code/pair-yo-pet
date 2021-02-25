@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
+import BrowseResults from './components/BrowseResults';
+import PetProfile from './components/PetProfile';
 
 // import other
 import { setUser } from './store/session';
@@ -54,6 +56,12 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} authenticated={!!sessionUser}>
           <SplashPage />
+        </Route>
+        <Route path='/pets/:petId' authenticated={!!sessionUser}>
+          <PetProfile />
+        </Route>
+        <Route path="/results">
+          <BrowseResults />
         </Route>
       </Switch>
     </BrowserRouter>
