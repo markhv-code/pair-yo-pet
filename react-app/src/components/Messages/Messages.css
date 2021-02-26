@@ -4,21 +4,20 @@
   padding: 0 10rem;
 }
 
-.messages_users-holder {
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  background-color: rgb(171, 172, 175);
-  border-radius: 1rem;
-  margin: .25rem;
-}
-
-.messages_texts-holder {
-  width: 100%;
+.messages__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: rgb(171, 172, 175);
+  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
   border-radius: 1rem;
-  margin: .25rem;
+  margin: 0.25rem;
+}
+
+.messages__users-holder {
+  width: 20%;
+}
+
+.messages__texts-holder {
+  width: 100%;
 }
