@@ -61,7 +61,7 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
   formData.append('description', description);
 
   if (image) formData.append('image', image);
-  
+
   if (petIDtoUpdate) {
     // for updating pet
     const res = await fetch(`/api/pets/${petIDtoUpdate}`, {
@@ -81,15 +81,15 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
       method: 'POST',
       body: formData,
     });
-    const pet = await res.json()
-    console.log("------------- errors -------------", pet.errors);
+    const pet = await res.json();
+
     if (!pet.errors) {
-      dispatch(create(pet))
-      return pet
+      dispatch(create(pet));
+      return pet;
     } else {
-      const errors = pet
-      return errors
-    };
+      const errors = pet;
+      return errors;
+    }
   }
 };
 
@@ -111,7 +111,6 @@ const petReducer = (state = initState, action) => {
   switch (action.type) {
     case LOAD_PETS:
       for (let pet of action.pets) {
-        console.log('pet', pet);
         newState[pet.id] = pet;
       }
       return newState;

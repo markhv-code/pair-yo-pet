@@ -12,6 +12,26 @@ def seed_messages():
             receiverId=user1.id,
             message="I love your dog Bruno",
         ),
+        Message(
+            senderId=user1.id,
+            receiverId=user2.id,
+            message="Thank you! I really love Bruno also!",
+        ),
+        Message(
+            senderId=user1.id,
+            receiverId=user2.id,
+            message="When is a good time to hang out!",
+        ),
+        Message(
+            senderId=user2.id,
+            receiverId=user1.id,
+            message="After I finish my group project!",
+        ),
+        Message(
+            senderId=user1.id,
+            receiverId=user2.id,
+            message="Sounds great brahhhh!",
+        ),
     ]
 
     db.session.bulk_save_objects(messages)

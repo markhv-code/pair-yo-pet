@@ -10,10 +10,13 @@ import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
+import Messages from './components/Messages';
 
 // import other
 import { setUser } from './store/session';
+import { getUsers } from './store/users';
 import { getPets } from './store/pets';
+import { getMessages } from './store/messages';
 import { authenticate } from './services/auth';
 
 function App() {
@@ -21,8 +24,11 @@ function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
+  dispatch(getUsers());
+  dispatch(getPets());
+  dispatch(getMessages());
+
   useEffect(() => {
-    dispatch(getPets());
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
@@ -57,13 +63,20 @@ function App() {
         <Route path='/' exact={true} authenticated={!!sessionUser}>
           <SplashPage />
         </Route>
-        <Route path='/pets/:petId' authenticated={!!sessionUser}>
+        <ProtectedRoute path='/pets/:petId' authenticated={!!sessionUser}>
           <PetProfile />
-        </Route>
+        </ProtectedRoute>
         <Route path='/browse'>
           <BrowsePets />
         </Route>
       </Switch>
+      <ProtectedRoute
+        path='/messages'
+        exact={true}
+        authenticated={!!sessionUser}
+      >
+        <Messages />
+      </ProtectedRoute>
     </BrowserRouter>
   );
 }
