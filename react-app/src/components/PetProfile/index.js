@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPets } from '../../store/pets';
 import './PetProfile.css';
+import MessageFormModal from '../Messages/MessageFormModal'
 
 
 const PetProfile = () => {
@@ -16,11 +17,11 @@ const PetProfile = () => {
     }, [dispatch, petId])
 
     
+    console.log(pet.owner.id, "pet.owner");
 
     if (!pet) return null;
     const {
         name, petType, age, imageURL, energy, social, behaved, size, env, description} = pet;
-
     return (
         <>
             <div className='profile__container'>
@@ -45,6 +46,7 @@ const PetProfile = () => {
                             <button className='message' >Message My Owner!
                                 <i className="fas fa-paw"></i>
                             </button>
+                            <MessageFormModal receiverId={pet.owner.id}/>
                         </div>
                     </div>
                 </div>
