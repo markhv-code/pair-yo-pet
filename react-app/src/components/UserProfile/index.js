@@ -10,7 +10,7 @@ function User() {
   const user = useSelector((state) => state.users[userId]);
   const pets = useSelector((state) => Object.values(state.pets));
 
-  petsArr = [pets]
+  petOwner = pets.filter((pet) => pet.owner.username)
 
   // if (sessionUser.id !== user.id) return null;
   const { city, email, stateAbbr, username } = user
@@ -29,6 +29,7 @@ function User() {
         </div>
         <div>
           <h2>My Pets</h2>
+          
         </div>
       </div>
     </>

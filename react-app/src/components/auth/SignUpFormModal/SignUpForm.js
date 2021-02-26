@@ -14,6 +14,13 @@ function SignUpFormPage() {
   const [repeatPassword, setRepeatPassword] = useState('');
   const dispatch = useDispatch();
 
+  const states = [
+    "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN",
+    "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH",
+    "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA",
+    "VT", "WA", "WI", "WV", "WY"
+  ];
+
   const onSignUp = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -103,12 +110,13 @@ function SignUpFormPage() {
         </div>
         <div>
           <label>State Abbreviation</label>
-          <input
-            type='text'
-            name='stateAbbr'
-            onChange={updateStateAbbr}
-            value={stateAbbr}
-          ></input>
+          <select onChange={updateStateAbbr} value={stateAbbr} size={1}>
+            {states.map(state => {
+              return (
+                <option value={state} key={state}>{state}</option>
+              )
+            })}
+          </select>
         </div>
         <div>
           <label>Password</label>

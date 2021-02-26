@@ -9,6 +9,7 @@ import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 import User from './components/UserProfile';
 
 // import other
@@ -61,14 +62,17 @@ function App() {
         <Route path='/browse'>
           <BrowsePets />
         </Route>
+        <ProtectedRoute
+          path='/messages'
+          exact={true}
+          authenticated={!!sessionUser}
+          >
+          <Messages />
+        </ProtectedRoute>
+        <Route path='*'>
+          <PageNotFound />
+        </Route>
       </Switch>
-      <ProtectedRoute
-        path='/messages'
-        exact={true}
-        authenticated={!!sessionUser}
-      >
-        <Messages />
-      </ProtectedRoute>
     </BrowserRouter>
   );
 }
