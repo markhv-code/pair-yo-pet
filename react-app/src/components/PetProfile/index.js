@@ -42,7 +42,7 @@ const PetProfile = () => {
                     </div>
                     <div className='profile__message-owner'>
                         {lgnUsr.id !== pet.owner.id && <div>Want To Set Up A Play Date With Me?
-                            <MessageFormModal receiverId={pet.owner.id}/>
+                            <MessageFormModal receiver={pet.owner}/>
                         </div>}
                     </div>
                 </div>

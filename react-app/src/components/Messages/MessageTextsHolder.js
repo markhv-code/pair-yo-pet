@@ -25,7 +25,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
   if (!otherUser.id) {
     return (
       <div className='messages__container messages__texts-holder'>
-        <p>select a conversation</p>
+        <h1 className='messages__title'>No conversation selected</h1>
       </div>
     );
   }

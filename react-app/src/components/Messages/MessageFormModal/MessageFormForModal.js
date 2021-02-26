@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createMessage } from '../../../store/messages';
 
-
-export default function MessageFormForModal({receiverId, setShowModal}) {
+export default function MessageFormForModal({ receiver, setShowModal }) {
   const dispatch = useDispatch();
   const [msg, setMsg] = useState('');
 
@@ -14,7 +13,7 @@ export default function MessageFormForModal({receiverId, setShowModal}) {
     const msgOrErrors = await dispatch(
       createMessage({
         senderId: lgdInUserId,
-        receiverId: receiverId,
+        receiverId: receiver.id,
         message: msg,
       })
     );
@@ -25,20 +24,23 @@ export default function MessageFormForModal({receiverId, setShowModal}) {
   };
 
   return (
-    <form onSubmit={onSend} className='msg-form'>
-      <textarea
-        value={msg}
-        onChange={(e) => {
-          setMsg(e.target.value);
-        }}
-        className='msg-form__input'
-        maxLength={500}
-        rows={3}
-        required
-      />
-      <button type='submit' className='msg-form__button'>
-        <i className='fas fa-play fa-2x'></i>
-      </button>
+    <form onSubmit={onSend} className='msg-form-modal'>
+      <h2>Message {receiver.username}</h2>
+      <div className='msg-form-modal__msg-and-btn'>
+        <textarea
+          value={msg}
+          onChange={(e) => {
+            setMsg(e.target.value);
+          }}
+          className='msg-form__input'
+          maxLength={500}
+          rows={3}
+          required
+        />
+        <button type='submit' className='msg-form-modal__button'>
+          <i className='fas fa-play fa-2x'></i>
+        </button>
+      </div>
     </form>
-  )
+  );
 }

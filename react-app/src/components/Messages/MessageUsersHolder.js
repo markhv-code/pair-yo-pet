@@ -19,6 +19,8 @@ export default function MessageUsersHolder({
   const conversationsUsers = [];
   const arr = Array.from(conversationsUserIdSet);
   arr.forEach((id) => conversationsUsers.push(allUsers[id]));
+  if (conversationsUsers.length === 0)
+    conversationsUsers.push({ username: 'No message history' });
 
   return (
     <>
@@ -28,7 +30,11 @@ export default function MessageUsersHolder({
           {conversationsUsers.map((user) => {
             return (
               <div
-                className='messages__other-user'
+                className={
+                  user.username === 'No message history'
+                    ? 'messages__no-msg-history'
+                    : 'messages__other-user'
+                }
                 key={user.id}
                 onClick={() => {
                   setOtherUser(user);

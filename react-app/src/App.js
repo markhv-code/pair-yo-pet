@@ -63,9 +63,9 @@ function App() {
         <Route path='/' exact={true} authenticated={!!sessionUser}>
           <SplashPage />
         </Route>
-        <Route path='/pets/:petId' authenticated={!!sessionUser}>
+        <ProtectedRoute path='/pets/:petId' authenticated={!!sessionUser}>
           <PetProfile />
-        </Route>
+        </ProtectedRoute>
         <Route path='/browse'>
           <BrowsePets />
         </Route>
