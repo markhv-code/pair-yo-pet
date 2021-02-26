@@ -44,10 +44,11 @@
 }
 
 .pet__card > img {
-    object-fit: fill;
-    min-width: 300px;
+    /* object-fit: cover; */
+    width: 100%;
+    /* min-width: 300px;
     height: 200px;
-    width: 300px;
+    width: 300px; */
 }
 
 .pet__card-info {
