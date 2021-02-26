@@ -84,7 +84,7 @@ def seed_users():
         ),
         User(
             username="Minerva",
-            email="demo@aa.io",
+            email="minerva@aa.io",
             password="password",
             city="Under the sea",
             stateAbbr="TP",

@@ -7,21 +7,21 @@ def seed_pets():
     user2 = User.query.filter_by(username="Demo2").first()
     user3 = User.query.filter_by(username="Lisa").first()
     user4 = User.query.filter_by(username="Sky").first()
-    user5 = User.query.filter_by(username="Tom").first()
-    use6 = User.query.filter_by(username="hellooo").first()
-    user7 = User.query.filter_by(username="Demo").first()
-    user8 = User.query.filter_by(username="maya").first()
-    user9 = User.query.filter_by(username="India").first()
-    user10 = User.query.filter_by(username="Alaska").first()
-    user11 = User.query.filter_by(username="Cecily").first()
-    user12 = User.query.filter_by(username="Zaki").first()
-    user13 = User.query.filter_by(username="Minerva").first()
-    user14 = User.query.filter_by(username="Zoe").first()
-    user15 = User.query.filter_by(username="Pillsbury").first()
-    user16 = User.query.filter_by(username="Joe").first()
-    user17 = User.query.filter_by(username="Kennedy").first()
-    user18 = User.query.filter_by(username="Jesse").first()
-    user19 = User.query.filter_by(username="Malcolm").first()
+    user5 = User.query.filter_by(username="hellooo").first()
+    user6 = User.query.filter_by(username="maya").first()
+    user7 = User.query.filter_by(username="India").first()
+    user8 = User.query.filter_by(username="Madellin").first()
+    user9 = User.query.filter_by(username="Alaska").first()
+    user10 = User.query.filter_by(username="Cecily").first()
+    user11 = User.query.filter_by(username="Zaki").first()
+    user12 = User.query.filter_by(username="Minerva").first()
+    user13 = User.query.filter_by(username="Zoe").first()
+    user14 = User.query.filter_by(username="Pillsbury").first()
+    user15 = User.query.filter_by(username="Joe").first()
+    user16 = User.query.filter_by(username="Kennedy").first()
+    user17 = User.query.filter_by(username="Jesse").first()
+    user18 = User.query.filter_by(username="Malcolm").first()
+    user19 = User.query.filter_by(username="Aniya").first()
 
 
     bruno = Pet(
@@ -287,28 +287,48 @@ def seed_pets():
 
     bruno.bst_frnds.append(cal)
 
-    db.session.bulk_save_objects([
-        bruno, 
-        cal, 
-        mylo, 
-        melody, 
-        rover, 
-        coco, 
-        midnight, 
-        mylo, 
-        mystic, 
-        doodle, 
-        snow, 
-        moshi, 
-        polo, 
-        sponge, 
-        rose, 
-        mario, 
-        mimi, 
-        choco, 
-        boots, 
-        star
-    ])
+    # db.session.bulk_save_objects([
+    #     bruno, 
+    #     cal, 
+    #     mylo, 
+    #     melody, 
+    #     rover, 
+    #     coco, 
+    #     midnight, 
+    #     mylo, 
+    #     mystic, 
+    #     doodle, 
+    #     snow, 
+    #     moshi, 
+    #     polo, 
+    #     sponge, 
+    #     rose, 
+    #     mario, 
+    #     mimi, 
+    #     choco, 
+    #     boots, 
+    #     star
+    # ])
+    db.session.add(bruno)
+    db.session.add(cal)
+    db.session.add(mylo)
+    db.session.add(melody)
+    db.session.add(rover)
+    db.session.add(coco)
+    db.session.add(midnight)
+    db.session.add(mylo)
+    db.session.add(mystic)
+    db.session.add(doodle)
+    db.session.add(snow)
+    db.session.add(moshi)
+    db.session.add(polo)
+    db.session.add(sponge)
+    db.session.add(rose)
+    db.session.add(mario)
+    db.session.add(mimi)
+    db.session.add(choco)
+    db.session.add(boots)
+    db.session.add(star)
     db.session.commit()
 
 
