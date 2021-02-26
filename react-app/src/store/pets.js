@@ -103,24 +103,7 @@ export const deletePet = (petId) => async (dispatch) => {
 };
 
 // Reducer
-const initState = {
-  1: {
-    id: 1,
-    userId: 1,
-    name: '',
-    age: 1,
-    petType: '',
-    imageURL: '',
-    energy: 1,
-    social: 1,
-    behaved: 1,
-    size: 1,
-    env: 1,
-    description: '',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-};
+const initState = {};
 
 const petReducer = (state = initState, action) => {
   const newState = { ...state };
