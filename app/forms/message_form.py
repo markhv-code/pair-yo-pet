@@ -10,6 +10,6 @@ class CreateMessageForm(FlaskForm):
         "message",
         validators=[
             DataRequired(message="may not be empty"),
-            Length(min=1, max=200, message="must be less than 200 characters"),
+            Length(min=1, max=500, message="must be less than 500 characters"),
         ],
     )

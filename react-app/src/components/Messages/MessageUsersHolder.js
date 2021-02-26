@@ -23,11 +23,12 @@ export default function MessageUsersHolder({
   return (
     <>
       {!!conversationsUsers && (
-        <div className='messages__container messages_users-holder'>
-          <h1>Message Users Holder</h1>
+        <div className='messages__container messages__users-holder'>
+          <h1 className='messages__title'>Chats</h1>
           {conversationsUsers.map((user) => {
             return (
               <div
+                className="messages__other-user"
                 key={user.id}
                 onClick={() => {
                   setOtherUser(user);
