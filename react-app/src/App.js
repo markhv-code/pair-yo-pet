@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
-import BrowsePetsBar from './components/BrowsePetsBar';
+import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 
 // import other
@@ -61,7 +61,7 @@ function App() {
           <PetProfile />
         </Route>
         <Route path='/browse'>
-          <BrowsePetsBar />
+          <BrowsePets />
         </Route>
       </Switch>
     </BrowserRouter>
