@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { logout } from '../../services/auth';
 import { removeUser } from '../../store/session';
@@ -41,6 +41,11 @@ export default function LoggedInDropdown() {
               Users
             </NavLink>
           </li> */}
+          <li className='navbar__dropdown__button'>
+            <NavLink to='/browse' exact={true} activeClassName='active'>
+              Browse Pets
+            </NavLink>
+          </li>
           <li className='navbar__dropdown__button'>
             <PetProfileForm user={sessionUser} />
           </li>
