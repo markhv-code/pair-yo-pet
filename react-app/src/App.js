@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/Users/UsersList';
-import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
@@ -46,7 +44,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <ProtectedRoute
+        {/* <ProtectedRoute
           path='/users'
           exact={true}
           authenticated={!!sessionUser}
@@ -59,7 +57,7 @@ function App() {
           authenticated={!!sessionUser}
         >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path='/' exact={true} authenticated={!!sessionUser}>
           <SplashPage />
         </Route>

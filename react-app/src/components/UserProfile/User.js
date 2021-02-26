@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getUsers } from "../../store/users";
+import { getPets } from "../../store/pets";
+
 
 function User() {
-  const [user, setUser] = useState({});
-  // Notice we use useParams here instead of getting the params
-  // From props.
+  const dispatch = useDispatch();
   const { userId }  = useParams();
+  const { petId } = useParams();
 
-  useEffect(() => {
-    if (!userId) {
-      return
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
+  const currentUser = useSelector(state => state.session.user[userId])
+  const pet = useSelector(state => state.pets)
 
-  if (!user) {
-    return null;
-  }
+  if
 
   return (
     <ul>
