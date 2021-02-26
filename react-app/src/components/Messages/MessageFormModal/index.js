@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { Modal } from '../../../context/ModalAndAuth';
 import MessageFormForModal from './MessageFormForModal';
 
-export default function MessageFormModal() {
+export default function MessageFormModal({receiverId}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Message My Owner</button>
+      <button className='message' onClick={() => setShowModal(true)}>
+        Message My Owner!
+        <i className="fas fa-paw"></i>
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <MessageFormForModal />
+          <MessageFormForModal receiverId={receiverId} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPets } from '../../store/pets';
 import './PetProfile.css';
+import MessageFormModal from '../Messages/MessageFormModal'
 
 
 const PetProfile = () => {
@@ -10,17 +11,16 @@ const PetProfile = () => {
     const {petId} = useParams();
 
     const pet = useSelector(state => state.pets[petId]);
+    const lgnUsr = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getPets(petId))
     }, [dispatch, petId])
 
-    
 
     if (!pet) return null;
     const {
         name, petType, age, imageURL, energy, social, behaved, size, env, description} = pet;
-
     return (
         <>
             <div className='profile__container'>
@@ -41,11 +41,9 @@ const PetProfile = () => {
                         <h3 className='profile__sliders'>Environment: {env}</h3>
                     </div>
                     <div className='profile__message-owner'>
-                        <div>Want To Set Up A Play Date With Me?
-                            <button className='message' >Message My Owner!
-                                <i className="fas fa-paw"></i>
-                            </button>
-                        </div>
+                        {lgnUsr.id !== pet.owner.id && <div>Want To Set Up A Play Date With Me?
+                            <MessageFormModal receiverId={pet.owner.id}/>
+                        </div>}
                     </div>
                 </div>
             </div>
