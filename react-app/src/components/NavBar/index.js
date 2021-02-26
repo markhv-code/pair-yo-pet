@@ -32,6 +32,11 @@ const NavBar = () => {
             </NavLink>
           </li> */}
           <li className='nav__item'>
+            <NavLink className='nav__item' to='/messages' exact={true} activeClassName='active'>
+              Messages
+            </NavLink>
+          </li>
+          <li className='nav__item'>
             <PetProfileForm user={sessionUser} />
           </li>
           <li className='nav__item'>

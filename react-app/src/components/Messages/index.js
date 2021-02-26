@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+// import components
 import MessageUsersHolder from './MessageUsersHolder';
 import MessageTextsHolder from './MessageTextsHolder';
 
@@ -11,12 +12,15 @@ export const useOtherUserContext = () => useContext(OtherUserContext);
 
 export default function Messages() {
   // grab states from store
-  const allUsers = useSelector((state) => state.users);
   const lgdInUser = useSelector((state) => state.session.user);
   const allMsgs = useSelector((state) => state.messages);
-
+  const allUsers = useSelector((state) => state.users);
+  const store = useSelector((state) => state);
+  
   // set up state for context provider
-  const [otherUser, setotherUser] = useState(allUsers[2]);
+  const [otherUser, setOtherUser] = useState(null);
+
+  console.log('here is the store', store);
 
   // customize state needs to pass in to children as props
   const msgsArray = Object.values(allMsgs);
@@ -24,21 +28,28 @@ export default function Messages() {
     (message) =>
       message.senderId === lgdInUser.id || message.receiverId === lgdInUser.id
   );
-  const allMsgsWOtherUser = allMsgsLgdInUser.filter(
-    (message) =>
-      message.senderId === otherUser.id || message.receiverId === otherUser.id
-  );
+  const allMsgsWOtherUser = allMsgsLgdInUser.filter((message) => {
+    const idToCheck = otherUser ? otherUser.id : allUsers[2];
+    return message.senderId === idToCheck || message.receiverId === idToCheck;
+  });
 
   return (
-    <OtherUserContext.Provider value={{ otherUser, setotherUser }}>
-      <div className='messages'>
-        <MessageUsersHolder />
-        <MessageTextsHolder
-          allUsers={allUsers}
-          lgdInUser={lgdInUser}
-          allMsgsWOtherUser={allMsgsWOtherUser}
-        />
-      </div>
-    </OtherUserContext.Provider>
+    <>
+      {allUsers && lgdInUser && allMsgsLgdInUser && allMsgsWOtherUser && (
+        <OtherUserContext.Provider value={{ otherUser, setOtherUser }}>
+          <div className='messages'>
+            <MessageUsersHolder
+              allUsers={allUsers}
+              lgdInUser={lgdInUser}
+              allMsgsLgdInUser={allMsgsLgdInUser}
+            />
+            <MessageTextsHolder
+              lgdInUser={lgdInUser}
+              allMsgsWOtherUser={allMsgsWOtherUser}
+            />
+          </div>
+        </OtherUserContext.Provider>
+      )}
+    </>
   );
 }
