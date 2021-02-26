@@ -6,20 +6,20 @@ import MessageTextHolder from './MessageTextsHolder';
 
 import './Messages.css';
 
-const CurUsrToMsgContext = createContext();
-export const useCurUsrToMsgContext = () => useContext(CurUsrToMsgContext);
+const OtherUserIdContext = createContext();
+export const useOtherUserIdContext = () => useContext(OtherUserIdContext);
 
 export default function Messages() {
-  const [curUsrToMsg, setCurUsrToMsg] = useState(2);
+  const [otherUserId, setotherUserId] = useState(2);
 
   const msgsFrmStore = useSelector((state) => state.messages);
 
   return (
-    <CurUsrToMsgContext.Provider value={{ curUsrToMsg, setCurUsrToMsg }}>
+    <OtherUserIdContext.Provider value={{ otherUserId, setotherUserId }}>
       <div className='messages'>
-        <MessageUsersHolder setCurUsrToMsg={setCurUsrToMsg} />
-        <MessageTextHolder curUsrToMsg={curUsrToMsg} />
+        <MessageUsersHolder setotherUserId={setotherUserId} />
+        <MessageTextHolder otherUserId={otherUserId} />
       </div>
-    </CurUsrToMsgContext.Provider>
+    </OtherUserIdContext.Provider>
   );
 }
