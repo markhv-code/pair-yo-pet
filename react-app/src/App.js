@@ -9,6 +9,7 @@ import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
+import User from './components/UserProfile';
 
 // import other
 import { setUser } from './store/session';
@@ -44,20 +45,13 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        {/* <ProtectedRoute
-          path='/users'
-          exact={true}
-          authenticated={!!sessionUser}
-        >
-          <UsersList />
-        </ProtectedRoute>
         <ProtectedRoute
           path='/users/:userId'
           exact={true}
           authenticated={!!sessionUser}
         >
           <User />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
         <Route path='/' exact={true} authenticated={!!sessionUser}>
           <SplashPage />
         </Route>
