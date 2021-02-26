@@ -145,7 +145,13 @@ def seed_users():
             city="Newark",
             stateAbbr="NJ",
         ),
-
+        User(
+            username="Jeff",
+            email="jeff@aa.io",
+            password="password",
+            city="Milwaukee",
+            stateAbbr="WI",
+        ),
     ]
 
     db.session.bulk_save_objects(users)
