@@ -54,6 +54,12 @@
   font-weight: 600;
 }
 
+.navbar-dropdown__nav__item {
+  margin-left: .15rem;
+  font-weight: 500;
+  margin-top: .15rem;
+}
+
 .navbar__dropdown-collapse {
   margin-top: 1.5rem;
   margin-right: 1rem;
