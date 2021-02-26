@@ -7,6 +7,7 @@ import MessageTextsHolder from './MessageTextsHolder';
 
 import './Messages.css';
 
+// otherUser will be the user that the logged in user clicks on to message
 const OtherUserContext = createContext();
 export const useOtherUserContext = () => useContext(OtherUserContext);
 
@@ -17,16 +18,18 @@ export default function Messages() {
   const allUsers = useSelector((state) => state.users);
   
   // set up state for context provider
-  const [otherUser, setOtherUser] = useState(null);
+  const [otherUser, setOtherUser] = useState({id: null});
 
-  // customize state needs to pass in to children as props
+  // filter for all messages from or to logged in user
   const msgsArray = Object.values(allMsgs);
   const allMsgsLgdInUser = msgsArray.filter(
     (message) =>
       message.senderId === lgdInUser.id || message.receiverId === lgdInUser.id
   );
+
+  // filter again for all messages between logged in user and other user (chosen user)
   const allMsgsWOtherUser = allMsgsLgdInUser.filter((message) => {
-    const idToCheck = otherUser ? otherUser.id : allUsers[2];
+    const idToCheck = otherUser.id
     return message.senderId === idToCheck || message.receiverId === idToCheck;
   });
 

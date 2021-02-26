@@ -55,11 +55,18 @@
   box-shadow: none;
 }
 
-.messages__texts {
+.messages__texts-and-form {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin: 0;
+}
+
+.messages__texts {
+  overflow: scroll;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .messages__texts__right {
@@ -75,7 +82,7 @@
 }
 
 .single-message-text {
-  background-color: rgba(13, 51, 223, 0.300);
+  background-color: rgba(13, 51, 223, 0.3);
   border-radius: 0.75rem;
   width: fit-content;
   padding: 0.35rem;
@@ -106,7 +113,7 @@
 }
 
 .msg-form__input:focus {
-  box-shadow: 0 0 0 3px rgba(13, 51, 223, 0.300);
+  box-shadow: 0 0 0 3px rgba(13, 51, 223, 0.3);
 }
 
 .msg-form__button {
