@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length
 class CreateMessageForm(FlaskForm):
     senderId = IntegerField("senderId", validators=[DataRequired()])
     receiverId = IntegerField("receiverId", validators=[DataRequired()])
-    name = StringField(
+    message = StringField(
         "message",
         validators=[
             DataRequired(message="may not be empty"),

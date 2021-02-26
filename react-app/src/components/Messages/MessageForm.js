@@ -5,20 +5,23 @@ import { useOtherUserContext } from './index';
 
 export default function MessageForm() {
   const dispatch = useDispatch();
-  const [msg, setMsg] = useState();
+  const [msg, setMsg] = useState('');
 
   const { otherUser } = useOtherUserContext();
   const lgdInUserId = useSelector((state) => state.session.user.id);
 
-  const onSend = function (e) {
+  const onSend = async function (e) {
     e.preventDefault();
-    dispatch(
+    const msgOrErrors = await dispatch(
       createMessage({
         senderId: lgdInUserId,
         receiverId: otherUser.id,
         message: msg,
       })
     );
+    if (!msgOrErrors.errors) {
+      setMsg('');
+    }
   };
 
   return (
@@ -34,7 +37,7 @@ export default function MessageForm() {
         required
       />
       <button type='submit' className='msg-form__button'>
-        <i class='fas fa-play fa-lg'></i>
+        <i class='fas fa-play fa-2x'></i>
       </button>
     </form>
   );

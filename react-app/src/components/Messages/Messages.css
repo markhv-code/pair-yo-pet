@@ -25,6 +25,7 @@
 .messages__texts-holder {
   width: 100%;
   justify-content: space-between;
+  /* overflow: scroll; */
 }
 
 .messages__title {
@@ -105,7 +106,6 @@
 }
 
 .msg-form__input:focus {
-  /* border: black solid .1rem; */
   box-shadow: 0 0 0 3px rgba(13, 51, 223, 0.300);
 }
 

@@ -19,7 +19,7 @@ def get_messages():
 
 
 @message_routes.route("", methods=["POST"])
-@login_required
+# @login_required
 def create_message():
     """
     Create new message

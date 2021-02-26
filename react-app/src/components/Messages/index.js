@@ -15,12 +15,9 @@ export default function Messages() {
   const lgdInUser = useSelector((state) => state.session.user);
   const allMsgs = useSelector((state) => state.messages);
   const allUsers = useSelector((state) => state.users);
-  const store = useSelector((state) => state);
   
   // set up state for context provider
   const [otherUser, setOtherUser] = useState(null);
-
-  console.log('here is the store', store);
 
   // customize state needs to pass in to children as props
   const msgsArray = Object.values(allMsgs);

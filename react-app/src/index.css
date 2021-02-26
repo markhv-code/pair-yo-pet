@@ -8,6 +8,6 @@ body {
   font-family: 'Merriweather Sans', sans-serif;
 }
 
-*:focus {
-  outline: none;
+*:focus{
+  outline:none
 }
