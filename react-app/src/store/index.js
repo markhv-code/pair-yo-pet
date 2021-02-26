@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import petReducer from './pets';
 import messageReducer from './messages';
+import userReducer from './users';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   pets: petReducer,
   messages: messageReducer,
+  users: userReducer,
 });
 
 let enhancer;
