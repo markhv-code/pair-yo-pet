@@ -32,12 +32,12 @@ export default function MessageForm() {
           setMsg(e.target.value);
         }}
         className='msg-form__input'
-        maxlength={500}
+        maxLength={500}
         rows={3}
         required
       />
       <button type='submit' className='msg-form__button'>
-        <i class='fas fa-play fa-2x'></i>
+        <i className='fas fa-play fa-2x'></i>
       </button>
     </form>
   );

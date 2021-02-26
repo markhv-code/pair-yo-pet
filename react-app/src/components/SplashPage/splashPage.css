@@ -22,7 +22,8 @@
 
 .home__greeting__text {
   color: rgb(242, 160, 84);
-  text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
+  text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0),
+    0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
   font-size: 3rem;
 }
 
