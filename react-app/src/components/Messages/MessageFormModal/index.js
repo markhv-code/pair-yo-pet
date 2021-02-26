@@ -7,10 +7,13 @@ export default function MessageFormModal({receiverId}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Message My Owner</button>
+      <button className='message' onClick={() => setShowModal(true)}>
+        Message My Owner!
+        <i className="fas fa-paw"></i>
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <MessageFormForModal receiverId={receiverId}/>
+          <MessageFormForModal receiverId={receiverId} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

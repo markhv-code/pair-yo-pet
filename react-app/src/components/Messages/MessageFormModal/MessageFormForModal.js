@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createMessage } from '../../../store/messages';
 
 
-export default function MessageFormForModal({receiverId}) {
+export default function MessageFormForModal({receiverId, setShowModal}) {
   const dispatch = useDispatch();
   const [msg, setMsg] = useState('');
 
@@ -11,9 +11,6 @@ export default function MessageFormForModal({receiverId}) {
 
   const onSend = async function (e) {
     e.preventDefault();
-    console.log("reciverID", receiverId);
-    console.log("message", msg);
-    console.log("loginUsr", lgdInUserId);
     const msgOrErrors = await dispatch(
       createMessage({
         senderId: lgdInUserId,
@@ -23,6 +20,7 @@ export default function MessageFormForModal({receiverId}) {
     );
     if (!msgOrErrors.errors) {
       setMsg('');
+      setShowModal(false);
     }
   };
 
