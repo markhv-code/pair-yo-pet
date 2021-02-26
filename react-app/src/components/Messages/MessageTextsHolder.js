@@ -18,7 +18,9 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
     return `${day}, ${time} ${amPm}`;
   };
 
-  const reversedMsgs = allMsgsWOtherUser.reverse();
+  // reverse messages, so they are in the right order in conjunction with "flex-direction: column-reverse" (reverse() strangely did not work, so we did sort())
+  // this is so it defaults to scrolling to the bottom when there are too many messages to fit
+  allMsgsWOtherUser.sort((a, b) => b.id - a.id);
 
   if (!otherUser.id) {
     return (
@@ -36,7 +38,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
       <div className='messages__texts-and-form'>
         <div className='messages__texts'>
           {otherUser &&
-            reversedMsgs.map((msg) => (
+            allMsgsWOtherUser.map((msg) => (
               <div
                 className={
                   lgdInUser.id === msg.sender.id
