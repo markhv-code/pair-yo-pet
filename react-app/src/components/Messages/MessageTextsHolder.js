@@ -6,6 +6,18 @@ import MessageForm from './MessageForm';
 export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
   const { otherUser } = useOtherUserContext();
 
+    const formatDate = function (dateString) {
+      let amPm = 'am';
+      const date = new Date(dateString);
+      let hours = date.getHours();
+      if (hours >= 12) amPm = 'pm';
+      if (hours > 12) hours -= 12;
+      date.setHours(hours);
+      const day = date.toDateString();
+      const time = date.toTimeString().slice(0,5);
+      return `${day}, ${time} ${amPm}`;
+    };
+
   return (
     <div className='messages__container messages__texts-holder'>
       <h1 className='messages__title'>
@@ -35,7 +47,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
               >
                 {msg.message}
               </p>
-              <p className='timestamp'>{msg.timestamp}</p>
+              <p className='timestamp'>{formatDate(msg.timestamp)}</p>
             </div>
           ))}
         <MessageForm />
