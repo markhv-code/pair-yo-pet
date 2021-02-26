@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/Users/UsersList';
 import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
-import BrowseResults from './components/BrowseResults';
+import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
 
@@ -66,8 +66,8 @@ function App() {
         <Route path='/pets/:petId' authenticated={!!sessionUser}>
           <PetProfile />
         </Route>
-        <Route path='/results'>
-          <BrowseResults />
+        <Route path='/browse'>
+          <BrowsePets />
         </Route>
       </Switch>
       <ProtectedRoute

@@ -22,7 +22,7 @@ def seed_pets():
     user17 = User.query.filter_by(username="Jesse").first()
     user18 = User.query.filter_by(username="Malcolm").first()
     user19 = User.query.filter_by(username="Aniya").first()
-
+    user20 = User.query.filter_by(username="Jeff").first()
 
     bruno = Pet(
         owner=user1,
@@ -284,6 +284,19 @@ def seed_pets():
         env=2,
         description="Her names speaks for itself. Star is the best doggone dog you'll ever meet. She invented poise.",
     )
+    rodger = Pet(
+        owner=user20,
+        name="Rodger",
+        petType="Dog",
+        age=5,
+        imageURL="https://pair-yo-pet.s3.amazonaws.com/german-shepherd-4889095_640.jpg",
+        energy=5,
+        social=5,
+        behaved=5,
+        size=3,
+        env=2,
+        description="In the process of being recruited. Green Bay here I come. Looking for someone to run some plays with.",
+    )
 
     bruno.bst_frnds.append(cal)
 
@@ -329,6 +342,7 @@ def seed_pets():
     db.session.add(choco)
     db.session.add(boots)
     db.session.add(star)
+    db.session.add(rodger)
     db.session.commit()
 
 

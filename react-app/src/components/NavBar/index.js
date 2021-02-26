@@ -32,7 +32,20 @@ const NavBar = () => {
             </NavLink>
           </li> */}
           <li className='nav__item'>
-            <NavLink className='nav__item' to='/messages' exact={true} activeClassName='active'>
+            <NavLink
+              className='nav__item'
+              to='/browse'
+              exact={true}
+              activeClassName='active'
+            >
+              Browse Pets
+            </NavLink>
+            <NavLink
+              className='nav__item'
+              to='/messages'
+              exact={true}
+              activeClassName='active'
+            >
               Messages
             </NavLink>
           </li>
@@ -51,6 +64,16 @@ const NavBar = () => {
     if (width > 800) {
       sessionLinks = (
         <>
+          <li className='nav__item'>
+            <NavLink
+              className='nav__item'
+              to='/browse'
+              exact={true}
+              activeClassName='active'
+            >
+              Browse Pets
+            </NavLink>
+          </li>
           <li className='nav__item'>
             <LoginFormModal />
           </li>
