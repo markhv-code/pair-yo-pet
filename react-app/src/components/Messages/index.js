@@ -10,7 +10,7 @@ const CurUsrToMsgContext = createContext();
 export const useCurUsrToMsgContext = () => useContext(CurUsrToMsgContext);
 
 export default function Messages() {
-  const [curUsrToMsg, setCurUsrToMsg] = useState(null);
+  const [curUsrToMsg, setCurUsrToMsg] = useState(2);
 
   const msgsFrmStore = useSelector((state) => state.messages);
 

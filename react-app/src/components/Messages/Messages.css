@@ -16,6 +16,7 @@
 .messages_texts-holder {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: rgb(171, 172, 175);
   border-radius: 1rem;
