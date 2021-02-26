@@ -41,8 +41,23 @@ export default function LoggedInDropdown() {
               Users
             </NavLink>
           </li> */}
-          <li className='nav__item'>
-            <NavLink to='/messages' exact={true} activeClassName='active'>
+          <li className='nav__item navbar-dropdown__nav__item'>
+            <NavLink
+              className='navbar-dropdown__nav__item'
+              to='/browse'
+              exact={true}
+              activeClassName='active'
+            >
+              Browse Pets
+            </NavLink>
+          </li>
+          <li className='nav__item navbar-dropdown__nav__item'>
+            <NavLink
+              className='navbar-dropdown__nav__item'
+              to='/messages'
+              exact={true}
+              activeClassName='active'
+            >
               Messages
             </NavLink>
           </li>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import LoginFormModal from '../auth/LoginFormModal';
 import SignUpFormModal from '../auth/SignUpFormModal';
 
@@ -22,6 +23,16 @@ export default function SessionLinksDropdown() {
       </button>
       {showMenu && (
         <ul className='navbar__dropdown navbar__dropdown-collapse'>
+          <li className='nav__item'>
+            <NavLink
+              className='nav__item'
+              to='/browse'
+              exact={true}
+              activeClassName='active'
+            >
+              Browse Pets
+            </NavLink>
+          </li>
           <li className='navbar__dropdown__button'>
             <LoginFormModal openMenu={openMenu} />
           </li>

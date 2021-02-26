@@ -32,20 +32,12 @@ const NavBar = () => {
             </NavLink>
           </li> */}
           <li className='nav__item'>
-            <NavLink
-              className='nav__item'
-              to='/browse'
-              exact={true}
-              activeClassName='active'
-            >
+            <NavLink to='/browse' exact={true} activeClassName='active'>
               Browse Pets
             </NavLink>
-            <NavLink
-              className='nav__item'
-              to='/messages'
-              exact={true}
-              activeClassName='active'
-            >
+          </li>
+          <li className='nav__item'>
+            <NavLink to='/messages' exact={true} activeClassName='active'>
               Messages
             </NavLink>
           </li>
@@ -93,8 +85,8 @@ const NavBar = () => {
         <a className='site-header__title' href='/'>
           <img
             className='logo'
-            alt="pair yo' pet logo"
-            src='/images/pyp-logo-cropped.png'
+            alt="Pair Yo' Pet"
+            src='https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pyp-logo-cropped.png'
           ></img>
         </a>
         <nav className='nav'>
