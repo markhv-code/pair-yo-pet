@@ -11,6 +11,7 @@ import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
+import PageNotFound from './components/PageNotFound';
 
 // import other
 import { setUser } from './store/session';
@@ -77,6 +78,9 @@ function App() {
       >
         <Messages />
       </ProtectedRoute>
+      <Route path='/'>
+        <PageNotFound />
+      </Route>
     </BrowserRouter>
   );
 }
