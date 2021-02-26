@@ -1,11 +1,15 @@
 .browse__container {
-    display: flex;
-    align-items: center;
+    display: flex;  
+    justify-content: center;
+    margin-top: 40px; 
+
 }
 
 .browse__bar > input {
     width: 600px;
     height: 50px;
+    border-radius: 5px;
+    
 }
 
 .search__text {
@@ -15,35 +19,35 @@
 .result__container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 80%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 90%;
     margin: auto;
     height: 100%;
 }
 
 .tile__results {
     display: flex;
-    width: 350px;
     background-color: whitesmoke;
     margin: 30px;
     border-radius: 10px;
     height: min-content;
 }
 
-
 .pet__card {
     border-radius: 10px;
     overflow: hidden;
-    width: 350px;
+    width: 300px;
     box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
     cursor: pointer;
 }
 
 .pet__card > img {
-    object-fit: cover;
+    object-fit: fill;
     min-width: 300px;
     height: 200px;
-    width: 350px;
+    width: 300px;
 }
 
 .pet__card-info {
@@ -57,6 +61,7 @@
 }
 
 .pet__card-info > h2 {
-    font-size: 18px;
+    font-size: 1.25rem;
+    text-align: center;
     font-weight: 600;
 }

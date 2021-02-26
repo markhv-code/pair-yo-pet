@@ -31,30 +31,33 @@ const BrowsePets = () => {
 
 if (!filteredPets) return null;
 return (
-    <div className='result__container'>
-        <div className='browse__bar'>
-            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends' type='text'/>
-                <div className = 'result__container'>
-                    {filteredPets.map((filteredPet, idx) => {
-                        const { id, imageURL, name } = filteredPet;
-                        return (
-                            <div className='result__container' key={id}>
-                                <div className='tile__results'>
-                                    <Link to={`/pets/${id}`}>
-                                        <div className='pet__card'>
-                                            <img src={imageURL} alt=""/>
-                                            <div className='pet__card-info'>
-                                                <h2>{name}</h2>
-                                            </div>
-                                        </div>
-                                    </Link>       
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
+    <>
+        <div className='browse__container'>
+            <div className='browse__bar'>
+                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends' type='text'/>
+            </div>
         </div>
-    </div>
+        
+        <div className = 'result__container'>
+            {filteredPets.map((filteredPet) => {
+                const { id, imageURL, name } = filteredPet;
+                return (
+                    <div className='tile__results' key={id}>
+                        <div>
+                            <Link to={`/pets/${id}`}>
+                                <div className='pet__card'>
+                                    <img src={imageURL} alt=""/>
+                                    <div className='pet__card-info'>
+                                        <h2>{name}</h2>
+                                    </div>
+                                </div>
+                            </Link>       
+                        </div>
+                    </div>
+                )
+            })}
+        </div>
+    </>
 )}
 
 
