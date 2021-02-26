@@ -15,7 +15,7 @@ const loadUser = (user) => ({
 
 // Thunks
 export const getUsers = () => async (dispatch) => {
-  const res = await fetch('/api/users');
+  const res = await fetch('/api/users/');
   const json = await res.json();
   if (res.ok) {
     dispatch(load(json.users));

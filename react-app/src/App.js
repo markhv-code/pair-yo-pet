@@ -24,11 +24,10 @@ function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  dispatch(getUsers());
-  dispatch(getPets());
-  dispatch(getMessages());
-
   useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getPets());
+    dispatch(getMessages());
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
