@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { signUp } from '../../../services/auth';
 import { login } from '../../../services/auth';
 import { setUser } from '../../../store/session';
-import { useModalAndAuthContext } from '../../../context/ModalAndAuth';
 
 function SignUpFormPage() {
-  const { authenticated, setAuthenticated } = useModalAndAuthContext();
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [city, setCity] = useState('');
@@ -68,10 +65,6 @@ function SignUpFormPage() {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
-
-  if (authenticated) {
-    return <Redirect to='/' />;
-  }
 
   return (
     <>
