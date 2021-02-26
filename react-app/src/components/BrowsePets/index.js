@@ -10,6 +10,7 @@ const BrowsePets = () => {
     const [search, setSearch] = useState("");
     const [filteredPets, setFilteredPets] = useState([]);
     const petsFromStore = useSelector((state) => Object.values(state.pets));
+    const lgdInUser = useSelector((state) => state.session.user)
     
     const dispatch = useDispatch();
     
@@ -44,7 +45,7 @@ return (
                 return (
                     <div className='tile__results' key={id}>
                         <div>
-                            <Link to={`/pets/${id}`}>
+                            <Link to={!!lgdInUser ? `/pets/${id}` : '/browse'}>
                                 <div className='pet__card'>
                                     <img src={imageURL} alt=""/>
                                     <div className='pet__card-info'>
