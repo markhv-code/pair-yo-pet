@@ -31,8 +31,6 @@ export const getMessages = () => async (dispatch) => {
 export const createMessage = (newMessage) => async (dispatch) => {
   const { senderId, receiverId, message } = newMessage;
 
-  console.log(senderId, receiverId, message);
-
   const res = await fetch(`/api/messages`, {
     method: 'POST',
     headers: {
@@ -45,7 +43,6 @@ export const createMessage = (newMessage) => async (dispatch) => {
     }),
   });
   const returnedMessage = await res.json();
-  console.log(returnedMessage);
 
   if (!returnedMessage.errors) {
     dispatch(create(returnedMessage));
