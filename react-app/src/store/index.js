@@ -2,11 +2,15 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import sessionReducer from './session';
+import userReducer from './users';
 import petReducer from './pets';
+import messageReducer from './messages';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  users: userReducer,
   pets: petReducer,
+  messages: messageReducer,
 });
 
 let enhancer;
