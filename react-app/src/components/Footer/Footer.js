@@ -4,8 +4,13 @@ const Footer = () => {
 
     return (
         <div className='footer-div'>
-            <div className='footer-div__person zach'>
-                <a className='github-link img' href='https://github.com/zduvall'>ZD</a>
+            <div>
+                <div className='footer-div__person zach'>
+                    <a className='github-link img' href='https://github.com/zduvall'>ZD</a>
+                </div>
+                <div className='footer-div__person zach'>
+                    <a className='github-link img' href='https://github.com/zduvall'>ZD</a>
+                </div>
             </div>
             <div className='footer-div__person courtney'>
                 <a className='github-link img' href='https://github.com/CJNewcomer'>CN</a>
