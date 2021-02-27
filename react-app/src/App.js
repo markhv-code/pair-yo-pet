@@ -11,6 +11,7 @@ import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 // import other
 import { setUser } from './store/session';
@@ -24,11 +25,10 @@ function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  dispatch(getUsers());
-  dispatch(getPets());
-  dispatch(getMessages());
-
   useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getPets());
+    dispatch(getMessages());
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
@@ -69,14 +69,17 @@ function App() {
         <Route path='/browse'>
           <BrowsePets />
         </Route>
+        <ProtectedRoute
+          path='/messages'
+          exact={true}
+          authenticated={!!sessionUser}
+          >
+          <Messages />
+        </ProtectedRoute>
+        <Route path='*'>
+          <PageNotFound />
+        </Route>
       </Switch>
-      <ProtectedRoute
-        path='/messages'
-        exact={true}
-        authenticated={!!sessionUser}
-      >
-        <Messages />
-      </ProtectedRoute>
     </BrowserRouter>
   );
 }
