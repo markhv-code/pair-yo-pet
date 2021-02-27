@@ -5,7 +5,8 @@ body {
     no-repeat center center fixed;
   /* background: url('./components/SplashPage/rottweiler-puppies-fade.png') no-repeat center center fixed; */
   background-size: cover;
-  font-family: 'Merriweather Sans', sans-serif;
+  /* font-family: 'Merriweather Sans', sans-serif; */
+  /* font-family: 'Unna', serif; */
 }
 
 *:focus{
