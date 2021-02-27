@@ -19,6 +19,7 @@
   height: 7rem;
   border-radius: 50%;
   background-color:  rgba(0, 0, 0, 0.521);
+  color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +27,23 @@
 
 .zach {
     background-image: url("https://avatars.githubusercontent.com/u/71565231?s=400&u=ea930215e60836cd6aeb27265fb66c4014f9e875&v=4");
+  background-position: center;
+  background-size: cover;
+}
+
+.courtney {
+    background-image: url("https://avatars.githubusercontent.com/u/62969220?s=400&u=07debc378612a373555767606e92a923906117e2&v=4");
+  background-position: center;
+  background-size: cover;
+}
+
+.mark {
+    background-image: url("https://avatars.githubusercontent.com/u/71941492?s=400&u=76d0748618d72591afb373be90866b1bc350427a&v=4");
+  background-position: center;
+  background-size: cover;
+}
+.ameera {
+    background-image: url("https://avatars.githubusercontent.com/u/50114902?s=400&v=4");
   background-position: center;
   background-size: cover;
 }
