@@ -22,5 +22,6 @@
 }
 
 .page-not-found__image {
-  height: 90%;
+  width: 50%;
+  min-width: 40px;
 }

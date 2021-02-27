@@ -27,7 +27,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
       <div className='messages__container messages__texts-holder'>
         <div>
           <h1 className='messages__title'>No conversation selected</h1>
-          <p style={{}}>
+          <p style={{textAlign: 'center'}}>
             Click a username on the left, or browse pets to find owners to
             message.
           </p>
