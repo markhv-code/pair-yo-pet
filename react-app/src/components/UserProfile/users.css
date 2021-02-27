@@ -1,0 +1,30 @@
+.profile-container {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding: 25px 25px;
+    margin-top: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+    transition: transform 100ms ease-in;
+    text-align: left;
+    background-color: whitesmoke;
+}
+
+.userInfo {
+    border: 10rem;
+    border-color: black;
+}
+
+.profile-container > img {
+    flex-direction: column;
+    justify-content: left;
+    object-fit: cover;
+    min-width: 300px;
+    min-height: 250px;
+    text-align: center;
+    width: 100%;
+    margin: 5.5px 20px 10px 0;
+    border-radius: 5px;
+}
