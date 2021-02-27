@@ -9,7 +9,7 @@ import { createPet } from '../../store/pets';
 // import Size from './sizeSlider';
 // import Environment from './environmentSlider';
 
-function PetProfileForm({ setShowModal }) {
+function PetProfileForm({ setShowModal, petToUpdate }) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -23,8 +23,23 @@ function PetProfileForm({ setShowModal }) {
   const [size, setSize] = useState('');
   const [env, setEnv] = useState('');
   const [description, setDescription] = useState('');
-
   const [errors, setErrors] = useState([]);
+
+    // useEffect(() => {
+    //   if (!!petToUpdate) {
+    //     setName(petToUpdate.name);
+    //     setDescription(petToUpdate.description);
+    //     setImage(petToUpdate.image);
+    //     setStreetNumber(petToUpdate.streetNumber);
+    //     setRoute(petToUpdate.route);
+    //     setLocality(petToUpdate.locality);
+    //     setAdministrativeArea(petToUpdate.administrativeArea);
+    //     setPostalCode(petToUpdate.postalCode);
+    //     setCountry(petToUpdate.country);
+    //     setLat(petToUpdate.lat);
+    //     setLng(petToUpdate.lng);
+    //   }
+    // }, [bathroomToUpdate]);
 
   const createProfile = async (e) => {
     e.preventDefault();
@@ -61,7 +76,7 @@ function PetProfileForm({ setShowModal }) {
 
   return (
     <div>
-      <h1>Add Pet</h1>
+      <h1>{!!petToUpdate ? 'Update Pet' : 'Add Pet'}</h1>
       <form onSubmit={createProfile} className='petForm'>
         <div>
           <label>Pet Name</label>

@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPets } from '../../store/pets';
 import './PetProfile.css';
-import MessageFormModal from '../Messages/MessageFormModal'
 
+import MessageFormModal from '../Messages/MessageFormModal'
+import PetProfileForm from '../PetProfileForm'
 
 const PetProfile = () => {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const PetProfile = () => {
                                 <div className='text'>Want To Set Up A Play Date With Me?</div>
                                 <MessageFormModal receiver={pet.owner}/>
                             </div>}
+                            {lgnUsr.id === pet.owner.id && <PetProfileForm petToUpdate={pet}/>}
                         </div>
                 </div>
                 <div className='profile'>
