@@ -12,6 +12,7 @@ import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import Footer from './components/Footer/Footer'
 
 // import other
 import { setUser } from './store/session';
@@ -80,6 +81,7 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }
