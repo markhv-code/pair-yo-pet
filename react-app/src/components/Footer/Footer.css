@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   /* height: 20%; */
-    color: rgb(242, 160, 84);
+    color: #235895;
   text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0),
     0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
   background-color: rgba(179, 179, 179, .8);
@@ -30,6 +30,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footer-div__linkin {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color:  rgba(0, 0, 0, 0.521);
+  text-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.two-links {
+  display: inline-flex;
 }
 
 .zach {
@@ -59,6 +74,14 @@
   background-position: center;
   background-size: 100%;
   background-image: url("./github-logo.png");
+}
+
+.footer-div__linkin:hover {
+  background-position: center;
+  background-size: 100%;
+  background-image: url("./social-linkedin-circle-512.png");
+  color: transparent;
+
 }
 
 .footer-div__person:hover .github-link {
