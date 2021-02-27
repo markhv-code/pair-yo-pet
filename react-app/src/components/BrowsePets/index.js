@@ -42,8 +42,8 @@ return (
         </div>
         
         <div className = 'result__container'>
-            {filteredPets.map((filteredPet) => {
-                const { id, imageURL, name } = filteredPet;
+            {filteredPets.map((pet) => {
+                const { id, imageURL, name } = pet;
                 return (
                     <div className='tile__results' key={id}>
                         <div onClick={() => {
@@ -56,7 +56,8 @@ return (
                                 <div className='pet__card'>
                                     <img src={imageURL} alt=""/>
                                     <div className='pet__card-info'>
-                                        {/* <h2>{name}</h2> */}
+                                        <h3>{name}</h3>
+                                        <h4>{pet.owner.city}, {pet.owner.stateAbbr}</h4>
                                     </div>
                                 </div>
                         </div>
