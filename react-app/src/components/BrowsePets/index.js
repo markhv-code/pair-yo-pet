@@ -37,7 +37,7 @@ return (
     <>
         <div className='browse__container'>
             <div className='browse__bar'>
-                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends' type='text'/>
+                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends by Name, Type, & Location' type='text'/>
             </div>
         </div>
         
@@ -57,7 +57,7 @@ return (
                                     <img src={imageURL} alt=""/>
                                     <div className='pet__card-info'>
                                         <h3>{name}</h3>
-                                        <h4>{pet.owner.city}, {pet.owner.stateAbbr}</h4>
+                                        <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
                                     </div>
                                 </div>
                         </div>
