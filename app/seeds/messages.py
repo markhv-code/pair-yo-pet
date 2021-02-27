@@ -5,6 +5,15 @@ def seed_messages():
 
     user1 = User.query.filter_by(username="Demo").first()
     user2 = User.query.filter_by(username="Demo2").first()
+    user3 = User.query.filter_by(username="Lisa").first()
+    user5 = User.query.filter_by(username="Sky").first()
+    user6 = User.query.filter_by(username="India").first()
+    user7 = User.query.filter_by(username="Cecily").first()
+    user8 = User.query.filter_by(username="Jesse").first()
+    user9 = User.query.filter_by(username="Kennedy").first()
+    user10 = User.query.filter_by(username="Malcolm").first()
+    user11 = User.query.filter_by(username="Jeff").first()
+    user12 = User.query.filter_by(username="Aniya").first()
 
     messages = [
         Message(
