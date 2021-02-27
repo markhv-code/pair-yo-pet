@@ -289,7 +289,7 @@ def seed_pets():
         name="Rodger",
         petType="Dog",
         age=5,
-        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/german-shepherd-pastor-aleman-shepherd-german-football.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/GermanShepherdFootball.png",
         energy=5,
         social=5,
         behaved=5,
