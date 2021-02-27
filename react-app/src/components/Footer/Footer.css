@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: center;
   width: 93%;
-  height: 30%;
-  background-color: rgba(242, 160, 84);
-  padding: 1rem 3.125rem;
+  height: 25%;
+  /* background-color: rgba(242, 160, 84); */
+  background-color: rgba(179, 179, 179, .9);
+  padding: .5rem 3.125rem;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -15,8 +16,8 @@
 }
 
 .footer-div__person {
-  width: 7rem;
-  height: 7rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   background-color:  rgba(0, 0, 0, 0.521);
   color: transparent;
