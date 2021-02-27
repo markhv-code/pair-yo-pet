@@ -41,6 +41,8 @@
 .nav__item {
   margin: 0 0.5rem;
   position: relative;
+  text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0),
+    0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
 }
 
 .navbar__dropdown {
