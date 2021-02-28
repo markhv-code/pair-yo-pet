@@ -15,6 +15,15 @@ const PetProfile = () => {
     const pet = useSelector(state => state.pets[petId]);
     const lgnUsr = useSelector(state => state.session.user)
 
+    const handleDelete = function (e) {
+        const res = window.confirm(`Are you sure you want to remove ${pet.name}?`)
+        if (res) {
+            dispatch(deletePet(pet.id))
+            history.push(`/`)
+            // history.push(`/users/${pet.owner.id}`)
+        }
+    }
+
     useEffect(() => {
         dispatch(getPets(petId))
     }, [dispatch, petId])
@@ -39,15 +48,7 @@ const PetProfile = () => {
                                     <PetProfileForm petToUpdate={pet}/>
                                     <button 
                                         className="profile-button delete-pet" 
-                                        onClick={
-                                            (e) => {
-                                                const res = window.confirm(`Are you sure you want to remove ${pet.name}?`)
-                                                if (res) {
-                                                    dispatch(deletePet(pet.id))
-                                                    // history.push(`/users/${pet.owner.id}`)
-                                                }
-                                            }
-                                        }>Remove Pet
+                                        onClick={handleDelete}>Remove Pet
                                     </button>
                                 </div>
                             }
