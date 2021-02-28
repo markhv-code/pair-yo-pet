@@ -104,8 +104,6 @@ button {
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
-  text-shadow: 0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0),
-    0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0);
 }
 
 a {

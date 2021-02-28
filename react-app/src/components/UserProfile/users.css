@@ -1,4 +1,4 @@
-.profile-container {
+.user-profile-container {
     display: flex;
     max-width: 700px;
     height: 100%;
@@ -12,8 +12,8 @@
     background-color: whitesmoke;
 }
 
-@media (max-width: 800px) {
-    .profile-container {
+@media (max-width: 900px) {
+    .user-profile-container {
         flex-direction: column;
     }
 }

@@ -12,6 +12,12 @@
     background-color: whitesmoke;
 }
 
+@media (max-width: 900px) {
+    .profile__container {
+        flex-direction: column-reverse;
+    }
+}
+
 .left__container > img {
     border-radius: .5rem;
     flex-direction: column;
@@ -23,25 +29,19 @@
 }
 
 .profile__info {
-    margin-top: 1.75rem;
-    /* padding: 1rem; */
     font-family: 'Ledger', serif;
 }
 
 .profile__info > h2 {
     font-size: 1.6rem;
     font-weight: 600;
-}
-
-h2 {
     margin-bottom: .1rem;
+    margin-top: 0;
 }
 
-h3 {
+.profile__info > h3 {
     margin-bottom: .5rem;
     margin-top: .5rem;
-}
-.profile__info > h3 {
     font-size: 1.1rem;
     font-weight: 600;
 }

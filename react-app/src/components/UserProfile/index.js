@@ -17,7 +17,7 @@ function User() {
   const { city, email, stateAbbr, username } = user
   return (
     <>
-      <div className="profile-container">
+      <div className="user-profile-container">
         <div className="user-info">
           <div className="username">
             <h1>{`${username}'s Pets`}</h1>
