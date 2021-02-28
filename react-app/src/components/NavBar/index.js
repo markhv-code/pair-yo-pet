@@ -82,7 +82,7 @@ const NavBar = () => {
   return (
     <header className='site-header'>
       <div className='site-header__wrapper'>
-        <a className='site-header__title' href='/'>
+        <a className='logo-anchor' href='/'>
           <img
             className='logo'
             alt="Pair Yo' Pet"

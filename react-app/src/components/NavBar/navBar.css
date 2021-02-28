@@ -38,11 +38,30 @@
   box-sizing: border-box;
 }
 
+.logo-anchor {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  transform: scale(0.90);
+}
+
 .nav__item {
   margin: 0 0.5rem;
   position: relative;
-  text-shadow: 0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0),
-    0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0);
+}
+
+.nav__item,
+.profile-circle {
+  text-shadow: 0 0 2px rgba(104, 60, 22, 0.671), 0 0 2px rgb(104, 60, 22, 0.671),
+    0 0 2px rgb(104, 60, 22, 0.671), 0 0 2px rgb(104, 60, 22, 0.671);
+}
+
+.nav__item:hover,
+.profile-circle:hover {
+  text-shadow: 0 0 1.75px rgb(34, 16, 0), 0 0 1.75px rgb(34, 16, 0),
+    0 0 1.75px rgb(34, 16, 0), 0 0 1.75px rgb(34, 16, 0);
 }
 
 .navbar__dropdown {
@@ -54,12 +73,12 @@
   margin-top: 0.1rem;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
   font-weight: 600;
+  min-width: 6rem;
 }
 
 .navbar-dropdown__nav__item {
-  margin-left: .15rem;
+  margin-left: 0.15rem;
   font-weight: 500;
-  margin-top: .15rem;
 }
 
 .navbar__dropdown-collapse {
@@ -73,7 +92,6 @@
 }
 
 .navbar__dropdown__button {
-  color: rgb(223, 132, 13);
   margin: 0.25rem;
   font-weight: 500;
 }
@@ -86,8 +104,6 @@ button {
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
-  text-shadow: 0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0),
-    0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0);
 }
 
 a {

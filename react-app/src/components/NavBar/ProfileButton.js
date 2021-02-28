@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 import { logout } from '../../services/auth';
 import { removeUser } from '../../store/session';
@@ -35,14 +36,24 @@ export default function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className='fas fa-user-circle fa-lg' />
+        <i className='fas fa-user-circle fa-lg profile-circle' />
       </button>
       {showMenu && (
         <ul className='navbar__dropdown'>
-          <li className='navbar__dropdown__info'>{user.username}</li>
-          <li className='navbar__dropdown__info'>{user.email}</li>
+          <li className='navbar__dropdown__button nav__item'>
+            <NavLink
+              to={`/users/${user.id}`}
+              exact={true}
+              activeClassName='active'
+            >
+              Profile
+            </NavLink>
+          </li>
           <li>
-            <button className='navbar__dropdown__button' onClick={logoutUser}>
+            <button
+              className='navbar__dropdown__button nav__item'
+              onClick={logoutUser}
+            >
               Log Out
             </button>
           </li>

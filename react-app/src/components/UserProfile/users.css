@@ -1,0 +1,55 @@
+.user-profile-container {
+    display: flex;
+    max-width: 700px;
+    height: 100%;
+    margin: auto;
+    padding: 0 1rem;
+    margin-top: 2rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0rem .75rem 3rem -.2rem rgba(0, 0, 0, 0.75);
+    text-align: left;
+    background-color: whitesmoke;
+}
+
+@media (max-width: 900px) {
+    .user-profile-container {
+        flex-direction: column;
+    }
+}
+
+.user-info {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .user-info {
+        width: 100%;
+    }
+}
+
+.email .location {
+    display: flex;
+    flex-direction: row;
+}
+
+.side__container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+    .side__container {
+        justify-content: space-around;
+    }
+}
+
+.user-buttons > i {
+    margin-left: 1rem;
+}
+
+.user-profile__pet-card {
+    margin: 1rem 0 !important;
+}

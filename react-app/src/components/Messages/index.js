@@ -1,9 +1,12 @@
-import { createContext, useContext, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 // import components
 import MessageUsersHolder from './MessageUsersHolder';
 import MessageTextsHolder from './MessageTextsHolder';
+
+// import thunk
+import { getMessages } from '../../store/messages';
 
 import './Messages.css';
 
@@ -16,9 +19,16 @@ export default function Messages() {
   const lgdInUser = useSelector((state) => state.session.user);
   const allMsgs = useSelector((state) => state.messages);
   const allUsers = useSelector((state) => state.users);
-  
+
+  //
+  const dispatch = useDispatch();
+
   // set up state for context provider
-  const [otherUser, setOtherUser] = useState({id: null});
+  const [otherUser, setOtherUser] = useState({ id: null });
+
+  useEffect(() => {
+    dispatch(getMessages());
+  }, [dispatch]);
 
   // filter for all messages from or to logged in user
   const msgsArray = Object.values(allMsgs);
@@ -29,7 +39,7 @@ export default function Messages() {
 
   // filter again for all messages between logged in user and other user (chosen user)
   const allMsgsWOtherUser = allMsgsLgdInUser.filter((message) => {
-    const idToCheck = otherUser.id
+    const idToCheck = otherUser.id;
     return message.senderId === idToCheck || message.receiverId === idToCheck;
   });
 

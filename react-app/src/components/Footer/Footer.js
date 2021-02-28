@@ -21,7 +21,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="footer-div__github-link">
-                <a className='github-link github-repo' href='https://github.com/markhv-code/pair-yo-pet'>Github Repo Link</a>
+                <a className='github-link github-repo' href='https://github.com/markhv-code/pair-yo-pet'>Github Repo</a>
             </div>
             <div className="two-links">
                 <div className='footer-div__person ameera'>

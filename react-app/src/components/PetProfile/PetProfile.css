@@ -12,6 +12,12 @@
     background-color: whitesmoke;
 }
 
+@media (max-width: 900px) {
+    .profile__container {
+        flex-direction: column-reverse;
+    }
+}
+
 .left__container > img {
     border-radius: .5rem;
     flex-direction: column;
@@ -23,25 +29,19 @@
 }
 
 .profile__info {
-    margin-top: 1.75rem;
-    /* padding: 1rem; */
     font-family: 'Ledger', serif;
 }
 
 .profile__info > h2 {
     font-size: 1.6rem;
     font-weight: 600;
-}
-
-h2 {
     margin-bottom: .1rem;
+    margin-top: 0;
 }
 
-h3 {
+.profile__info > h3 {
     margin-bottom: .5rem;
     margin-top: .5rem;
-}
-.profile__info > h3 {
     font-size: 1.1rem;
     font-weight: 600;
 }
@@ -84,11 +84,10 @@ div.text {
     margin-bottom: 2.5rem;
 }
 
-button.message {
-    padding-left: 3.5rem;
+button.profile-button {
     padding-top: 1rem;
-    padding-right: 3.5rem;
     padding-bottom: 1rem;
+    width: 100%;
     font-weight: 600;
     cursor: pointer;
     background-color: rgb(171, 172, 175);
@@ -98,4 +97,9 @@ button.message {
 i.fas {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.delete-pet {
+    margin-top: 1rem;
+    background-color: rgb(192, 79, 79) !important;
 }

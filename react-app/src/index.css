@@ -3,13 +3,36 @@ body {
   margin: 0;
   background: url('./components/SplashPage/dog-silhouettes-vector.png')
     no-repeat center center fixed;
-  /* background: url('./components/SplashPage/rottweiler-puppies-fade.png') no-repeat center center fixed; */
   background-size: cover;
-  /* font-family: 'Merriweather Sans', sans-serif; */
+  font-family: 'Merriweather Sans', sans-serif;
   /* font-family: 'Unna', serif; */
   font-family: 'Ledger', serif;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 5.5rem;
 }
 
-*:focus{
-  outline:none
+*:focus {
+  outline: none;
+}
+
+input {
+  font-family: 'Lusitana', serif;
+}
+
+input {
+  border-radius: 0.75rem;
+  /* width: 100%; */
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 0.25rem;
+  font-family: 'Lusitana', serif;
+  font-size: 1rem;
+  margin: 0.25rem;
+  box-shadow: 0 0 0 1px rgba(13, 51, 223, 0.3);
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px rgba(13, 51, 223, 0.3);
 }
