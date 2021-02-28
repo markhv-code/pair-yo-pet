@@ -16,7 +16,6 @@ const create = (pet) => ({
 });
 
 const remove = (petId) => ({
-  // also used for update
   type: REMOVE_PET,
   petId,
 });
@@ -66,14 +65,17 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
     // for updating pet
     const res = await fetch(`/api/pets/${petIDtoUpdate}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
       body: formData,
     });
 
+    const updatedPet = await res.json();
+
     if (res.ok) {
-      dispatch(create(res.data.updatedPet));
+      dispatch(create(updatedPet));
+      return updatedPet;
+    } else {
+      const errors = pet;
+      return errors;
     }
   } else {
     // for creating pet

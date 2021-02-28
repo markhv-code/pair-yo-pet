@@ -1,17 +1,27 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, NavLink } from 'react-router-dom';
-import { getPets } from '../../store/pets';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { getPets, deletePet } from '../../store/pets';
 import './PetProfile.css';
-import MessageFormModal from '../Messages/MessageFormModal'
 
+import MessageFormModal from '../Messages/MessageFormModal'
+import PetProfileForm from '../PetProfileForm'
 
 const PetProfile = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const {petId} = useParams();
 
     const pet = useSelector(state => state.pets[petId]);
     const lgnUsr = useSelector(state => state.session.user)
+
+    const handleDelete = function (e) {
+        const res = window.confirm(`Are you sure you want to remove ${pet.name}?`)
+        if (res) {
+            dispatch(deletePet(pet.id))
+            history.push(`/users/${pet.owner.id}`)
+        }
+    }
 
     useEffect(() => {
         dispatch(getPets(petId))
@@ -32,6 +42,15 @@ const PetProfile = () => {
                                 <div className='text'>Want To Set Up A Play Date With Me?</div>
                                 <MessageFormModal receiver={pet.owner}/>
                             </div>}
+                            {lgnUsr.id === pet.owner.id && 
+                                <div>
+                                    <PetProfileForm petToUpdate={pet}/>
+                                    <button 
+                                        className="profile-button delete-pet" 
+                                        onClick={handleDelete}>Remove Pet
+                                    </button>
+                                </div>
+                            }
                         </div>
                 </div>
                 <div className='profile'>
@@ -41,7 +60,7 @@ const PetProfile = () => {
                         <h3>Age: {age}</h3>
                         <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
                         <h3>
-                            <NavLink to={`/user/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> </h3>
+                            <NavLink to={`/users/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> </h3>
                         <h4 className='profile__description'>{description}</h4>
                     </div>
                     <div className='personality__scales'>

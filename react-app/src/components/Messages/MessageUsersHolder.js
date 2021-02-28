@@ -8,27 +8,28 @@ export default function MessageUsersHolder({
 }) {
   const { setOtherUser } = useOtherUserContext();
 
-  // Find all users (only once) that the logged in user has had conversations with
-  const conversationsUserIdSet = new Set();
+  // Find all users (only once) that the logged in user has had cnv with
+  const set = new Set();
+  const cnvUserIdArr = [];
 
-  allMsgsLgdInUser.forEach((msg) => {
+  for (let i = allMsgsLgdInUser.length - 1; i > 0; i--) {
+    let msg = allMsgsLgdInUser[i];
     const idToAdd =
       msg.senderId === lgdInUser.id ? msg.receiverId : msg.senderId;
-    conversationsUserIdSet.add(idToAdd);
-  });
+    if (!set.has(idToAdd)) cnvUserIdArr.push(idToAdd);
+    set.add(idToAdd);
+  }
 
-  const conversationsUsers = [];
-  const arr = Array.from(conversationsUserIdSet);
-  arr.forEach((id) => conversationsUsers.push(allUsers[id]));
-  if (conversationsUsers.length === 0)
-    conversationsUsers.push({ username: 'No message history' });
+  const cnvUsers = [];
+  cnvUserIdArr.forEach((id) => cnvUsers.push(allUsers[id]));
+  if (cnvUsers.length === 0) cnvUsers.push({ username: 'No message history' });
 
   return (
     <>
-      {conversationsUsers.length > 0 && !!conversationsUsers[0] && (
+      {cnvUsers.length > 0 && !!cnvUsers[0] && (
         <div className='messages__container messages__users-holder'>
           <h1 className='messages__title'>Chats</h1>
-          {conversationsUsers.map((user) => {
+          {cnvUsers.map((user) => {
             return (
               <div
                 className={

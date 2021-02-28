@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createPet } from '../../store/pets';
+
+import './petProfileForm.css'
 
 // // Material UI compenents, try later to get them to work
 // import Energy from './energySlider';
@@ -9,9 +12,10 @@ import { createPet } from '../../store/pets';
 // import Size from './sizeSlider';
 // import Environment from './environmentSlider';
 
-function PetProfileForm({ setShowModal }) {
+function PetProfileForm({ setShowModal, petToUpdate }) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [petName, setPetName] = useState('');
   const [petType, setPetType] = useState('');
@@ -23,8 +27,22 @@ function PetProfileForm({ setShowModal }) {
   const [size, setSize] = useState('');
   const [env, setEnv] = useState('');
   const [description, setDescription] = useState('');
-
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    if (!!petToUpdate) {
+      setPetName(petToUpdate.name);
+      setPetType(petToUpdate.petType);
+      setAge(petToUpdate.age);
+      setImage(petToUpdate.image);
+      setEnergy(petToUpdate.energy);
+      setSocial(petToUpdate.social);
+      setBehaved(petToUpdate.behaved);
+      setSize(petToUpdate.size);
+      setEnv(petToUpdate.env);
+      setDescription(petToUpdate.description);
+    }
+  }, [petToUpdate]);
 
   const createProfile = async (e) => {
     e.preventDefault();
@@ -44,13 +62,18 @@ function PetProfileForm({ setShowModal }) {
       env,
       description,
     };
-    const petOrErrors = await dispatch(createPet(pet));
 
+    const petOrErrors = await dispatch(
+      !!petToUpdate
+        ? createPet(pet, petToUpdate.id) // if you pass in a pet id, it updates instead
+        : createPet(pet)
+    );
     if (petOrErrors.errors) {
       newErrors = petOrErrors.errors;
       setErrors(newErrors);
     } else {
       setShowModal(false);
+      history.push(`/pets/${petOrErrors.id}`);
     }
   };
 
@@ -61,7 +84,7 @@ function PetProfileForm({ setShowModal }) {
 
   return (
     <div>
-      <h1>Add Pet</h1>
+      <h1>{!!petToUpdate ? 'Update Pet' : 'Add Pet'}</h1>
       <form onSubmit={createProfile} className='petForm'>
         <div>
           <label>Pet Name</label>
@@ -70,6 +93,7 @@ function PetProfileForm({ setShowModal }) {
             value={petName}
             onChange={(e) => setPetName(e.target.value)}
             required
+            className='pet-form__input'
           />
         </div>
         <div>
@@ -79,6 +103,7 @@ function PetProfileForm({ setShowModal }) {
             value={petType}
             onChange={(e) => setPetType(e.target.value)}
             required
+            className='pet-form__input'
           >
             <option value='' disabled>
               -Select One-
@@ -101,6 +126,7 @@ function PetProfileForm({ setShowModal }) {
               else setAge(Number(age));
             }}
             required
+            className='pet-form__input'
           />
         </div>
         <label>
@@ -109,7 +135,7 @@ function PetProfileForm({ setShowModal }) {
         </label>
         <div>
           <label>
-            Energy
+            Energy Level (1-5)
             <input
               type='range'
               min={1}
@@ -117,12 +143,13 @@ function PetProfileForm({ setShowModal }) {
               value={energy}
               onChange={(e) => setEnergy(Number(e.target.value))}
               required
+              className='pet-form__slider'
             />
           </label>
         </div>
         <div>
           <label>
-            Social
+            Social Level (1-5)
             <input
               type='range'
               min={1}
@@ -130,12 +157,13 @@ function PetProfileForm({ setShowModal }) {
               value={social}
               onChange={(e) => setSocial(Number(e.target.value))}
               required
+              className='pet-form__slider'
             />
           </label>
         </div>
         <div>
           <label>
-            Behaved
+            Well Behaved (1-5)
             <input
               type='range'
               min={1}
@@ -143,6 +171,7 @@ function PetProfileForm({ setShowModal }) {
               value={behaved}
               onChange={(e) => setBehaved(Number(e.target.value))}
               required
+              className='pet-form__slider'
             />
           </label>
         </div>
@@ -153,6 +182,7 @@ function PetProfileForm({ setShowModal }) {
               value={size}
               onChange={(e) => setSize(Number(e.target.value))}
               required
+              className='pet-form__input'
             >
               <option value='' disabled>
                 -Select One-
@@ -170,6 +200,7 @@ function PetProfileForm({ setShowModal }) {
               value={env}
               onChange={(e) => setEnv(Number(e.target.value))}
               required
+              className='pet-form__input'
             >
               <option value='' disabled>
                 -Select One-
@@ -181,28 +212,33 @@ function PetProfileForm({ setShowModal }) {
           </label>
         </div>
         {/* <div>
-        <Energy setEnergy={setEnergy} energy={energy} />
-      </div>
-      <div>
-        <Social setSocial={setSocial} social={social} />
-      </div>
-      <div>
-        <Behavior setBehaved={setBehaved} behaved={behaved} />
-      </div>
-      <div>
-        <Size setSize={setSize} size={size} />
-      </div>
-      <div>
-        <Environment setEnv={setEnv} env={env} />
-      </div> */}
+          <Energy setEnergy={setEnergy} energy={energy} />
+        </div>
         <div>
-          <label>Pet description</label>
+          <Social setSocial={setSocial} social={social} />
+        </div>
+        <div>
+          <Behavior setBehaved={setBehaved} behaved={behaved} />
+        </div>
+        <div>
+          <Size setSize={setSize} size={size} />
+        </div>
+        <div>
+          <Environment setEnv={setEnv} env={env} />
+        </div> */}
+        <div>
+          <div>
+            <label>Pet description</label>
+          </div>
           <textarea
             name='description'
             required={true}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             placeholder='(please keep it under 500 characters)'
+            cols={35}
+            rows={4}
+            className='pet-form__input'
           ></textarea>
         </div>
         <div>

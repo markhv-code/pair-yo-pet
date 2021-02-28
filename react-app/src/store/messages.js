@@ -1,7 +1,7 @@
 // Action types
 const LOAD_MESSAGES = '/messages/LOAD_MESSAGES';
 const CREATE_MESSAGE = '/messages/CREATE_MESSAGE';
-// const REMOVE_MESSAGE = '/messages/REMOVE_MESSAGE';
+const REMOVE_MESSAGE = '/messages/REMOVE_MESSAGE';
 
 // Action creators
 const load = (messages) => ({
@@ -14,10 +14,10 @@ const create = (message) => ({
   message,
 });
 
-// const remove = (messageId) => ({
-//   type: REMOVE_MESSAGE,
-//   messageId,
-// });
+const remove = (messageId) => ({
+  type: REMOVE_MESSAGE,
+  messageId,
+});
 
 // Thunks
 export const getMessages = () => async (dispatch) => {
@@ -53,39 +53,27 @@ export const createMessage = (newMessage) => async (dispatch) => {
   }
 };
 
-// export const deletemessage = (messageId) => async (dispatch) => {
-//   const res = await fetch(`/api/messages/${messageId}`, {
-//     method: 'DELETE',
-//   });
-//   if (res.ok) {
-//     dispatch(remove(messageId));
-//   }
-// };
+export const deleteMessage = (messageId) => async (dispatch) => {
+  const res = await fetch(`/api/messages/${messageId}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(remove(messageId));
+  }
+};
 
 // Reducer
 const initState = {
   1: {
     senderId: 1,
     receiverId: 2,
-    message: 'This is me saying HI to Zach!',
-    timestamp: '2021-02-25 21:31:00.327159',
+    message: '',
+    timestamp: '',
     sender: {
-      username: 'Mark',
+      username: '',
     },
     receiver: {
-      username: 'Zach',
-    },
-  },
-  2: {
-    senderId: 2,
-    receiverId: 1,
-    message: 'Thanks for saying HI Mark, this is Zach!',
-    timestamp: '2021-02-25 21:32:00.327159',
-    sender: {
-      username: 'Zach',
-    },
-    receiver: {
-      username: 'Mark',
+      username: '',
     },
   },
 };
@@ -102,9 +90,9 @@ const messageReducer = (state = initState, action) => {
     case CREATE_MESSAGE:
       newState[action.message.id] = action.message;
       return newState;
-    // case REMOVE_MESSAGE:
-    //   delete newState[Number(action.messageId)];
-    //   return newState;
+    case REMOVE_MESSAGE:
+      delete newState[Number(action.messageId)];
+      return newState;
     default:
       return newState;
   }

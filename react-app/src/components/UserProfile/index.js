@@ -17,7 +17,7 @@ function User() {
   const { city, email, stateAbbr, username } = user
   return (
     <>
-      <div className="profile-container">
+      <div className="user-profile-container">
         <div className="user-info">
           <div className="username">
             <h1>{`${username}'s Pets`}</h1>
@@ -40,12 +40,12 @@ function User() {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
-            </div>
             <div className="user-buttons">
               <i className="fa fa-bell" />
               <i className="fa fa-camera"/>
               <i className="fa fa-paw"/>
               <i className="fa fa-gear"/>
+            </div>
             </div>
           </div>
         </div>
@@ -55,15 +55,16 @@ function User() {
               const { imageURL, name, age, id } = babies;
               return (
                 <div
-                  className="pet__card"
+                  key={id}
+                  className='pet__card user-profile__pet-card'
                   onClick={() => {
                     history.push(`/pets/${id}`);
                   }}
                 >
-                  <img src={imageURL} alt="" />
-                  <div className="pet__card-info">
+                  <img src={imageURL} alt='' />
+                  <div className='pet__card-info'>
                     <h3>{name}</h3>
-                    <h3>{age}</h3>
+                    <h3>Age: {age}</h3>
                   </div>
                 </div>
               );

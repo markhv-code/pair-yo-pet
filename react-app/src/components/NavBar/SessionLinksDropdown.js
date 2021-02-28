@@ -23,7 +23,7 @@ export default function SessionLinksDropdown() {
       </button>
       {showMenu && (
         <ul className='navbar__dropdown navbar__dropdown-collapse'>
-          <li className='nav__item'>
+          <li className='navbar__dropdown__button'>
             <NavLink
               className='nav__item'
               to='/browse'

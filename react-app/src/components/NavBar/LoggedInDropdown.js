@@ -36,11 +36,16 @@ export default function LoggedInDropdown() {
         <ul className='navbar__dropdown navbar__dropdown-collapse'>
           <li className='navbar__dropdown__info'>{sessionUser.username}</li>
           <li className='navbar__dropdown__info'>{sessionUser.email}</li>
-          {/* <li className='navbar__dropdown__button'>
-            <NavLink to='/users' exact={true} activeClassName='active'>
-              Users
+          <li className='nav__item navbar-dropdown__nav__item'>
+            <NavLink
+              className='navbar-dropdown__nav__item'
+              to={`/users/${sessionUser.id}`}
+              exact={true}
+              activeClassName='active'
+            >
+              Profile
             </NavLink>
-          </li> */}
+          </li>
           <li className='nav__item navbar-dropdown__nav__item'>
             <NavLink
               className='navbar-dropdown__nav__item'
@@ -61,16 +66,14 @@ export default function LoggedInDropdown() {
               Messages
             </NavLink>
           </li>
-          <li className='navbar__dropdown__button'>
-            <NavLink to='/browse' exact={true} activeClassName='active'>
-              Browse Pets
-            </NavLink>
-          </li>
-          <li className='navbar__dropdown__button'>
+          <li className='nav__item navbar-dropdown__nav__item'>
             <PetProfileForm user={sessionUser} />
           </li>
           <li>
-            <button className='navbar__dropdown__button' onClick={logoutUser}>
+            <button
+              className='nav__item navbar__dropdown__button'
+              onClick={logoutUser}
+            >
               Log Out
             </button>
           </li>
