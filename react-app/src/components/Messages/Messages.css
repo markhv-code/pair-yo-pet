@@ -42,7 +42,7 @@
   border-radius: 0.75rem;
   padding: 0.5rem;
   width: fill;
-  margin: 0 auto .25rem;
+  margin: 0 auto 0.25rem;
 }
 
 .messages__other-user:hover {
@@ -70,16 +70,16 @@
   flex-direction: column-reverse;
 }
 
-.messages__texts:hover {
-  cursor: pointer;
-}
-
 .messages__texts__right {
   align-self: flex-end;
   margin-left: 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.messages__texts__right:hover {
+  cursor: pointer;
 }
 
 .messages__texts__left {
@@ -139,6 +139,6 @@
 .msg-form-modal__button {
   padding: 0 !important;
   margin: 0 !important;
-  color:rgb(223, 132, 13) !important;
+  color: rgb(223, 132, 13) !important;
   background-color: transparent !important;
 }

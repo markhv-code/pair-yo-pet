@@ -76,7 +76,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
                   }
                   className='single-message-text'
                   title={msg.sender.username}
-                  onClick={() => handleDelete(msg)}
+                  onClick={lgdInUser.id === msg.sender.id ? () => handleDelete(msg) : undefined}
                 >
                   {msg.message}
                 </p>
