@@ -39,19 +39,21 @@ export default function ProfileButton({ user }) {
         <i className='fas fa-user-circle fa-lg profile-circle' />
       </button>
       {showMenu && (
-        <ul className="navbar__dropdown">
-          {/* <li>
-            <button className="navbar__dropdown__button" onClick={userProfile}>
-              Profile
-            </button>
-          </li> */}
-          <li className='navbar__dropdown__button'>
-            <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
+        <ul className='navbar__dropdown'>
+          <li className='navbar__dropdown__button nav__item'>
+            <NavLink
+              to={`/users/${user.id}`}
+              exact={true}
+              activeClassName='active'
+            >
               Profile
             </NavLink>
           </li>
           <li>
-            <button className='navbar__dropdown__button nav__item' onClick={logoutUser}>
+            <button
+              className='navbar__dropdown__button nav__item'
+              onClick={logoutUser}
+            >
               Log Out
             </button>
           </li>

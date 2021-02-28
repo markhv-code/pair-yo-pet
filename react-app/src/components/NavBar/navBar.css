@@ -73,6 +73,7 @@
   margin-top: 0.1rem;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
   font-weight: 600;
+  min-width: 6rem;
 }
 
 .navbar-dropdown__nav__item {
