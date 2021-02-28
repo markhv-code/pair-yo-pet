@@ -125,3 +125,19 @@ def update_pet(petId):
     errors += image_error
 
     return {"errors": errors}
+
+
+@pet_routes.route("/<petId>", methods=["DELETE"])
+@login_required
+def delete_pet(petId):
+    """
+    Delete pet
+    """
+    pet_to_delete = Pet.query.get(petId)
+    if pet_to_delete:
+        db.session.delete(pet_to_delete)
+        db.session.commit()
+        return "Deleted"
+    else:
+        print(f"-------- no pet found with id {petId} -------- ")
+        return {"errors": "No pet found with given id"}

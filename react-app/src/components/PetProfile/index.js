@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getPets } from '../../store/pets';
+import { getPets, deletePet } from '../../store/pets';
 import './PetProfile.css';
 
 import MessageFormModal from '../Messages/MessageFormModal'
@@ -33,7 +33,20 @@ const PetProfile = () => {
                                 <div className='text'>Want To Set Up A Play Date With Me?</div>
                                 <MessageFormModal receiver={pet.owner}/>
                             </div>}
-                            {lgnUsr.id === pet.owner.id && <PetProfileForm petToUpdate={pet}/>}
+                            {lgnUsr.id === pet.owner.id && 
+                                <div>
+                                    <PetProfileForm petToUpdate={pet}/>
+                                    <button 
+                                        className="profile-button delete-pet" 
+                                        onClick={
+                                            (e) => {
+                                                const res = window.confirm(`Are you sure you want to remove ${pet.name}?`)
+                                                if (res) dispatch(deletePet(pet.id))
+                                            }
+                                        }>Remove Pet
+                                    </button>
+                                </div>
+                            }
                         </div>
                 </div>
                 <div className='profile'>

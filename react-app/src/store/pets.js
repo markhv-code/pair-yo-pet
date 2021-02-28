@@ -62,7 +62,6 @@ export const createPet = (pet, petIDtoUpdate = null) => async (dispatch) => {
   if (image) formData.append('image', image);
 
   if (petIDtoUpdate) {
-    console.log('pet to update --------', pet);
     // for updating pet
     const res = await fetch(`/api/pets/${petIDtoUpdate}`, {
       method: 'PUT',

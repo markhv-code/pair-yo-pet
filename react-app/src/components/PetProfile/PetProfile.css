@@ -98,3 +98,8 @@ i.fas {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.delete-pet {
+    margin-top: 1rem;
+    background-color: rgb(192, 79, 79) !important;
+}
