@@ -4,7 +4,7 @@ from app.models import db, Message, User
 def seed_messages():
 
     user1 = User.query.filter_by(username="Demo").first()
-    user2 = User.query.filter_by(username="Demo2").first()
+    user2 = User.query.filter_by(username="Alaska").first()
     user3 = User.query.filter_by(username="Lisa").first()
     user4 = User.query.filter_by(username="Zaki").first()
     user5 = User.query.filter_by(username="Sky").first()
