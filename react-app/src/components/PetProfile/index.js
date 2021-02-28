@@ -49,7 +49,7 @@ const PetProfile = () => {
                         <h3 className='profile__sliders'>Social Level: {social} / 5</h3>
                         <h3 className='profile__sliders'>Behavior Level: {behaved} / 5</h3>
                         <h3 className='profile__sliders'>Size: {size === 1 ? "Small" : size === 2 ? "Medium" : size === 3 ? "Large": null} </h3>
-                        <h3 className='profile__sliders'>Environment: {env === 1 ? "Indoor" : env === 2 ? "Indoor/Outdoor" : env === 3 ? "Outdoor": null}</h3>
+                        <h3 className='profile__sliders'>Environment: {env === 1 ? "Outdoor" : env === 2 ? "Indoor/Outdoor" : env === 3 ? "Indoor": null}</h3>
                     </div>
                 </div>
             </div>
