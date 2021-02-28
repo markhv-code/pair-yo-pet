@@ -7,6 +7,9 @@ body {
   font-family: 'Merriweather Sans', sans-serif;
   /* font-family: 'Unna', serif; */
   font-family: 'Ledger', serif;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 5.5rem;
 }
 
 *:focus{
