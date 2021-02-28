@@ -18,8 +18,8 @@
   margin-left: auto;
   margin-right: auto;
   font-size: 1.2rem;
-  font-family: 'Spartan', sans-serif;
-  color: rgb(242, 160, 84);
+  font-family: 'Ledger', serif;
+  color: rgb(223, 132, 13);
   text-decoration: none;
 }
 
@@ -104,6 +104,8 @@ button {
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
+  text-shadow: 0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0),
+    0 0 .2rem rgb(34, 16, 0), 0 0 .2rem rgb(34, 16, 0);
 }
 
 a {

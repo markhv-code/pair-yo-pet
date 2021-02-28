@@ -6,6 +6,7 @@ body {
   background-size: cover;
   font-family: 'Merriweather Sans', sans-serif;
   /* font-family: 'Unna', serif; */
+  font-family: 'Ledger', serif;
 }
 
 *:focus{

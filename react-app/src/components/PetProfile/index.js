@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getPets, deletePet } from '../../store/pets';
 import './PetProfile.css';
 
@@ -60,6 +60,8 @@ const PetProfile = () => {
                         <h3>{petType}</h3>
                         <h3>Age: {age}</h3>
                         <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
+                        <h3>
+                            <NavLink to={`/user/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> </h3>
                         <h4 className='profile__description'>{description}</h4>
                     </div>
                     <div className='personality__scales'>
