@@ -61,16 +61,14 @@ export default function LoggedInDropdown() {
               Messages
             </NavLink>
           </li>
-          <li className='navbar__dropdown__button'>
-            <NavLink to='/browse' exact={true} activeClassName='active'>
-              Browse Pets
-            </NavLink>
-          </li>
-          <li className='navbar__dropdown__button'>
+          <li className='nav__item navbar-dropdown__nav__item'>
             <PetProfileForm user={sessionUser} />
           </li>
           <li>
-            <button className='navbar__dropdown__button' onClick={logoutUser}>
+            <button
+              className='nav__item navbar__dropdown__button'
+              onClick={logoutUser}
+            >
               Log Out
             </button>
           </li>

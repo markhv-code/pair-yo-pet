@@ -42,7 +42,7 @@ export default function ProfileButton({ user }) {
           <li className='navbar__dropdown__info'>{user.username}</li>
           <li className='navbar__dropdown__info'>{user.email}</li>
           <li>
-            <button className='navbar__dropdown__button' onClick={logoutUser}>
+            <button className='navbar__dropdown__button nav__item' onClick={logoutUser}>
               Log Out
             </button>
           </li>

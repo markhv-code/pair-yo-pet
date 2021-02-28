@@ -8,7 +8,11 @@ export default function PetProfileModal({ petToUpdate }) {
   return (
     <>
       <button
-        className={petToUpdate ? 'profile-button' : 'nav__item'}
+        className={
+          petToUpdate
+            ? 'profile-button'
+            : 'nav__item navbar-dropdown__nav__item'
+        }
         onClick={() => setShowModal(true)}
       >
         {!!petToUpdate ? 'Update Pet' : 'Add Pet'}
