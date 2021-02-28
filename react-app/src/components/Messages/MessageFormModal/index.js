@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../../context/ModalAndAuth';
 import MessageFormForModal from './MessageFormForModal';
 
-export default function MessageFormModal({receiverId}) {
+export default function MessageFormModal({receiver}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ export default function MessageFormModal({receiverId}) {
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <MessageFormForModal
-            receiverId={receiverId}
+            receiver={receiver}
             setShowModal={setShowModal}
           />
         </Modal>
