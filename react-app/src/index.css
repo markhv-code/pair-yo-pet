@@ -4,7 +4,7 @@ body {
   background: url('./components/SplashPage/dog-silhouettes-vector.png')
     no-repeat center center fixed;
   background-size: cover;
-  /* font-family: 'Merriweather Sans', sans-serif; */
+  font-family: 'Merriweather Sans', sans-serif;
   /* font-family: 'Unna', serif; */
 }
 

@@ -70,6 +70,10 @@
   flex-direction: column-reverse;
 }
 
+.messages__texts:hover {
+  cursor: pointer;
+}
+
 .messages__texts__right {
   align-self: flex-end;
   margin-left: 0.75rem;

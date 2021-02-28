@@ -1,10 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+// context
 import { useOtherUserContext } from './index';
 
+// components
 import MessageForm from './MessageForm';
+
+// thunks
+import { deleteMessage } from '../../store/messages';
 
 export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
   const { otherUser } = useOtherUserContext();
+  const dispatch = useDispatch();
+
+  const handleDelete = function (msg) {
+    const res = window.confirm(`Delete this message? "${msg.message}"`);
+    if (res) dispatch(deleteMessage(msg.id));
+  };
 
   const formatDate = function (dateString) {
     let amPm = 'am';
@@ -27,7 +40,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
       <div className='messages__container messages__texts-holder'>
         <div>
           <h1 className='messages__title'>No conversation selected</h1>
-          <p style={{textAlign: 'center'}}>
+          <p style={{ textAlign: 'center' }}>
             Click a username on the left, or browse pets to find owners to
             message.
           </p>
@@ -63,6 +76,7 @@ export default function MessageTextsHolder({ lgdInUser, allMsgsWOtherUser }) {
                   }
                   className='single-message-text'
                   title={msg.sender.username}
+                  onClick={() => handleDelete(msg)}
                 >
                   {msg.message}
                 </p>
