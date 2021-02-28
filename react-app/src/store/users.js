@@ -1,11 +1,17 @@
 // Action types
 const LOAD_USERS = '/users/LOAD_USERS';
+const LOAD_USER = '/users/LOAD_USER';
 
 // Action creators
 const load = (users) => ({
   type: LOAD_USERS,
   users,
 });
+
+const loadUser = (user) => ({
+  type: LOAD_USER,
+  user
+})
 
 // Thunks
 export const getUsers = () => async (dispatch) => {
@@ -16,6 +22,13 @@ export const getUsers = () => async (dispatch) => {
   }
 };
 
+export const getUser= (userId) => async (dispatch) => {
+  const res = await fetch(`/api/users/${userId}`);
+  const json = await res.json();
+  if (res.ok) {
+    dispatch(loadUser(json));
+  }
+};
 // Reducer
 const initState = {};
 
@@ -28,6 +41,9 @@ const userReducer = (state = initState, action) => {
         newState[user.id] = user;
       }
       return newState;
+    case LOAD_USER:
+      newState[action.user.id] = action.user
+      return newState
     default:
       return newState;
   }

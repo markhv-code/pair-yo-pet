@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createPet } from '../../store/pets';
 
 // // Material UI compenents, try later to get them to work
@@ -12,6 +13,7 @@ import { createPet } from '../../store/pets';
 function PetProfileForm({ setShowModal, petToUpdate }) {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [petName, setPetName] = useState('');
   const [petType, setPetType] = useState('');
@@ -58,7 +60,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
       env,
       description,
     };
-    // const petOrErrors = await dispatch(createPet(pet));
+
     const petOrErrors = await dispatch(
       !!petToUpdate
         ? createPet(pet, petToUpdate.id) // if you pass in a pet id, it updates instead
@@ -69,6 +71,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
       setErrors(newErrors);
     } else {
       setShowModal(false);
+      history.push(`/pets/${petOrErrors.id}`);
     }
   };
 

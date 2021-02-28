@@ -19,8 +19,7 @@ const PetProfile = () => {
         const res = window.confirm(`Are you sure you want to remove ${pet.name}?`)
         if (res) {
             dispatch(deletePet(pet.id))
-            history.push(`/`)
-            // history.push(`/users/${pet.owner.id}`)
+            history.push(`/users/${pet.owner.id}`)
         }
     }
 
@@ -61,7 +60,7 @@ const PetProfile = () => {
                         <h3>Age: {age}</h3>
                         <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
                         <h3>
-                            <NavLink to={`/user/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> </h3>
+                            <NavLink to={`/users/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> </h3>
                         <h4 className='profile__description'>{description}</h4>
                     </div>
                     <div className='personality__scales'>
