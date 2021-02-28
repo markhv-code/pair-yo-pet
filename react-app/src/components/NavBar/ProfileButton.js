@@ -35,7 +35,7 @@ export default function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className='fas fa-user-circle fa-lg' />
+        <i className='fas fa-user-circle fa-lg profile-circle' />
       </button>
       {showMenu && (
         <ul className='navbar__dropdown'>

@@ -19,7 +19,7 @@
   margin-right: auto;
   font-size: 1.2rem;
   font-family: 'Spartan', sans-serif;
-  color: rgb(223, 132, 13);
+  color: rgb(242, 160, 84);
   text-decoration: none;
 }
 
@@ -38,9 +38,30 @@
   box-sizing: border-box;
 }
 
+.logo-anchor {
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  transform: scale(0.90);
+}
+
 .nav__item {
   margin: 0 0.5rem;
   position: relative;
+}
+
+.nav__item,
+.profile-circle {
+  text-shadow: 0 0 2px rgba(104, 60, 22, 0.671), 0 0 2px rgb(104, 60, 22, 0.671),
+    0 0 2px rgb(104, 60, 22, 0.671), 0 0 2px rgb(104, 60, 22, 0.671);
+}
+
+.nav__item:hover,
+.profile-circle:hover {
+  text-shadow: 0 0 1.75px rgb(34, 16, 0), 0 0 1.75px rgb(34, 16, 0),
+    0 0 1.75px rgb(34, 16, 0), 0 0 1.75px rgb(34, 16, 0);
 }
 
 .navbar__dropdown {
@@ -55,9 +76,9 @@
 }
 
 .navbar-dropdown__nav__item {
-  margin-left: .15rem;
+  margin-left: 0.15rem;
   font-weight: 500;
-  margin-top: .15rem;
+  margin-top: 0.15rem;
 }
 
 .navbar__dropdown-collapse {

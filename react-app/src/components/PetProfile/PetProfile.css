@@ -85,10 +85,9 @@ div.text {
 }
 
 button.profile-button {
-    padding-left: 3.5rem;
     padding-top: 1rem;
-    padding-right: 3.5rem;
     padding-bottom: 1rem;
+    width: 100%;
     font-weight: 600;
     cursor: pointer;
     background-color: rgb(171, 172, 175);

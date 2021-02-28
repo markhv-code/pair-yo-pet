@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createPet } from '../../store/pets';
 
@@ -25,21 +25,20 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
   const [description, setDescription] = useState('');
   const [errors, setErrors] = useState([]);
 
-    // useEffect(() => {
-    //   if (!!petToUpdate) {
-    //     setName(petToUpdate.name);
-    //     setDescription(petToUpdate.description);
-    //     setImage(petToUpdate.image);
-    //     setStreetNumber(petToUpdate.streetNumber);
-    //     setRoute(petToUpdate.route);
-    //     setLocality(petToUpdate.locality);
-    //     setAdministrativeArea(petToUpdate.administrativeArea);
-    //     setPostalCode(petToUpdate.postalCode);
-    //     setCountry(petToUpdate.country);
-    //     setLat(petToUpdate.lat);
-    //     setLng(petToUpdate.lng);
-    //   }
-    // }, [bathroomToUpdate]);
+  useEffect(() => {
+    if (!!petToUpdate) {
+      setPetName(petToUpdate.name);
+      setPetType(petToUpdate.petType);
+      setAge(petToUpdate.age);
+      setImage(petToUpdate.image);
+      setEnergy(petToUpdate.energy);
+      setSocial(petToUpdate.social);
+      setBehaved(petToUpdate.behaved);
+      setSize(petToUpdate.size);
+      setEnv(petToUpdate.env);
+      setDescription(petToUpdate.description);
+    }
+  }, [petToUpdate]);
 
   const createProfile = async (e) => {
     e.preventDefault();
@@ -59,8 +58,12 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
       env,
       description,
     };
-    const petOrErrors = await dispatch(createPet(pet));
-
+    // const petOrErrors = await dispatch(createPet(pet));
+    const petOrErrors = await dispatch(
+      !!petToUpdate
+        ? createPet(pet, petToUpdate.id) // if you pass in a pet id, it updates instead
+        : createPet(pet)
+    );
     if (petOrErrors.errors) {
       newErrors = petOrErrors.errors;
       setErrors(newErrors);
