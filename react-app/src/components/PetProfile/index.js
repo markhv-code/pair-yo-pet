@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getPets, deletePet } from '../../store/pets';
 import './PetProfile.css';
 
@@ -9,6 +9,7 @@ import PetProfileForm from '../PetProfileForm'
 
 const PetProfile = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const {petId} = useParams();
 
     const pet = useSelector(state => state.pets[petId]);
@@ -41,7 +42,10 @@ const PetProfile = () => {
                                         onClick={
                                             (e) => {
                                                 const res = window.confirm(`Are you sure you want to remove ${pet.name}?`)
-                                                if (res) dispatch(deletePet(pet.id))
+                                                if (res) {
+                                                    dispatch(deletePet(pet.id))
+                                                    // history.push(`/users/${pet.owner.id}`)
+                                                }
                                             }
                                         }>Remove Pet
                                     </button>
