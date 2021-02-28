@@ -138,13 +138,13 @@ def seed_messages():
             message="I just have to say, that I think you have the most beautiful dog in the whole wide world!",
         ),
         Message(
-            senderId=user7.id,
-            receiverId=user1.id,
+            senderId=user1.id,
+            receiverId=user7.id,
             message="ahhhhh thank you, that really warmed my soul",
         ),
         Message(
-            senderId=user7.id,
-            receiverId=user1.id,
+            senderId=user1.id,
+            receiverId=user7.id,
             message="I think you have an equally beautiful dog too!",
         ),
         Message(
@@ -155,7 +155,7 @@ def seed_messages():
         Message(
             senderId=user1.id,
             receiverId=user8.id,
-            message="He ways 90lbs, snores super load, and chews up all my shoes!",
+            message="He weighs 90lbs, snores super load, and chews up all my shoes!",
         ),
         Message(
             senderId=user8.id,
