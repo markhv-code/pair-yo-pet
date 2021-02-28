@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {getPets} from '../../store/pets'
 
 
@@ -13,6 +13,7 @@ const BrowsePets = () => {
     const lgdInUser = useSelector((state) => state.session.user)
     
     const dispatch = useDispatch();
+    const history = useHistory();
     
     
     useEffect(() => {
@@ -31,28 +32,34 @@ const BrowsePets = () => {
     }, [search])
 
 if (!filteredPets) return null;
+
 return (
     <>
         <div className='browse__container'>
             <div className='browse__bar'>
-                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends' type='text'/>
+                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends by Name, Type, & Location' type='text'/>
             </div>
         </div>
         
         <div className = 'result__container'>
-            {filteredPets.map((filteredPet) => {
-                const { id, imageURL, name } = filteredPet;
+            {filteredPets.map((pet) => {
+                const { id, imageURL, name } = pet;
                 return (
                     <div className='tile__results' key={id}>
-                        <div>
-                            <Link to={!!lgdInUser ? `/pets/${id}` : '/browse'}>
+                        <div onClick={() => {
+                            if (!!lgdInUser) {
+                                history.push(`/pets/${id}`)
+                            } else {
+                                window.alert('Please log in to view pet details');
+                            }
+                            }}>
                                 <div className='pet__card'>
                                     <img src={imageURL} alt=""/>
                                     <div className='pet__card-info'>
-                                        <h2>{name}</h2>
+                                        <h3>{name}</h3>
+                                        <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
                                     </div>
                                 </div>
-                            </Link>       
                         </div>
                     </div>
                 )

@@ -1,19 +1,16 @@
 .browse__container {
     display: flex;  
     justify-content: center;
-    margin-top: 40px; 
-
+    margin-top: 3rem; 
 }
 
 .browse__bar > input {
-    width: 600px;
-    height: 50px;
-    border-radius: 5px;
-    
-}
-
-.search__text {
-    font-size: 14px;
+    width: 35rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+    font-family: 'Lusitana', serif;
+    color: rgb(24, 20, 20);
+    font-weight: 600;
 }
 
 .result__container {
@@ -22,7 +19,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 90%;
+    width: 70%;
     margin: auto;
     height: 100%;
 }
@@ -30,39 +27,46 @@
 .tile__results {
     display: flex;
     background-color: whitesmoke;
-    margin: 30px;
-    border-radius: 10px;
-    height: min-content;
+    margin: 2rem;
+    border-radius: .5rem;
+    height: 16.5rem;
+    font-family: 'Ledger', serif;
+}
+
+.tile__results .pet__card:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
 }
 
 .pet__card {
-    border-radius: 10px;
+    border-radius: .5rem;
     overflow: hidden;
-    width: 300px;
-    box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+    width: 15rem;
+    height: 16.5rem;
+    box-shadow: 0rem .75rem 3rem -.2rem rgba(0, 0, 0, 0.75);
     cursor: pointer;
 }
 
 .pet__card > img {
-    /* object-fit: cover; */
     width: 100%;
-    /* min-width: 300px;
-    height: 200px;
-    width: 300px; */
+    height: 16.5rem;
+    object-fit: cover;
 }
 
 .pet__card-info {
-    margin-top: -9px;
-    border-radius: 10px;
-    padding: 20px;
-    padding-top: 20px;
-    border: 1;
+    margin-top: -12rem;
+    border-radius: .5rem;
+    padding-bottom: 1.75rem;
+    /* padding-top: 1.75rem; */
     text-decoration: none;
-    color: black;
+    position: relative;
+    text-align: center;
 }
 
-.pet__card-info > h2 {
-    font-size: 1.25rem;
-    text-align: center;
-    font-weight: 600;
+.pet__card-info > h3 {
+    color: whitesmoke;
+    text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0),
+    0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
+    font-size: 1.5rem;
+    font-weight: 800;
 }

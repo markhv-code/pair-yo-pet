@@ -62,6 +62,11 @@ export default function LoggedInDropdown() {
             </NavLink>
           </li>
           <li className='navbar__dropdown__button'>
+            <NavLink to='/browse' exact={true} activeClassName='active'>
+              Browse Pets
+            </NavLink>
+          </li>
+          <li className='navbar__dropdown__button'>
             <PetProfileForm user={sessionUser} />
           </li>
           <li>

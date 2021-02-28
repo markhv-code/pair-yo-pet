@@ -29,7 +29,7 @@ def seed_pets():
         name="Bruno",
         petType="Dog",
         age=7,
-        imageURL="https://upload.wikimedia.org/wikipedia/commons/2/27/Finnish_Spitz_600.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/Finnish_Spitz_600.jpg",
         energy=5,
         social=5,
         behaved=5,
@@ -42,7 +42,7 @@ def seed_pets():
         name="Cal",
         petType="Dog",
         age=6,
-        imageURL="https://cdn.orvis.com/images/DBS_Akita_1280.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/Akita.jpg",
         energy=5,
         social=5,
         behaved=5,
@@ -74,7 +74,7 @@ def seed_pets():
         behaved=5,
         size=3,
         env=3,
-        description="Melody is a husky who loves people and other dogs. He respects all creatures alike, wouldn't harm even his own fleas.",
+        description="Melody is a husky who loves people and other dogs. She respects all creatures alike, wouldn't harm even her own fleas.",
     )
     rover = Pet(
         owner=user5,
@@ -87,7 +87,7 @@ def seed_pets():
         behaved=5,
         size=2,
         env=2,
-        description="Small on the outside ferocious on the inside",
+        description="Small on the outside, ferocious on the inside",
     )
     coco = Pet(
         owner=user6,
@@ -172,7 +172,7 @@ def seed_pets():
         name="Moshi",
         petType="Dog",
         age=5,
-        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-cottonbro-4046305.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/Screen+Shot+2021-02-27+at+9.47.18+PM.png",
         energy=5,
         social=5,
         behaved=5,
@@ -185,7 +185,7 @@ def seed_pets():
         name="Polo",
         petType="Dog",
         age=10,
-        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-cottonbro-4936221.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/Screen+Shot+2021-02-27+at+9.36.24+PM.png",
         energy=2,
         social=5,
         behaved=5,
@@ -224,7 +224,7 @@ def seed_pets():
         name="Mario",
         petType="Dog",
         age=1,
-        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-matheus-bertelli-1380677.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/Screen+Shot+2021-02-27+at+10.14.44+PM.png",
         energy=5,
         social=3,
         behaved=3,
@@ -243,7 +243,7 @@ def seed_pets():
         behaved=5,
         size=2,
         env=3,
-        description="Drooling is my love language. I love cuddling up looking for another advid cuddler.",
+        description="Drooling is my love language. I love cuddling, looking for another avid cuddler.",
     )
     choco = Pet(
         owner=user18,
@@ -269,7 +269,7 @@ def seed_pets():
         behaved=2,
         size=1,
         env=3,
-        description="Boots has really bad seperation anxiety. In need of a companion to help him get over his lonliness.",
+        description="Boots has really bad seperation anxiety. In need of a companion to help him get over his loneliness.",
     )
     star = Pet(
         owner=user19,
@@ -289,13 +289,13 @@ def seed_pets():
         name="Rodger",
         petType="Dog",
         age=5,
-        imageURL="https://pair-yo-pet.s3.amazonaws.com/german-shepherd-4889095_640.jpg",
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/GermanShepherdFootball.png",
         energy=5,
         social=5,
         behaved=5,
         size=3,
         env=2,
-        description="In the process of being recruited. Green Bay here I come. Looking for someone to run some plays with.",
+        description="In the process of being recruited. Green Bay, here I come. Looking for someone to run some plays with.",
     )
 
     bruno.bst_frnds.append(cal)
