@@ -12,19 +12,17 @@ export default function MessageUsersHolder({
   const set = new Set();
   const cnvUserIdArr = [];
 
-  allMsgsLgdInUser.forEach((msg) => {
+  for (let i = allMsgsLgdInUser.length - 1; i > 0; i--) {
+    let msg = allMsgsLgdInUser[i];
     const idToAdd =
       msg.senderId === lgdInUser.id ? msg.receiverId : msg.senderId;
-    if (!set.has(idToAdd))
-      cnvUserIdArr.push(idToAdd);
+    if (!set.has(idToAdd)) cnvUserIdArr.push(idToAdd);
     set.add(idToAdd);
-  });
+  }
 
   const cnvUsers = [];
-  cnvUserIdArr.reverse();
   cnvUserIdArr.forEach((id) => cnvUsers.push(allUsers[id]));
-  if (cnvUsers.length === 0)
-    cnvUsers.push({ username: 'No message history' });
+  if (cnvUsers.length === 0) cnvUsers.push({ username: 'No message history' });
 
   return (
     <>

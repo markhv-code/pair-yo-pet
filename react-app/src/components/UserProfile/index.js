@@ -55,6 +55,7 @@ function User() {
               const { imageURL, name, age, id } = babies;
               return (
                 <div
+                  key={id}
                   className='pet__card user-profile__pet-card'
                   onClick={() => {
                     history.push(`/pets/${id}`);

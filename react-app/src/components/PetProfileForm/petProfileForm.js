@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createPet } from '../../store/pets';
 
-// Material UI compenents, try later to get them to work
-import Energy from './energySlider';
-import Social from './socialSlider';
-import Behavior from './behaviorSlider';
-import Size from './sizeSlider';
-import Environment from './environmentSlider';
+import './petProfileForm.css'
+
+// // Material UI compenents, try later to get them to work
+// import Energy from './energySlider';
+// import Social from './socialSlider';
+// import Behavior from './behaviorSlider';
+// import Size from './sizeSlider';
+// import Environment from './environmentSlider';
 
 function PetProfileForm({ setShowModal, petToUpdate }) {
   const currentUser = useSelector((state) => state.session.user);
@@ -91,6 +93,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
             value={petName}
             onChange={(e) => setPetName(e.target.value)}
             required
+            className='pet-form__input'
           />
         </div>
         <div>
@@ -100,6 +103,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
             value={petType}
             onChange={(e) => setPetType(e.target.value)}
             required
+            className='pet-form__input'
           >
             <option value='' disabled>
               -Select One-
@@ -122,6 +126,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
               else setAge(Number(age));
             }}
             required
+            className='pet-form__input'
           />
         </div>
         <label>
@@ -130,7 +135,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
         </label>
         <div>
           <label>
-            Energy
+            Energy Level (1-5)
             <input
               type='range'
               min={1}
@@ -138,12 +143,13 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
               value={energy}
               onChange={(e) => setEnergy(Number(e.target.value))}
               required
+              className='pet-form__slider'
             />
           </label>
         </div>
         <div>
           <label>
-            Social
+            Social Level (1-5)
             <input
               type='range'
               min={1}
@@ -151,12 +157,13 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
               value={social}
               onChange={(e) => setSocial(Number(e.target.value))}
               required
+              className='pet-form__slider'
             />
           </label>
         </div>
         <div>
           <label>
-            Behaved
+            Well Behaved (1-5)
             <input
               type='range'
               min={1}
@@ -164,6 +171,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
               value={behaved}
               onChange={(e) => setBehaved(Number(e.target.value))}
               required
+              className='pet-form__slider'
             />
           </label>
         </div>
@@ -174,6 +182,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
               value={size}
               onChange={(e) => setSize(Number(e.target.value))}
               required
+              className='pet-form__input'
             >
               <option value='' disabled>
                 -Select One-
@@ -191,6 +200,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
               value={env}
               onChange={(e) => setEnv(Number(e.target.value))}
               required
+              className='pet-form__input'
             >
               <option value='' disabled>
                 -Select One-
@@ -217,13 +227,18 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
           <Environment setEnv={setEnv} env={env} />
         </div> */}
         <div>
-          <label>Pet description</label>
+          <div>
+            <label>Pet description</label>
+          </div>
           <textarea
             name='description'
             required={true}
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             placeholder='(please keep it under 500 characters)'
+            cols={35}
+            rows={4}
+            className='pet-form__input'
           ></textarea>
         </div>
         <div>

@@ -3,7 +3,6 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  /* font-size: 100%; */
   color: rgb(32, 109, 163);
   text-shadow: 0 0 2px rgba(104, 60, 22, 0.671), 0 0 2px rgb(104, 60, 22, 0.671),
     0 0 2px rgb(104, 60, 22, 0.671), 0 0 2px rgb(104, 60, 22, 0.671);
@@ -14,6 +13,7 @@
   backdrop-filter: blur(6px);
   position: absolute;
   bottom: 0;
+  min-height: 4.5rem;
 }
 
 .github-repo {

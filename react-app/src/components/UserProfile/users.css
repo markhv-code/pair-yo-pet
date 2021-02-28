@@ -24,7 +24,7 @@
     overflow: hidden;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .user-info {
         width: 100%;
     }
@@ -40,7 +40,7 @@
     flex-wrap: wrap;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .side__container {
         justify-content: space-around;
     }

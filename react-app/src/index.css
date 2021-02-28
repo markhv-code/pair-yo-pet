@@ -19,3 +19,20 @@ body {
 input {
   font-family: 'Lusitana', serif;
 }
+
+input {
+  border-radius: 0.75rem;
+  /* width: 100%; */
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 0.25rem;
+  font-family: 'Lusitana', serif;
+  font-size: 1rem;
+  margin: 0.25rem;
+  box-shadow: 0 0 0 1px rgba(13, 51, 223, 0.3);
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px rgba(13, 51, 223, 0.3);
+}

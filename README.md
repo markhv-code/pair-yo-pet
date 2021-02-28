@@ -11,7 +11,7 @@
 
 ## What is it?
 
-Pair Yo' Pet is a clone of the popular web app [OKCupid](https://www.okcupid.com/) with an fun pet lovin' twist. 
+Pair Yo' Pet is a clone of the popular web app [OKCupid](https://www.okcupid.com/) with an fun pet lovin' twist.
 
 ## Developing
 
@@ -24,29 +24,29 @@ To run this application locally, you'll need to:
 5. Create a user on your local machine with the username and password specified in your `.env` file in PostgreSQL
 6. Create a database on your local machine with the name specified in your `.env` file in PostgreSQL
 7. Go into the pipenv shell with `pipenv shell`
-8. Run `flask db upgrade` to run the migrations 
+8. Run `flask db upgrade` to run the migrations
 9. Run `flask seed all` to seed the database
 10. Open another terminal and cd into the `react-app` directory and run `npm install` to install frontend dependencies
 11. Create your own `.env` file in the `react-app` directory based on the `.env.example` there
 12. Start your Flask backend in the terminal that's in the root of the local project with `flask run`
 13. Finally, start the frontend server with `npm start` inside the `react-app` directory. The application should automatically open in your default web browser.
-14. If you desire further modifications simply create a new branch and `git push` your changes to Github. 
+14. If you desire further modifications simply create a new branch and `git push` your changes to Github.
 
 ## Technologies Used
 
-* Python
-* PostgreSQL
-* SQLAlchemy
-* Flask
-* WTForms
-* React
-* Redux
-* JavaScript
-* Vanilla CSS
-* Node.js
-* AWS S3
-* Docker
-* Heroku
+- Python
+- PostgreSQL
+- SQLAlchemy
+- Flask
+- WTForms
+- React
+- Redux
+- JavaScript
+- Vanilla CSS
+- Node.js
+- AWS S3
+- Docker
+- Heroku
 
 ## Live Site
 
@@ -59,7 +59,8 @@ To run this application locally, you'll need to:
 ## Features
 
 Users can:
-- Add a pet 
+
+- Add a pet
 - Update their pets
 - Browse open pets and choose to connect
 - Message other owners
@@ -68,40 +69,41 @@ Users can:
 ## Best Code Snippets
 
 This was how we initialized conversations for user on the `/messages` route.
+
 ```js
 // filter for all messages from or to logged in user
-  const msgsArray = Object.values(allMsgs);
-  const allMsgsLgdInUser = msgsArray.filter(
-    (message) =>
-      message.senderId === lgdInUser.id || message.receiverId === lgdInUser.id
-  );
+const msgsArray = Object.values(allMsgs);
+const allMsgsLgdInUser = msgsArray.filter(
+  (message) =>
+    message.senderId === lgdInUser.id || message.receiverId === lgdInUser.id
+);
 
-  // filter again for all messages between logged in user and other user (chosen user)
-  const allMsgsWOtherUser = allMsgsLgdInUser.filter((message) => {
-    const idToCheck = otherUser.id
-    return message.senderId === idToCheck || message.receiverId === idToCheck;
-  });
-
+// filter again for all messages between logged in user and other user (chosen user)
+const allMsgsWOtherUser = allMsgsLgdInUser.filter((message) => {
+  const idToCheck = otherUser.id;
+  return message.senderId === idToCheck || message.receiverId === idToCheck;
+});
 ```
 
 ```js
-// Find all users (only once) that the logged in user has had conversations with
-  const conversationsUserIdSet = new Set();
+// Find all users (only once) that the logged in user has had cnv with
+const set = new Set();
+const cnvUserIdArr = [];
 
-  allMsgsLgdInUser.forEach((msg) => {
-    const idToAdd =
-      msg.senderId === lgdInUser.id ? msg.receiverId : msg.senderId;
-    conversationsUserIdSet.add(idToAdd);
-  });
+for (let i = allMsgsLgdInUser.length - 1; i > 0; i--) {
+  let msg = allMsgsLgdInUser[i];
+  const idToAdd = msg.senderId === lgdInUser.id ? msg.receiverId : msg.senderId;
+  if (!set.has(idToAdd)) cnvUserIdArr.push(idToAdd);
+  set.add(idToAdd);
+}
 
-  const conversationsUsers = [];
-  const arr = Array.from(conversationsUserIdSet);
-  arr.forEach((id) => conversationsUsers.push(allUsers[id]));
-  if (conversationsUsers.length === 0)
-    conversationsUsers.push({ username: 'No message history' });
+const cnvUsers = [];
+cnvUserIdArr.forEach((id) => cnvUsers.push(allUsers[id]));
+if (cnvUsers.length === 0) cnvUsers.push({ username: 'No message history' });
 ```
 
 For our search feature we needed to connect each pet with the location of their owner for location based searching.
+
 ```py
 owner = db.relationship("User", back_populates="pets")
 
@@ -122,15 +124,19 @@ owner = db.relationship("User", back_populates="pets")
             "owner": self.owner.to_dict()
         }
 ```
+
 Here we implement the database connection in the search file with a `useEffect`.
+
 ```js
- useEffect(() => {
-        setFilteredPets(
-            petsFromStore.filter((pet) => 
-            pet.name.toLowerCase().includes(search.toLowerCase()) ||
-            pet.petType.toLowerCase().includes(search.toLowerCase()) ||
-            pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
-            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
-        )
-    }, [search])
+useEffect(() => {
+  setFilteredPets(
+    petsFromStore.filter(
+      (pet) =>
+        pet.name.toLowerCase().includes(search.toLowerCase()) ||
+        pet.petType.toLowerCase().includes(search.toLowerCase()) ||
+        pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
+        pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+}, [search]);
 ```
