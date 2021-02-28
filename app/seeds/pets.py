@@ -35,7 +35,7 @@ def seed_pets():
         behaved=5,
         size=2,
         env=3,
-        description="Bruno is a Finnish Spitz who love people and other dogs. He respects all creatures alike, wouldn't harm even his own fleas.",
+        description="Bruno is a Finnish Spitz who loves people and other dogs. He respects all creatures alike, wouldn't harm even his own fleas.",
     )
     cal = Pet(
         owner=user2,
