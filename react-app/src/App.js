@@ -5,13 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 // components
 import NavBar from './components/NavBar/index.js';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/Users/UsersList';
-import User from './components/Users/User';
 import SplashPage from './components/SplashPage';
 import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import User from './components/UserProfile';
 import Footer from './components/Footer/Footer'
 
 // import other
@@ -47,13 +46,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <ProtectedRoute
-          path='/users'
-          exact={true}
-          authenticated={!!sessionUser}
-        >
-          <UsersList />
-        </ProtectedRoute>
         <ProtectedRoute
           path='/users/:userId'
           exact={true}
