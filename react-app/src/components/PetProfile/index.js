@@ -27,9 +27,10 @@ const PetProfile = () => {
         dispatch(getPets(petId))
     }, [dispatch, petId])
 
-    if (!pet) return null;
     const {
         name, petType, age, imageURL, energy, social, behaved, size, env, description} = pet;
+        
+    if (!pet) return null;
         
     return (
         <>
