@@ -8,6 +8,7 @@ export default function MessageUsersHolder({
 }) {
   const { setOtherUser } = useOtherUserContext();
 
+  // Find all users (only once) that the logged in user has had conversations with
   const conversationsUserIdSet = new Set();
 
   allMsgsLgdInUser.forEach((msg) => {
