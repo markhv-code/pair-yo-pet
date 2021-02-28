@@ -10,7 +10,11 @@ import BrowsePets from './components/BrowsePets';
 import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+<<<<<<< HEAD
 import User from './components/UserProfile';
+=======
+import Footer from './components/Footer/Footer'
+>>>>>>> main
 
 // import other
 import { setUser } from './store/session';
@@ -72,6 +76,7 @@ function App() {
           <PageNotFound />
         </Route>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }

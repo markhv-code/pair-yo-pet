@@ -1,0 +1,105 @@
+.footer-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  /* font-size: 100%; */
+  color: rgb(32, 109, 163);
+  text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0),
+    0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
+  background-color: rgba(179, 179, 179, .8);
+  padding: .5rem 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  backdrop-filter: blur(6px);
+  position:static;
+  bottom: 0;
+}
+
+.github-repo {
+  color: rgb(242, 160, 84);;
+}
+
+.github-repo:hover {
+  text-decoration: underline;
+}
+
+.footer-div__person {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color:  rgba(0, 0, 0, 0.521);
+  color: transparent !important;
+  text-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-div__linkin {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color:  rgba(0, 0, 0, 0.221);
+  text-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.two-links {
+  display: inline-flex;
+}
+
+.zach {
+  background-image: url("https://avatars.githubusercontent.com/u/71565231?s=400&u=ea930215e60836cd6aeb27265fb66c4014f9e875&v=4");
+  background-position: center;
+  background-size: cover;
+}
+
+.courtney {
+  background-image: url("https://avatars.githubusercontent.com/u/62969220?s=400&u=07debc378612a373555767606e92a923906117e2&v=4");
+  background-position: center;
+  background-size: cover;
+}
+
+.mark {
+  background-image: url("https://avatars.githubusercontent.com/u/71941492?s=400&u=76d0748618d72591afb373be90866b1bc350427a&v=4");
+  background-position: center;
+  background-size: cover;
+}
+.ameera {
+  background-image: url("https://avatars.githubusercontent.com/u/50114902?s=400&v=4");
+  background-position: center;
+  background-size: cover;
+}
+
+.footer-div__person:hover {
+  background-position: center;
+  background-size: 100%;
+  background-image: url("./github-logo.png");
+}
+
+.footer-div__linkin:hover {
+  background-position: center;
+  background-size: 100%;
+  background-image: url("./social-linkedin-circle-512.png");
+  color: transparent;
+
+}
+
+.footer-div__person:hover .github-link {
+  color: rgba(0,0,0,0);
+}
+
+.github-link {
+  font-weight: bold;
+  font-size: 1.563rem;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}

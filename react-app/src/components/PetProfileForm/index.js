@@ -7,7 +7,7 @@ export default function PetProfileModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add Pet</button>
+      <button className="nav__item" onClick={() => setShowModal(true)}>Add Pet</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PetProfileForm setShowModal={setShowModal} />
