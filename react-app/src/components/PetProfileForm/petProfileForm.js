@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createPet } from '../../store/pets';
 
-// // Material UI compenents, try later to get them to work
-// import Energy from './energySlider';
-// import Social from './socialSlider';
-// import Behavior from './behaviorSlider';
-// import Size from './sizeSlider';
-// import Environment from './environmentSlider';
+// Material UI compenents, try later to get them to work
+import Energy from './energySlider';
+import Social from './socialSlider';
+import Behavior from './behaviorSlider';
+import Size from './sizeSlider';
+import Environment from './environmentSlider';
 
 function PetProfileForm({ setShowModal, petToUpdate }) {
   const currentUser = useSelector((state) => state.session.user);
@@ -202,20 +202,20 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
           </label>
         </div>
         {/* <div>
-        <Energy setEnergy={setEnergy} energy={energy} />
-      </div>
-      <div>
-        <Social setSocial={setSocial} social={social} />
-      </div>
-      <div>
-        <Behavior setBehaved={setBehaved} behaved={behaved} />
-      </div>
-      <div>
-        <Size setSize={setSize} size={size} />
-      </div>
-      <div>
-        <Environment setEnv={setEnv} env={env} />
-      </div> */}
+          <Energy setEnergy={setEnergy} energy={energy} />
+        </div>
+        <div>
+          <Social setSocial={setSocial} social={social} />
+        </div>
+        <div>
+          <Behavior setBehaved={setBehaved} behaved={behaved} />
+        </div>
+        <div>
+          <Size setSize={setSize} size={size} />
+        </div>
+        <div>
+          <Environment setEnv={setEnv} env={env} />
+        </div> */}
         <div>
           <label>Pet description</label>
           <textarea

@@ -2,7 +2,7 @@
   display: flex;
   padding: 0 1rem;
   max-width: 1140px;
-  height: 90vh;
+  height: 95vh;
   margin: auto;
 }
 
@@ -122,7 +122,15 @@
 }
 
 .msg-form__button {
+  color: rgba(223, 132, 13, 0.479);
+}
+
+.msg-form__button:hover {
   color: rgb(223, 132, 13);
+}
+
+.msg-form__button:active {
+  color: rgba(223, 132, 13, 0.479);
 }
 
 /* Styling for modal message form */

@@ -29,7 +29,7 @@ const BrowsePets = () => {
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
-    }, [search, petsFromStore])
+    }, [search])
 
 if (!filteredPets) return null;
 

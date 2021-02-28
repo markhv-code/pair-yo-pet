@@ -12,6 +12,10 @@ body {
   padding-bottom: 5.5rem;
 }
 
-*:focus{
-  outline:none
+*:focus {
+  outline: none;
+}
+
+input {
+  font-family: 'Lusitana', serif;
 }
