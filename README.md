@@ -1,5 +1,9 @@
 # Pair Yo' Pet
 
+<p align='left'>
+    <img src="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pyp-logo-cropped.png">
+</p>
+
 [![Contributors](https://img.shields.io/github/contributors/markhv-code/pair-yo-pet)](https://www.github.com/markhv-code/pair-yo-pet/contributors)
 [![Open Issues](https://img.shields.io/github/issues/markhv-code/pair-yo-pet)](https://www.github.com/markhv-code/pair-yo-pet/issues)
 [![Forks](https://img.shields.io/github/forks/markhv-code/pair-yo-pet)](https://www.github.com/markhv-code/pair-yo-pet/forks)
@@ -15,25 +19,34 @@ To run this application locally, you'll need to:
 
 1. `git clone` this repo
 2. `cd` into the local repo
-3. `npm install` to install the dependencies
+3. `pipenv install` to install the backend dependencies
 4. Create a `.env` file based on the `.env.example` file included in the repo with your own values
 5. Create a user on your local machine with the username and password specified in your `.env` file in PostgreSQL
-6. Run `npx dotenv sequelize db:create` to create the database
-    * If the `sequelize` module is not found, try running `npx dotenv sequelize-cli db:create` and replace `sequelize` with `sequelize-cli` for the rest of these commands
-7. Run `npx dotenv sequelize db:migrate` to run the migrations
-8. Run `npx dotenv sequelize db:seed:all` to seed the database
-9. Finally, start the development server with `npm start`. The scripts in the `package.json` should do the work. You'll see the local address you can use show up in the terminal.
+6. Create a database on your local machine with the name specified in your `.env` file in PostgreSQL
+7. Go into the pipenv shell with `pipenv shell`
+8. Run `flask db upgrade` to run the migrations 
+9. Run `flask seed all` to seed the database
+10. Open another terminal and cd into the `react-app` directory and run `npm install` to install frontend dependencies
+11. Create your own `.env` file in the `react-app` directory based on the `.env.example` there
+12. Start your Flask backend in the terminal that's in the root of the local project with `flask run`
+13. Finally, start the frontend server with `npm start` inside the `react-app` directory. The application should automatically open in your default web browser.
+14. If you desire further modifications simply create a new branch and `git push` your changes to Github. 
 
 ## Technologies Used
 
 * Python
 * PostgreSQL
 * SQLAlchemy
+* Flask
+* WTForms
 * React
 * Redux
 * JavaScript
 * Vanilla CSS
 * Node.js
+* AWS S3
+* Docker
+* Heroku
 
 ## Live Site
 
@@ -46,20 +59,78 @@ To run this application locally, you'll need to:
 ## Features
 
 Users can:
-- View open pets and choose to connect
+- Add a pet 
+- Update their pets
+- Browse open pets and choose to connect
+- Message other owners
+- Search for specific pets based on name, state, and city
 
-## Challenges
+## Best Code Snippets
 
-Some of our challenges included:
-- Too many to count
-
-## Best Snippets
-
-Include some cool code on page at `/route`.
+This was how we initialized conversations for user on the `/messages` route.
 ```js
-a = 1
-b = 1
+// filter for all messages from or to logged in user
+  const msgsArray = Object.values(allMsgs);
+  const allMsgsLgdInUser = msgsArray.filter(
+    (message) =>
+      message.senderId === lgdInUser.id || message.receiverId === lgdInUser.id
+  );
 
-a is b
-true
+  // filter again for all messages between logged in user and other user (chosen user)
+  const allMsgsWOtherUser = allMsgsLgdInUser.filter((message) => {
+    const idToCheck = otherUser.id
+    return message.senderId === idToCheck || message.receiverId === idToCheck;
+  });
+
+```
+
+```js
+// Find all users (only once) that the logged in user has had conversations with
+  const conversationsUserIdSet = new Set();
+
+  allMsgsLgdInUser.forEach((msg) => {
+    const idToAdd =
+      msg.senderId === lgdInUser.id ? msg.receiverId : msg.senderId;
+    conversationsUserIdSet.add(idToAdd);
+  });
+
+  const conversationsUsers = [];
+  const arr = Array.from(conversationsUserIdSet);
+  arr.forEach((id) => conversationsUsers.push(allUsers[id]));
+  if (conversationsUsers.length === 0)
+    conversationsUsers.push({ username: 'No message history' });
+```
+
+For our search feature we needed to connect each pet with the location of their owner for location based searching.
+```py
+owner = db.relationship("User", back_populates="pets")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.userId,
+            "name": self.name,
+            "petType": self.petType,
+            "age": self.age,
+            "imageURL": self.imageURL,
+            "energy": self.energy,
+            "social": self.social,
+            "behaved": self.behaved,
+            "size": self.size,
+            "env": self.env,
+            "description": self.description,
+            "owner": self.owner.to_dict()
+        }
+```
+Here we implement the database connection in the search file with a `useEffect`.
+```js
+ useEffect(() => {
+        setFilteredPets(
+            petsFromStore.filter((pet) => 
+            pet.name.toLowerCase().includes(search.toLowerCase()) ||
+            pet.petType.toLowerCase().includes(search.toLowerCase()) ||
+            pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
+            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
+        )
+    }, [search])
 ```
