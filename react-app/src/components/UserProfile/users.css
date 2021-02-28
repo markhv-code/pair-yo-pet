@@ -24,6 +24,11 @@
     /* padding: .3rem; */
 }
 
+.email .location {
+    display: flex;
+    flex-direction: row;
+}
+
 h1 h3 {
     margin-top: .15rem;
 }
@@ -40,7 +45,7 @@ h1 h3 {
 }
 
 .pets {
-    width: 50%
+    width: 50%;
 }
 
 h2 {
