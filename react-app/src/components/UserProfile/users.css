@@ -1,0 +1,72 @@
+.profile-container {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding: .7rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0rem .75rem 3rem -.2rem rgba(0, 0, 0, 0.75);
+    text-align: left;
+    background-color: whitesmoke;
+}
+
+.user-info {
+    position: relative;
+    /* top: 0.25rem; */
+    width: 17rem;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+    /* margin: .8rem; */
+    /* padding: .3rem; */
+}
+
+.email .location {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 h3 {
+    margin-top: .15rem;
+}
+
+.user-info > h1 h3 {
+    margin-top: .25rem;
+}
+
+.side__container {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 70%;
+    margin: auto;
+    height: 100%;
+}
+
+
+.pet__card {
+    border-radius: .5rem;
+    overflow: hidden;
+    width: 15rem;
+    height: 16.5rem;
+    box-shadow: 0rem .75rem 3rem -.2rem rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    margin: 2rem;
+}
+
+.pet__card:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+.user-buttons {
+    float: left;
+}
+
+.user-buttons > i {
+    margin-left: 1rem;
+}
