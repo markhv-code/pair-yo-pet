@@ -6,6 +6,7 @@ def seed_messages():
     user1 = User.query.filter_by(username="Demo").first()
     user2 = User.query.filter_by(username="Demo2").first()
     user3 = User.query.filter_by(username="Lisa").first()
+    user4 = User.query.filter_by(username="Zaki").first()
     user5 = User.query.filter_by(username="Sky").first()
     user6 = User.query.filter_by(username="India").first()
     user7 = User.query.filter_by(username="Cecily").first()
@@ -231,6 +232,7 @@ def seed_messages():
             receiverId=user1.id,
             message="Wow that joke was a bit ruff, ruff...",
         ),
+        
     ]
 
     db.session.bulk_save_objects(messages)
