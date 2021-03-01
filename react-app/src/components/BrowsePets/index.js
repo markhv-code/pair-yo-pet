@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import {getPets} from '../../store/pets'
 
 
 import './BrowsePets.css';
@@ -12,14 +11,7 @@ const BrowsePets = () => {
     const petsFromStore = useSelector((state) => Object.values(state.pets));
     const lgdInUser = useSelector((state) => state.session.user)
     
-    const dispatch = useDispatch();
-    const history = useHistory();
-    
-    
-    useEffect(() => {
-        dispatch(getPets())
-    }, [dispatch]);
-    
+    const history = useHistory(); 
     
     useEffect(() => {
         setFilteredPets(
@@ -29,7 +21,7 @@ const BrowsePets = () => {
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
-    }, [search])
+    }, [search, petsFromStore])
 
 if (!filteredPets) return null;
 
