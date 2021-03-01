@@ -51,9 +51,9 @@
   box-shadow: 0px 6px 6px -9px rgba(0, 0, 0, 0.75);
 }
 
-.messages__other-user:active {
-  background: rgba(223, 132, 13, 0.479);
-  box-shadow: none;
+.messages__other-user-active {
+  background: rgb(223, 132, 13);
+  box-shadow: 0px 6px 6px -9px rgba(0, 0, 0, 0.75);
 }
 
 .messages__texts-and-form {

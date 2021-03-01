@@ -24,8 +24,8 @@ const PetProfile = () => {
     }
 
     useEffect(() => {
-        dispatch(getPets(petId))
-    }, [dispatch, petId])
+        dispatch(getPets())
+    }, [dispatch])
 
     const {
         name, petType, age, imageURL, energy, social, behaved, size, env, description} = pet;
