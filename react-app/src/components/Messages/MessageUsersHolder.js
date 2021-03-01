@@ -6,7 +6,7 @@ export default function MessageUsersHolder({
   lgdInUser,
   allMsgsLgdInUser,
 }) {
-  const { setOtherUser } = useOtherUserContext();
+  const { setOtherUser, otherUser } = useOtherUserContext();
 
   // Find all users (only once) that the logged in user has had cnv with
   const set = new Set();
@@ -35,6 +35,8 @@ export default function MessageUsersHolder({
                 className={
                   user.username === 'No message history'
                     ? 'messages__no-msg-history'
+                    : user.id === otherUser.id
+                    ? 'messages__other-user messages__other-user-active'
                     : 'messages__other-user'
                 }
                 key={user.id}

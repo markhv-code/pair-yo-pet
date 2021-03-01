@@ -13,6 +13,12 @@
     font-weight: 600;
 }
 
+@media (max-width: 700px) {
+    .browse__bar > input {
+        width: 20rem;
+    }
+}
+
 .result__container {
     display: flex;
     flex-wrap: wrap;

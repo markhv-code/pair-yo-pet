@@ -16,9 +16,15 @@
   min-height: 4.5rem;
 }
 
+.github-repo-container {
+  display: flex;
+  text-align: center;
+}
+
 .github-repo {
   color: rgb(242, 160, 84);
   font-family: 'Ledger', serif;
+  margin: 0 0.25rem;
 }
 
 .github-repo:hover {
@@ -52,16 +58,28 @@
 @media (max-width: 950px) {
   .footer-div__person,
   .footer-div__linkin {
-    width: 3rem;
-    height: 3rem;
+    width: 3.7rem;
+    height: 3.7rem;
+  }
+  .footer-div__person {
+    transform: translateY(0.75rem);
+  }
+  .footer-div__linkin {
+    transform: translateY(-0.75rem);
   }
 }
 
 @media (max-width: 600px) {
   .footer-div__person,
   .footer-div__linkin {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .footer-div__person {
+    transform: translateY(1rem);
+  }
+  .footer-div__linkin {
+    transform: translateY(-1rem);
   }
 }
 

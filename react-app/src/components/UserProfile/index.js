@@ -1,35 +1,34 @@
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import './users.css'
-
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import './users.css';
 
 function User() {
   const history = useHistory();
-  const { userId }  = useParams();
+  const { userId } = useParams();
 
   const user = useSelector((state) => state.users[userId]);
   const pets = useSelector((state) => Object.values(state.pets));
 
-  const mypets = pets.filter(pet => pet.userId === user.id)
+  const mypets = pets.filter((pet) => pet.userId === user.id);
 
-  if(!user) return null;
-  const { city, email, stateAbbr, username } = user
+  if (!user) return null;
+  const { city, email, stateAbbr, username } = user;
   return (
     <>
-      <div className="user-profile-container">
-        <div className="user-info">
-          <div className="username">
-            <h1>{`${username}'s Pets`}</h1>
+      <div className='user-profile-container'>
+        <div className='user-info'>
+          <div className='username'>
+            <h1>{`${username}'s Profile`}</h1>
           </div>
           <div>
-            <div className="email">
-              <i className="fa fa-envelope">{` ${email}`}</i>
+            <div className='email'>
+              <i className='fa fa-envelope'>{` ${email}`}</i>
             </div>
-            <div className="location">
-              <i className="fa fa-map-marker">{` ${city}, ${stateAbbr}`}</i>
+            <div className='location'>
+              <i className='fa fa-map-marker'>{` ${city}, ${stateAbbr}`}</i>
             </div>
-            <div className="user-story">
+            <div className='user-story'>
               <h2>User Story:</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -40,17 +39,18 @@ function User() {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
-            <div className="user-buttons">
-              <i className="fa fa-bell" />
-              <i className="fa fa-camera"/>
-              <i className="fa fa-paw"/>
-              <i className="fa fa-gear"/>
-            </div>
+              <div className='user-buttons'>
+                <i className='fa fa-bell' />
+                <i className='fa fa-camera' />
+                <i className='fa fa-paw' />
+                <i className='fa fa-gear' />
+              </div>
+              {!mypets.length && <h2>No pets added yet</h2>}
             </div>
           </div>
         </div>
-        <div className="pets">
-          <div className="side__container">
+        <div className='pets'>
+          <div className='side__container'>
             {mypets.map((babies) => {
               const { imageURL, name, age, id } = babies;
               return (
