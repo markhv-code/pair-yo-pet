@@ -3,22 +3,69 @@ import { useDispatch } from 'react-redux';
 import { signUp } from '../../../services/auth';
 import { login } from '../../../services/auth';
 import { setUser } from '../../../store/session';
+import { addUser } from '../../../store/users';
 
 function SignUpFormPage() {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [city, setCity] = useState('');
-  const [stateAbbr, setStateAbbr] = useState('');
+  const [stateAbbr, setStateAbbr] = useState('AK');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const dispatch = useDispatch();
 
   const states = [
-    "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN",
-    "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH",
-    "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA",
-    "VT", "WA", "WI", "WV", "WY"
+    'AK',
+    'AL',
+    'AR',
+    'AZ',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'FL',
+    'GA',
+    'HI',
+    'IA',
+    'ID',
+    'IL',
+    'IN',
+    'KS',
+    'KY',
+    'LA',
+    'MA',
+    'MD',
+    'ME',
+    'MI',
+    'MN',
+    'MO',
+    'MS',
+    'MT',
+    'NC',
+    'ND',
+    'NE',
+    'NH',
+    'NJ',
+    'NM',
+    'NV',
+    'NY',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VA',
+    'VT',
+    'WA',
+    'WI',
+    'WV',
+    'WY',
   ];
 
   const onSignUp = async (e) => {
@@ -35,6 +82,7 @@ function SignUpFormPage() {
       );
       if (!user.errors) {
         dispatch(setUser(user));
+        dispatch(addUser(user));
       } else {
         setErrors(user.errors);
       }
@@ -111,10 +159,12 @@ function SignUpFormPage() {
         <div>
           <label>State Abbreviation</label>
           <select onChange={updateStateAbbr} value={stateAbbr} size={1}>
-            {states.map(state => {
+            {states.map((state) => {
               return (
-                <option value={state} key={state}>{state}</option>
-              )
+                <option value={state} key={state}>
+                  {state}
+                </option>
+              );
             })}
           </select>
         </div>

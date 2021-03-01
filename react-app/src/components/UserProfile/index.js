@@ -51,6 +51,7 @@ function User() {
         </div>
         <div className="pets">
           <div className="side__container">
+            {!mypets && <h2>No pets added yet</h2>}
             {mypets.map((babies) => {
               const { imageURL, name, age, id } = babies;
               return (
