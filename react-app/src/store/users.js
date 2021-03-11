@@ -35,6 +35,7 @@ export const getUser = (userId) => async (dispatch) => {
     dispatch(loadUser(json));
   }
 };
+
 // Reducer
 const initState = {};
 
