@@ -50,7 +50,7 @@ To run this application locally, you'll need to:
 
 ## Live Site
 
-[Here's](https://pairyopet.herokuapp.com//) a link to our live app!
+[Here's](https://pairyopet.herokuapp.com/) a link to our live app!
 
 ## Documentation
 
