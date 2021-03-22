@@ -28,7 +28,7 @@ def seed_pets():
     amanda = User.query.filter_by(username="Amanda").first()
     splinter = User.query.filter_by(username="Splinter").first()
 
-    # ----------- dogs here -----------
+    # ----------- Dog here -----------
     bruno = Pet(
         owner=user1,
         name="Bruno",
@@ -304,7 +304,7 @@ def seed_pets():
     )
     bruno.bst_frnds.append(cal)
 
-    # ----------- reptiles here -----------
+    # ----------- Reptile here -----------
     spyro = Pet(
         owner=user1,
         name="Spyro",
@@ -370,8 +370,9 @@ def seed_pets():
         env=3,
         description="Donatello may be small, and his potential is huge. He enjoys having other people around, but just watch out for his low roundhouse kick.",
     )
-    # ----------- marine here -----------
-    # ----------- farm here -----------
+    # ----------- Aquatic here -----------
+
+    # ----------- Farm here -----------
 
     # ----------- add to db in a random order here -----------
 

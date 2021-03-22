@@ -108,7 +108,12 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
             <option value='' disabled>
               -Select One-
             </option>
+            <option value='Aquatic'>Dog</option>
+            <option value='Bird'>Dog</option>
+            <option value='Cat'>Dog</option>
             <option value='Dog'>Dog</option>
+            <option value='Farm'>Dog</option>
+            <option value='Other'>Dog</option>
             <option value='Reptile'>Reptile</option>
           </select>
         </div>
