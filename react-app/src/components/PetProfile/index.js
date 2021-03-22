@@ -26,15 +26,17 @@ const PetProfile = () => {
     useEffect(() => {
         dispatch(getPets())
     }, [dispatch])
+    
+    if (!pet) return null;
 
     const {
         name, petType, age, imageURL, energy, social, behaved, size, env, description} = pet;
         
-    if (!pet) return null;
         
     return (
         <>
             <div className='profile__container'>
+                <i class="fas fa-times" onClick={()=>{history.push('/browse')}}></i>
                 <div className='left__container'>
                     <img src={imageURL} alt="Pet Profile"/>
                         <div className='profile__message-owner'>

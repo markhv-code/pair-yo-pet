@@ -17,7 +17,7 @@ export default function PageNotFound() {
       </h3>
       <img
         className='page-not-found__image'
-        src='https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/lost-dog.jpg'
+        src='https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pre-saved-images/lost-dog.jpg'
         alt='Sorry Lost Doggo says Page Not Found'
       />
     </div>

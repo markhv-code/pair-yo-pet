@@ -1,4 +1,5 @@
 .profile__container {
+    position: relative;
     display: flex;
     width: 60%;
     margin: auto;
@@ -18,6 +19,15 @@
     }
 }
 
+.fa-times {
+    position: absolute;
+    top: 1.3rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgb(170, 170, 170);
+}
+
 .left__container > img {
     border-radius: .5rem;
     flex-direction: column;
@@ -25,7 +35,7 @@
     width: 90%;
     height: 16.5rem;
     object-fit: cover;
-    margin: .5rem .5rem .5rem 0;
+    margin: 0 .5rem .5rem 0;
 }
 
 .profile__info {
@@ -92,11 +102,6 @@ button.profile-button {
     cursor: pointer;
     background-color: rgb(171, 172, 175);
     border-radius: 10px;
-}
-
-i.fas {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .delete-pet {

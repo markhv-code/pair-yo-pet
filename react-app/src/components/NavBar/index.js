@@ -86,7 +86,7 @@ const NavBar = () => {
           <img
             className='logo'
             alt="Pair Yo' Pet"
-            src='https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pyp-logo-cropped.png'
+            src='https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pre-saved-images/pyp-logo-cropped.png'
           ></img>
         </a>
         <nav className='nav'>
