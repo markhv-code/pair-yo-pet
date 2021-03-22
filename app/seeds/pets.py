@@ -23,7 +23,12 @@ def seed_pets():
     user18 = User.query.filter_by(username="Malcolm").first()
     user19 = User.query.filter_by(username="Aniya").first()
     user20 = User.query.filter_by(username="Jeff").first()
+    rapunzel = User.query.filter_by(username="Rapunzel").first()
+    koga = User.query.filter_by(username="Koga").first()
+    amanda = User.query.filter_by(username="Amanda").first()
+    splinter = User.query.filter_by(username="Splinter").first()
 
+    # ----------- dogs here -----------
     bruno = Pet(
         owner=user1,
         name="Bruno",
@@ -297,31 +302,79 @@ def seed_pets():
         env=2,
         description="In the process of being recruited. Green Bay, here I come. Looking for someone to run some plays with.",
     )
-
     bruno.bst_frnds.append(cal)
 
-    # db.session.bulk_save_objects([
-    #     bruno, 
-    #     cal, 
-    #     mylo, 
-    #     melody, 
-    #     rover, 
-    #     coco, 
-    #     midnight, 
-    #     mylo, 
-    #     mystic, 
-    #     doodle, 
-    #     snow, 
-    #     moshi, 
-    #     polo, 
-    #     sponge, 
-    #     rose, 
-    #     mario, 
-    #     mimi, 
-    #     choco, 
-    #     boots, 
-    #     star
-    # ])
+    # ----------- reptiles here -----------
+    spyro = Pet(
+        owner=user1,
+        name="Spyro",
+        petType="Reptile",
+        age=3,
+        imageURL="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/seed-bearded-dragon.jpg",
+        energy=2,
+        social=2,
+        behaved=5,
+        size=1,
+        env=2,
+        description="Spyro is a bearded dragon who loves to bask in the sun (or heat lamp) and eat crickets. He is kind to all dragons and people and has no problems being held.",
+    )
+    ekans = Pet(
+        owner=koga,
+        name="Ekans",
+        petType="Reptile",
+        age=4,
+        imageURL="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/seed-snake.jpg",
+        energy=2,
+        social=1,
+        behaved=4,
+        size=2,
+        env=2,
+        description="Ekans is a ball python who likes to be alone; however if you have a ball python who also likes to be alone, maybe they will enjoy being alone together!",
+    )
+    pascal = Pet(
+        owner=rapunzel,
+        name="Pascal",
+        petType="Reptile",
+        age=4,
+        imageURL="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/seed-chameleon.jpg",
+        energy=4,
+        social=5,
+        behaved=4,
+        size=1,
+        env=3,
+        description="Pascal is a chameleon who can be tricky to find, but is actually kind of cuddly when you do find him.",
+    )
+    kusko = Pet(
+        owner=amanda,
+        name="Kusko",
+        petType="Reptile",
+        age=4,
+        imageURL="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/seed-leopard-gecko.jpg",
+        energy=3,
+        social=4,
+        behaved=5,
+        size=1,
+        env=3,
+        description="Kusko likes being held and doing photo shoots. You'll never find a more loved or more loving leopard gecko ;)",
+    )
+    donatello = Pet(
+        owner=splinter,
+        name="Donatello",
+        petType="Reptile",
+        age=1,
+        imageURL="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/seed-turtle.jpg",
+        energy=4,
+        social=5,
+        behaved=3,
+        size=1,
+        env=3,
+        description="Donatello may be small, and his potential is huge. He enjoys having other people around, but just watch out for his low roundhouse kick.",
+    )
+    # ----------- marine here -----------
+    # ----------- farm here -----------
+
+    # ----------- add to db in a random order here -----------
+
     db.session.add(bruno)
     db.session.add(cal)
     db.session.add(mylo)
@@ -343,6 +396,13 @@ def seed_pets():
     db.session.add(boots)
     db.session.add(star)
     db.session.add(rodger)
+
+    db.session.add(spyro)
+    db.session.add(ekans)
+    db.session.add(pascal)
+    db.session.add(kusko)
+    db.session.add(donatello)
+
     db.session.commit()
 
 

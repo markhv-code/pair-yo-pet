@@ -47,7 +47,7 @@ def create_pet():
         output_link = (
             upload_file_to_s3(image)
             if image
-            else "https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/default-dog.png"
+            else "https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pre-saved-images/default-dog.png"
         )
 
         new_pet = Pet(
