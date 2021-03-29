@@ -32,6 +32,11 @@ def seed_pets():
     shrek = User.query.filter_by(username="Shrek").first()
     charlotte = User.query.filter_by(username="Charlotte").first()
     ned = User.query.filter_by(username="Ned").first()
+    gus = User.query.filter_by(username="Gus").first()
+    kelly = User.query.filter_by(username="Kelly").first()
+    gabe = User.query.filter_by(username="Gabe").first()
+    peter = User.query.filter_by(username="Peter").first()
+    ellie = User.query.filter_by(username="Ellie").first()
 
     # ----------- Dog here -----------
     bruno = Pet(
