@@ -1,7 +1,7 @@
 # Pair Yo' Pet
 
 <p align='left'>
-    <img src="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pyp-logo-cropped.png">
+    <img src="https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pre-saved-images/pyp-logo-cropped.png">
 </p>
 
 [![Contributors](https://img.shields.io/github/contributors/markhv-code/pair-yo-pet)](https://www.github.com/markhv-code/pair-yo-pet/contributors)
@@ -50,7 +50,7 @@ To run this application locally, you'll need to:
 
 ## Live Site
 
-[Here's](https://pairyopet.herokuapp.com//) a link to our live app!
+[Here's](https://pairyopet.herokuapp.com/) a link to our live app!
 
 ## Documentation
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createPet } from '../../store/pets';
 
-import './petProfileForm.css'
+import './petProfileForm.css';
 
 // // Material UI compenents, try later to get them to work
 // import Energy from './energySlider';
@@ -108,7 +108,13 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
             <option value='' disabled>
               -Select One-
             </option>
+            <option value='Aquatic'>Aquatic</option>
+            <option value='Bird'>Bird</option>
+            <option value='Cat'>Cat</option>
             <option value='Dog'>Dog</option>
+            <option value='Farm'>Farm</option>
+            <option value='Reptile'>Reptile</option>
+            <option value='Other'>Other</option>
           </select>
         </div>
         <div>
