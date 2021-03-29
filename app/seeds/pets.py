@@ -380,8 +380,21 @@ def seed_pets():
         env=3,
         description="Donatello may be small, but his potential is huge. He enjoys having other people around, but just watch out for his low roundhouse kick.",
     )
-    # ----------- Aquatic here -----------
 
+    # ----------- Aquatic here -----------
+    willy = Pet(
+        owner=gus,
+        name="Willy",
+        petType="Aquatic",
+        age=26,
+        imageURL="https://pairyopet.s3-us-west-1.amazonaws.com/todd-cravens-QnBrjY-nFUs-unsplash.jpg",
+        energy=5,
+        social=4,
+        behaved=5,
+        size=5,
+        env=3,
+        description="Willy is a free-spirited. He loves having a whale of a time and enjoys making new friends.",
+    )
     # ----------- Farm here -----------
     cluck_norris = Pet(
         owner=mark,
@@ -484,6 +497,8 @@ def seed_pets():
     db.session.add(donkey)
     db.session.add(wilbur)
     db.session.add(mr_nibbles)
+
+    db.session.add(willy)
 
     db.session.commit()
 
