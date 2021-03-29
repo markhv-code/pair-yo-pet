@@ -63,7 +63,8 @@ const PetProfile = () => {
                         <h3>Age: {age}</h3>
                         <h3>{pet.owner.city}, {pet.owner.stateAbbr}</h3>
                         <h3 className='profile__owner-link'>
-                            <NavLink to={`/users/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> </h3>
+                            <NavLink to={`/users/${pet.userId}`}>Owner: {pet.owner.username}</NavLink> 
+                        </h3>
                         <h4 className='profile__description'>{description}</h4>
                     </div>
                     <div className='personality__scales'>
