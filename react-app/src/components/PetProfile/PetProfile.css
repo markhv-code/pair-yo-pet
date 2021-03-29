@@ -56,6 +56,12 @@
     font-weight: 600;
 }
 
+.profile__owner-link:hover {
+    color: rgb(242, 160, 84);
+    text-shadow: 0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0),
+    0 0 3px rgb(34, 16, 0), 0 0 3px rgb(34, 16, 0);
+}
+
 .profile__description {
     font-size: .95rem;
     font-weight: 500;
@@ -78,8 +84,6 @@ div.personality__scales {
 .profile__message-owner {
     display: flex;
     width: 90%;
-    /* flex-direction: column; */
-    /* justify-content: left; */
     justify-content: center;
     text-align: center;
     font-weight: 600;

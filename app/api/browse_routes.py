@@ -11,5 +11,3 @@ def browse_pets():
     """
     pets = Pet.query.all()
     return {"pets": [pet.to_dict() for pet in pets]}
-
-
