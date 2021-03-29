@@ -27,6 +27,11 @@ def seed_pets():
     koga = User.query.filter_by(username="Koga").first()
     amanda = User.query.filter_by(username="Amanda").first()
     splinter = User.query.filter_by(username="Splinter").first()
+    mark = User.query.filter_by(username="Mark").first()
+    andy = User.query.filter_by(username="Andy").first()
+    shrek = User.query.filter_by(username="Shrek").first()
+    charlotte = User.query.filter_by(username="Charlotte").first()
+    ned = User.query.filter_by(username="Ned").first()
 
     # ----------- Dog here -----------
     bruno = Pet(
@@ -368,11 +373,76 @@ def seed_pets():
         behaved=3,
         size=1,
         env=3,
-        description="Donatello may be small, and his potential is huge. He enjoys having other people around, but just watch out for his low roundhouse kick.",
+        description="Donatello may be small, but his potential is huge. He enjoys having other people around, but just watch out for his low roundhouse kick.",
     )
     # ----------- Aquatic here -----------
 
     # ----------- Farm here -----------
+    cluck_norris = Pet(
+        owner=mark,
+        name="Cluck Norris",
+        petType="Farm",
+        age=5,
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/rooster.png",
+        energy=4,
+        social=3,
+        behaved=2,
+        size=1,
+        env=1,
+        description="Cluck Norris is the best alarm clock around and he means business.  He is pretty clucky once you get to know him.",
+    )
+    lil_sebastian = Pet(
+        owner=andy,
+        name="Lil' Sebastian",
+        petType="Farm",
+        age=10,
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/pony.png",
+        energy=4,
+        social=5,
+        behaved=5,
+        size=3,
+        env=1,
+        description="Lil' Sebastian wins the heart of everyone he meets. As long as you have hay, he will prance during your playdate.",
+    )
+    donkey = Pet(
+        owner=shrek,
+        name="Donkey",
+        petType="Farm",
+        age=15,
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/donkey.png",
+        energy=5,
+        social=5,
+        behaved=3,
+        size=3,
+        env=2,
+        description="Donkey is the most talkative thing you ever did see. He is very well-behaved, but will always break out into song.",
+    )
+    wilbur = Pet(
+        owner=charlotte,
+        name="Wilbur",
+        petType="Farm",
+        age=1,
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/pig.png",
+        energy=5,
+        social=5,
+        behaved=3,
+        size=1,
+        env=2,
+        description="Wilbur is one terrific pig. Everything that meets him, loves him.",
+    )
+    mr_nibbles = Pet(
+        owner=ned,
+        name="Mr. Nibbles",
+        petType="Farm",
+        age=2,
+        imageURL="https://flask-pairyopet.s3.us-east-2.amazonaws.com/llama.png",
+        energy=4,
+        social=3,
+        behaved=2,
+        size=3,
+        env=1,
+        description="Mr. Nibbles loves any clothing he can grab, his favorite are hats.  He loves playdates, just remember to keep track of your belongings.",
+    )
 
     # ----------- add to db in a random order here -----------
 
@@ -403,6 +473,12 @@ def seed_pets():
     db.session.add(pascal)
     db.session.add(kusko)
     db.session.add(donatello)
+
+    db.session.add(cluck_norris)
+    db.session.add(lil_sebastian)
+    db.session.add(donkey)
+    db.session.add(wilbur)
+    db.session.add(mr_nibbles)
 
     db.session.commit()
 

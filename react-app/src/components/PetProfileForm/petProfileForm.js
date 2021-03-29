@@ -212,7 +212,7 @@ function PetProfileForm({ setShowModal, petToUpdate }) {
                 -Select One-
               </option>
               <option value={1}>Outdoor</option>
-              <option value={2}>Both</option>
+              <option value={2}>Indoor / Outdoor</option>
               <option value={3}>Indoor</option>
             </select>
           </label>
