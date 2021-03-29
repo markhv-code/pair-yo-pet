@@ -180,6 +180,41 @@ def seed_users():
             city="New York City",
             stateAbbr="NY",
         ),
+        User(
+            username="Mark",
+            email="mark@mark.com",
+            password="password",
+            city="Waimea",
+            stateAbbr="HI",
+        ),
+        User(
+            username="Andy",
+            email="andy@mouserat.com",
+            password="password",
+            city="Pawnee",
+            stateAbbr="IN",
+        ),
+        User(
+            username="Shrek",
+            email="shrek@ogre.com",
+            password="password",
+            city="Far Far Away",
+            stateAbbr="OH",
+        ),
+        User(
+            username="Charlotte",
+            email="char@webspinner.com",
+            password="password",
+            city="Brooklin",
+            stateAbbr="ME",
+        ),
+        User(
+            username="Ned",
+            email="ned@flanders.com",
+            password="password",
+            city="Springfield",
+            stateAbbr="MA",
+        ),
     ]
 
     db.session.bulk_save_objects(users)
