@@ -2,6 +2,7 @@
     display: flex;  
     justify-content: center;
     margin-top: 3rem; 
+    width: 80%;
 }
 
 .browse__bar > input {
@@ -17,6 +18,7 @@
     display: block;
     position: relative;
     cursor: pointer;
+    padding-left: 1.5rem;
 }
 
 /* .checkmark {
@@ -40,7 +42,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 70%;
+    width: 85%;
     margin: auto;
     height: 100%;
 }
