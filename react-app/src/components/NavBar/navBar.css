@@ -48,7 +48,7 @@
 }
 
 .logo:hover {
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-iteration-count: infinite;
 }
 
@@ -58,7 +58,7 @@
 }
  @keyframes bounce-3 {
     0%   { transform: translateY(0); }
-    30%  { transform: translateY(-100px); }
+    30%  { transform: translateY(-10px); }
     50%  { transform: translateY(0); }
     100% { transform: translateY(0); }
 }
