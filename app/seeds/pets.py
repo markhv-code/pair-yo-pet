@@ -393,7 +393,7 @@ def seed_pets():
         behaved=5,
         size=5,
         env=3,
-        description="Willy is a free-spirited. He loves having a whale of a time and enjoys making new friends.",
+        description="Willy is a free-spirit. He loves having a whale of a time and enjoys making new friends.",
     )
     piper = Pet(
         owner=kelly,
@@ -419,7 +419,7 @@ def seed_pets():
         behaved=4,
         size=1,
         env=2,
-        description="Banzai is a cute seahorse. He's comfortable in the tank and also in the big blue ocean. Favorite treat is small crustacea.",
+        description="Banzai is a cute seahorse. He's comfortable in the tank and also in the big blue ocean. Favorite treat is small crustaceans.",
     )
     jam = Pet(
         owner=gabe,
