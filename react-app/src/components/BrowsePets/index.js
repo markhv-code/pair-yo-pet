@@ -14,11 +14,16 @@ const BrowsePets = () => {
     
     const dispatch = useDispatch();
     const history = useHistory();
+
+    const shufflePets = (array) => {
+        array.sort(() => Math.random() - 0.5);
+    }
     
     
     useEffect(() => {
-        dispatch(getPets())
-    }, [dispatch]);
+        dispatch(getPets());
+        shufflePets(filteredPets);
+    }, [dispatch, filteredPets]);
     
     
     useEffect(() => {
@@ -30,6 +35,7 @@ const BrowsePets = () => {
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
     }, [search])
+
 
 if (!filteredPets) return null;
 
