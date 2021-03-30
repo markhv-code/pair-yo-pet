@@ -530,7 +530,7 @@ def seed_pets():
         energy=5,
         social=4,
         behaved=5,
-        size=5,
+        size=1,
         env=3,
         description="If your pet is looking for a talker he'll find the best companion in Rainforest.",
     )
@@ -543,7 +543,7 @@ def seed_pets():
         energy=4,
         social=3,
         behaved=2,
-        size=3,
+        size=1,
         env=1,
         description="My son Moonlight is looking for a fellow night walker who enjoys singing to the moon.",
     )
@@ -556,7 +556,7 @@ def seed_pets():
         energy=5,
         social=5,
         behaved=3,
-        size=1,
+        size=3,
         env=2,
         description="Wolly is looking for a fellow hunter. No rat companions please.",
     )
@@ -569,7 +569,7 @@ def seed_pets():
         energy=4,
         social=5,
         behaved=5,
-        size=3,
+        size=2,
         env=1,
         description="Snow white is a sassy friendly energetic baby. Looking for a companion to talk fairytales with.",
     )
@@ -582,7 +582,7 @@ def seed_pets():
         energy=3,
         social=3,
         behaved=4,
-        size=1,
+        size=3,
         env=2,
         description="Lucky enjoys hiking and seeing the sites. Any fellow adventurers out there?",
     )
