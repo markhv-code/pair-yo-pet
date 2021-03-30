@@ -37,6 +37,12 @@ def seed_pets():
     gabe = User.query.filter_by(username="Gabe").first()
     peter = User.query.filter_by(username="Peter").first()
     ellie = User.query.filter_by(username="Ellie").first()
+    shelly = User.query.filter_by(username="Shelly").first()
+    rob = User.query.filter_by(username="Rob").first()
+    star = User.query.filter_by(username="Star").first()
+    dwarf = User.query.filter_by(username="Dwarf").first()
+    biggie = User.query.filter_by(username="Biggie").first()
+
 
     # ----------- Dog here -----------
     bruno = Pet(
@@ -622,6 +628,13 @@ def seed_pets():
     db.session.add(jam)
     db.session.add(piper)
     db.session.add(banzai)
+
+    db.session.add(rainforest)
+    db.session.add(moonlight)
+    db.session.add(wolly)
+    db.session.add(snow_white)
+    db.session.add(lucky)
+
 
     db.session.commit()
 
