@@ -47,6 +47,22 @@
   transform: scale(0.90);
 }
 
+.logo:hover {
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.bounce-3 {
+  animation-name: bounce-3;
+  animation-timing-function: ease;
+}
+ @keyframes bounce-3 {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-100px); }
+    50%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
 .nav__item {
   margin: 0 0.5rem;
   position: relative;
