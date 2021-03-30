@@ -32,6 +32,11 @@ def seed_pets():
     shrek = User.query.filter_by(username="Shrek").first()
     charlotte = User.query.filter_by(username="Charlotte").first()
     ned = User.query.filter_by(username="Ned").first()
+    gus = User.query.filter_by(username="Gus").first()
+    kelly = User.query.filter_by(username="Kelly").first()
+    gabe = User.query.filter_by(username="Gabe").first()
+    peter = User.query.filter_by(username="Peter").first()
+    ellie = User.query.filter_by(username="Ellie").first()
 
     # ----------- Dog here -----------
     bruno = Pet(
@@ -375,8 +380,73 @@ def seed_pets():
         env=3,
         description="Donatello may be small, but his potential is huge. He enjoys having other people around, but just watch out for his low roundhouse kick.",
     )
-    # ----------- Aquatic here -----------
 
+    # ----------- Aquatic here -----------
+    willy = Pet(
+        owner=gus,
+        name="Willy",
+        petType="Aquatic",
+        age=26,
+        imageURL="https://pairyopet.s3-us-west-1.amazonaws.com/todd-cravens-QnBrjY-nFUs-unsplash.jpg",
+        energy=5,
+        social=4,
+        behaved=5,
+        size=5,
+        env=3,
+        description="Willy is a free-spirit. He loves having a whale of a time and enjoys making new friends.",
+    )
+    piper = Pet(
+        owner=kelly,
+        name="Piper",
+        petType="Aquatic",
+        age=8,
+        imageURL="https://pairyopet.s3-us-west-1.amazonaws.com/adam-berkecz-K6kZKJOmZrk-unsplash.jpg",
+        energy=5,
+        social=5,
+        behaved=3,
+        size=4,
+        env=3,
+        description="Piper just loves to have fun. A little on the mischevous side but always sweet deep down. Loves to surf!",
+    )
+    banzai = Pet(
+        owner=ellie,
+        name="Banzai",
+        petType="Aquatic",
+        age=2,
+        imageURL="https://pairyopet.s3-us-west-1.amazonaws.com/david-clode-fG1fdervp1E-unsplash.jpg",
+        energy=3,
+        social=3,
+        behaved=4,
+        size=1,
+        env=2,
+        description="Banzai is a cute seahorse. He's comfortable in the tank and also in the big blue ocean. Favorite treat is small crustaceans.",
+    )
+    jam = Pet(
+        owner=gabe,
+        name="Jam",
+        petType="Aquatic",
+        age=6,
+        imageURL="https://pairyopet.s3-us-west-1.amazonaws.com/arushee-agrawal-KGmgAZ01AVw-unsplash.jpg",
+        energy=1,
+        social=2,
+        behaved=2,
+        size=3,
+        env=3,
+        description="Jam is a fiesty jellyfish. He can be tons of fun, but be careful to make sure you don't bump into his tentacles!",
+    )
+    marvin = Pet(
+        owner=peter,
+        name="Marvin",
+        petType="Aquatic",
+        age=9,
+        imageURL="https://pairyopet.s3-us-west-1.amazonaws.com/rachel-hisko-rEM3cK8F1pk-unsplash.jpg",
+        energy=3,
+        social=4,
+        behaved=5,
+        size=2,
+        env=2,
+        description="Marvin enjoys quiet, relaxing company. Big fan of other fish that are blue. Doesn't like boats.",
+    )
     # ----------- Farm here -----------
     cluck_norris = Pet(
         owner=mark,
@@ -479,6 +549,12 @@ def seed_pets():
     db.session.add(donkey)
     db.session.add(wilbur)
     db.session.add(mr_nibbles)
+
+    db.session.add(willy)
+    db.session.add(marvin)
+    db.session.add(jam)
+    db.session.add(piper)
+    db.session.add(banzai)
 
     db.session.commit()
 

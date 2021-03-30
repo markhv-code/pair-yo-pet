@@ -215,6 +215,41 @@ def seed_users():
             city="Springfield",
             stateAbbr="MA",
         ),
+        User(
+            username="Peter",
+            email="peter@aa.com",
+            password="password",
+            city="Corpus Christi",
+            stateAbbr="TX",
+        ),
+        User(
+            username="Gus",
+            email="gus@hilife.com",
+            password="password",
+            city="San Clemente",
+            stateAbbr="CA",
+        ),
+        User(
+            username="Ellie",
+            email="ellie@design.com",
+            password="password",
+            city="Tucson",
+            stateAbbr="AZ",
+        ),
+        User(
+            username="Kelly",
+            email="kelly@wsl.com",
+            password="password",
+            city="Fort Lauderdale",
+            stateAbbr="FL",
+        ),
+        User(
+            username="Gabe",
+            email="gabe@wsl.com",
+            password="password",
+            city="Los Angeles",
+            stateAbbr="CA",
+        ),
     ]
 
     db.session.bulk_save_objects(users)

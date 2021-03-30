@@ -84,7 +84,7 @@ const NavBar = () => {
       <div className='site-header__wrapper'>
         <a className='logo-anchor' href='/'>
           <img
-            className='logo'
+            className='logo bounce-7'
             alt="Pair Yo' Pet"
             src='https://pair-yo-pet-aws.s3-us-west-1.amazonaws.com/pre-saved-images/pyp-logo-cropped.png'
           ></img>
