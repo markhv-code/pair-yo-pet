@@ -12,6 +12,22 @@ const BrowsePets = () => {
     const petsFromStore = useSelector((state) => Object.values(state.pets));
     const lgdInUser = useSelector((state) => state.session.user)
     
+    const [checkOne, setCheckOne] = useState(false);
+    const [checkTwo, setCheckTwo] = useState(false);
+    const [checkThree, setCheckThree] = useState(false);
+    const [checkFour, setCheckFour] = useState(false);
+    const [checkFive, setCheckFive] = useState(false);
+    const [checkSix, setCheckSix] = useState(false);
+    const [checkSeven, setCheckSeven] = useState(false);
+    
+    const aquaticChecked = () => setCheckOne(!checkOne);
+    const birdChecked = () => setCheckTwo(!checkTwo);
+    const catChecked = () => setCheckThree(!checkThree);
+    const dogChecked = () => setCheckFour(!checkFour);
+    const farmChecked = () => setCheckFive(!checkFive);
+    const reptileChecked = () => setCheckSix(!checkSix);
+    const otherChecked = () => setCheckSeven(!checkSeven);
+    
     const dispatch = useDispatch();
     const history = useHistory();
     
@@ -38,6 +54,41 @@ return (
         <div className='browse__container'>
             <div className='browse__bar'>
                 <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends by Name, Type, & Location' type='text'/>
+            </div>
+            <div className='checkbox__container'>
+                Aquatic
+                <input type='checkbox' checked={checkOne} onChange={aquaticChecked} />
+                <span className='checkmark'></span>
+            </div>
+            <div className='checkbox__container'>
+                Bird
+                <input type='checkbox' checked={checkTwo} onChange={birdChecked} />
+                <span className='checkmark'></span>
+            </div>
+            <div className='checkbox__container'>
+                Cat
+                <input type='checkbox' checked={checkThree} onChange={catChecked} />
+                <span className='checkmark'></span>
+            </div>
+            <div className='checkbox__container'>
+                Dog
+                <input type='checkbox' checked={checkFour} onChange={dogChecked} />
+                <span className='checkmark'></span>
+            </div>
+            <div className='checkbox__container'>
+                Farm
+                <input type='checkbox' checked={checkFive} onChange={farmChecked} />
+                <span className='checkmark'></span>
+            </div>
+            <div className='checkbox__container'>
+                Reptile
+                <input type='checkbox' checked={checkSix} onChange={reptileChecked} />
+                <span className='checkmark'></span>
+            </div>
+            <div className='checkbox__container'>
+                Other
+                <input type='checkbox' checked={checkSeven} onChange={otherChecked} />
+                <span className='checkmark'></span>
             </div>
         </div>
         
