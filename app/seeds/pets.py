@@ -514,6 +514,73 @@ def seed_pets():
         description="Mr. Nibbles loves any clothing he can grab, his favorite are hats.  He loves playdates, just remember to keep track of your belongings.",
     )
 
+    # ----------- Birds -----------
+    rainforest = Pet(
+        owner=shelly,
+        name="Rainforest",
+        petType="Bird",
+        age=5,
+        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-andr%C3%A9-lisatchok-2226006.jpg",
+        energy=5,
+        social=4,
+        behaved=5,
+        size=5,
+        env=3,
+        description="If your pet is looking for a talker he'll find the best companion in Rainforest.",
+    )
+    moonlight = Pet(
+        owner=rob,
+        name="Moonlight",
+        petType="Bird",
+        age=2,
+        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-fabio-scaletta-2115984.jpg",
+        energy=4,
+        social=3,
+        behaved=2,
+        size=3,
+        env=1,
+        description="My son Moonlight is looking for a fellow night walker who enjoys singing to the moon.",
+    )
+    wolly = Pet(
+        owner=star,
+        name="Wolly",
+        petType="Bird",
+        age=1,
+        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-flickr-151511.jpg",
+        energy=5,
+        social=5,
+        behaved=3,
+        size=1,
+        env=2,
+        description="Wolly is looking for a fellow hunter. No rat companions please.",
+    )
+    snow_white = Pet(
+        owner=dwarf,
+        name="Snow White",
+        petType="Bird",
+        age=10,
+        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-mali-maeder-75973.jpg",
+        energy=4,
+        social=5,
+        behaved=5,
+        size=3,
+        env=1,
+        description="Snow white is a sassy friendly energetic baby. Looking for a companion to talk fairytales with.",
+    )
+    lucky = Pet(
+        owner=biggie,
+        name="Lucky",
+        petType="Bird",
+        age=2,
+        imageURL="https://pair-yo-pet.s3.amazonaws.com/pexels-carlos-spitzer-17811.jpg",
+        energy=3,
+        social=3,
+        behaved=4,
+        size=1,
+        env=2,
+        description="Lucky enjoys hiking and seeing the sites. Any fellow adventurers out there?",
+    )
+
     # ----------- add to db in a random order here -----------
 
     db.session.add(bruno)
