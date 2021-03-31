@@ -41,7 +41,7 @@
   background: rgba(223, 132, 13, 0.479);
   border-radius: 0.75rem;
   padding: 0.5rem;
-  width: fill;
+  width: stretch;
   margin: 0 auto 0.25rem;
 }
 
