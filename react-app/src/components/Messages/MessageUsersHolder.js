@@ -39,7 +39,7 @@ export default function MessageUsersHolder({
                     ? 'messages__other-user messages__other-user-active'
                     : 'messages__other-user'
                 }
-                key={user.id}
+                key={user.username}
                 onClick={() => {
                   setOtherUser(user);
                 }}

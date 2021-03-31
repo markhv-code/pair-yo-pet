@@ -11,7 +11,7 @@ import PetProfile from './components/PetProfile';
 import Messages from './components/Messages';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import User from './components/UserProfile';
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer';
 
 // import other
 import { setUser } from './store/session';
@@ -28,7 +28,9 @@ function App() {
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getPets());
-    dispatch(getMessages());
+    if (sessionUser) {
+      dispatch(getMessages());
+    }
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
@@ -36,7 +38,7 @@ function App() {
       }
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, sessionUser]);
 
   if (!loaded) {
     return 'loading...';
@@ -66,14 +68,14 @@ function App() {
           path='/messages'
           exact={true}
           authenticated={!!sessionUser}
-          >
+        >
           <Messages />
         </ProtectedRoute>
         <Route path='*'>
           <PageNotFound />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
