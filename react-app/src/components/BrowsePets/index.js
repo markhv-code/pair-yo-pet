@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import {getPets} from '../../store/pets'
@@ -21,12 +21,10 @@ const BrowsePets = () => {
         array.sort(() => Math.random() - 0.5);
     }
     
-    
     useEffect(() => {
         dispatch(getPets());
         shufflePets(filteredPets);
     }, [dispatch, filteredPets]);
-    
     
     useEffect(() => {
         setFilteredPets(
@@ -44,11 +42,8 @@ const BrowsePets = () => {
         const newSelection = isSelected
         ? selectedPetType.filter(currentPetType => currentPetType !== petType)
         : [...selectedPetType, petType];
-    setSelectedPetType(newSelection);
-    // console.log("-----1", selectedPetType)
-    // console.log("-----2", newSelection)
+        setSelectedPetType(newSelection);
     }
-
 
 if (!filteredPets) return null;
 
@@ -56,17 +51,15 @@ return (
     <>
         <div className='browse__container'>
             <div className='browse__bar'>
-                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends by Name, Type, & Location' type='text'/>
+                <input value={search} onChange={(e) => setSearch(e.target.value)} 
+                    placeholder='Find New Friends by Name, Type, & Location' type='text'/>
             </div>
-                <div className='pet__type-list'></div>
+                <div className='pet__type-list'>
                     {petTypes.map((pet, index) => {
-                        // console.log("pet", pet)
                         const isSelected = selectedPetType.includes(pet);
-                        // console.log("-----1", isSelected)
-                        // console.log("-----2", selectedPetType)
                         return (
                             <>
-                                <label key={index}></label>
+                                <label key={index}>
                                     <input
                                     type="checkbox"
                                     checked={isSelected}
@@ -75,9 +68,11 @@ return (
                                     }}
                                     />
                                     <span className='pet__type-check'>{pet}</span>
+                                </label>
                             </>
                         )
                     })}
+                </div>
         </div>
         
         <div className = 'result__container'>

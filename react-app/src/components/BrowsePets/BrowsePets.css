@@ -19,8 +19,16 @@
     }
 }
 
+.pet__type-list {
+    display: inline-block;
+    width: 20rem;
+    margin-left: 1rem;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+}
+
 .pet__type-check {
-    margin-right: 1rem;
+    margin-right: 1.2rem;
 }
 
 .result__container {
@@ -29,7 +37,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    width: 85%;
+    width: 90%;
     margin: auto;
     height: 100%;
 }
