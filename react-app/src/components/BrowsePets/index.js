@@ -45,6 +45,8 @@ const BrowsePets = () => {
         ? selectedPetType.filter(currentPetType => currentPetType !== petType)
         : [...selectedPetType, petType];
     setSelectedPetType(newSelection);
+    // console.log("-----1", selectedPetType)
+    // console.log("-----2", newSelection)
     }
 
 
@@ -58,7 +60,10 @@ return (
             </div>
                 <div className='pet__type-list'></div>
                     {petTypes.map((pet, index) => {
+                        // console.log("pet", pet)
                         const isSelected = selectedPetType.includes(pet);
+                        // console.log("-----1", isSelected)
+                        // console.log("-----2", selectedPetType)
                         return (
                             <>
                                 <label key={index}></label>
