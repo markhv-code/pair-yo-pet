@@ -14,22 +14,6 @@ const BrowsePets = () => {
     const petsFromStore = useSelector((state) => Object.values(state.pets));
     const lgdInUser = useSelector((state) => state.session.user)
     
-    // const [checkOne, setCheckOne] = useState(false);
-    // const [checkTwo, setCheckTwo] = useState(false);
-    // const [checkThree, setCheckThree] = useState(false);
-    // const [checkFour, setCheckFour] = useState(false);
-    // const [checkFive, setCheckFive] = useState(false);
-    // const [checkSix, setCheckSix] = useState(false);
-    // const [checkSeven, setCheckSeven] = useState(false);
-    
-    // const aquaticChecked = () => setCheckOne(!checkOne);
-    // const birdChecked = () => setCheckTwo(!checkTwo);
-    // const catChecked = () => setCheckThree(!checkThree);
-    // const dogChecked = () => setCheckFour(!checkFour);
-    // const farmChecked = () => setCheckFive(!checkFive);
-    // const reptileChecked = () => setCheckSix(!checkSix);
-    // const otherChecked = () => setCheckSeven(!checkSeven);
-    
     const dispatch = useDispatch();
     const history = useHistory();
     
