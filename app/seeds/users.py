@@ -272,14 +272,14 @@ def seed_users():
             stateAbbr="CA",
         ),
         User(
-            username="dwarf",
+            username="Dwarf",
             email="dwarf@snowwhite.com",
             password="password",
             city="Los Angeles",
             stateAbbr="CA",
         ),
         User(
-            username="biggie",
+            username="Biggie",
             email="biggie@smalls.com",
             password="password",
             city="Los Angeles",

@@ -39,10 +39,9 @@ def seed_pets():
     ellie = User.query.filter_by(username="Ellie").first()
     shelly = User.query.filter_by(username="Shelly").first()
     rob = User.query.filter_by(username="Rob").first()
-    star = User.query.filter_by(username="Star").first()
+    star_owner = User.query.filter_by(username="Star").first()
     dwarf = User.query.filter_by(username="Dwarf").first()
     biggie = User.query.filter_by(username="Biggie").first()
-
 
     # ----------- Dog here -----------
     bruno = Pet(
@@ -548,7 +547,7 @@ def seed_pets():
         description="My son Moonlight is looking for a fellow night walker who enjoys singing to the moon.",
     )
     wolly = Pet(
-        owner=star,
+        owner=star_owner,
         name="Wolly",
         petType="Bird",
         age=1,
@@ -634,7 +633,6 @@ def seed_pets():
     db.session.add(wolly)
     db.session.add(snow_white)
     db.session.add(lucky)
-
 
     db.session.commit()
 
