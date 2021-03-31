@@ -91,8 +91,10 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
 9. set up your database:
 
    ```bash
-   heroku run -a pairyopet flask db upgrade
-   heroku run -a pairyopet flask seed all
+   # heroku run -a pairyopet flask seed undo # if needed
+   # heroku run -a pairyopet flask db downgrade base # if needed
+   heroku run -a pairyopet flask db upgrade # if needed
+   heroku run -a pairyopet flask seed all # if needed
    ```
 
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
