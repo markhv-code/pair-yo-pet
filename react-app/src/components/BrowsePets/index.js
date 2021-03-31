@@ -36,7 +36,6 @@ const BrowsePets = () => {
     
     const handleSelect = petType => {
         const isSelected = selectedPetType.includes(petType);
-
         const newSelection = isSelected
         ? selectedPetType.filter(currentPetType => currentPetType !== petType)
         : [...selectedPetType, petType];
