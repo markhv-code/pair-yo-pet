@@ -9,24 +9,26 @@ import './BrowsePets.css';
 const BrowsePets = () => {
     const [search, setSearch] = useState("");
     const [filteredPets, setFilteredPets] = useState([]);
+    const petTypes = ["Aquatic", "Bird", "Cat", "Dog", "Farm", "Reptile", "Other"]
+    const [selectedPetType, setSelectedPetType] = useState([]);
     const petsFromStore = useSelector((state) => Object.values(state.pets));
     const lgdInUser = useSelector((state) => state.session.user)
     
-    const [checkOne, setCheckOne] = useState(false);
-    const [checkTwo, setCheckTwo] = useState(false);
-    const [checkThree, setCheckThree] = useState(false);
-    const [checkFour, setCheckFour] = useState(false);
-    const [checkFive, setCheckFive] = useState(false);
-    const [checkSix, setCheckSix] = useState(false);
-    const [checkSeven, setCheckSeven] = useState(false);
+    // const [checkOne, setCheckOne] = useState(false);
+    // const [checkTwo, setCheckTwo] = useState(false);
+    // const [checkThree, setCheckThree] = useState(false);
+    // const [checkFour, setCheckFour] = useState(false);
+    // const [checkFive, setCheckFive] = useState(false);
+    // const [checkSix, setCheckSix] = useState(false);
+    // const [checkSeven, setCheckSeven] = useState(false);
     
-    const aquaticChecked = () => setCheckOne(!checkOne);
-    const birdChecked = () => setCheckTwo(!checkTwo);
-    const catChecked = () => setCheckThree(!checkThree);
-    const dogChecked = () => setCheckFour(!checkFour);
-    const farmChecked = () => setCheckFive(!checkFive);
-    const reptileChecked = () => setCheckSix(!checkSix);
-    const otherChecked = () => setCheckSeven(!checkSeven);
+    // const aquaticChecked = () => setCheckOne(!checkOne);
+    // const birdChecked = () => setCheckTwo(!checkTwo);
+    // const catChecked = () => setCheckThree(!checkThree);
+    // const dogChecked = () => setCheckFour(!checkFour);
+    // const farmChecked = () => setCheckFive(!checkFive);
+    // const reptileChecked = () => setCheckSix(!checkSix);
+    // const otherChecked = () => setCheckSeven(!checkSeven);
     
     const dispatch = useDispatch();
     const history = useHistory();
@@ -45,7 +47,17 @@ const BrowsePets = () => {
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
-    }, [search])
+    }, [search]);
+
+    
+    const handleSelect = petType => {
+        const isSelected = selectedPetType.includes(petType);
+
+        const newSelection = isSelected
+        ? selectedPetType.filter(currentPetType => currentPetType !== petType)
+        : [...selectedPetType, petType];
+    setSelectedPetType(newSelection);
+    }
 
 if (!filteredPets) return null;
 
@@ -55,41 +67,23 @@ return (
             <div className='browse__bar'>
                 <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends by Name, Type, & Location' type='text'/>
             </div>
-        <div className='checkbox__container'>
-            Aquatic
-            <input type='checkbox' checked={checkOne} onChange={aquaticChecked} />
-            <span className='checkmark'></span>
-        </div>
-        <div className='checkbox__container'>
-            Bird
-            <input type='checkbox' checked={checkTwo} onChange={birdChecked} />
-            <span className='checkmark'></span>
-        </div>
-        <div className='checkbox__container'>
-            Cat 
-            <input type='checkbox' checked={checkThree} onChange={catChecked} />
-            <span className='checkmark'></span>
-        </div>
-        <div className='checkbox__container'>
-            Dog 
-            <input type='checkbox' checked={checkFour} onChange={dogChecked} />
-            <span className='checkmark'></span>
-        </div>
-        <div className='checkbox__container'>
-            Farm
-            <input type='checkbox' checked={checkFive} onChange={farmChecked} />
-            <span className='checkmark'></span>
-        </div>
-        <div className='checkbox__container'>
-            Reptile
-            <input type='checkbox' checked={checkSix} onChange={reptileChecked} />
-            <span className='checkmark'></span>
-        </div>
-        <div className='checkbox__container'>
-            Other
-            <input type='checkbox' checked={checkSeven} onChange={otherChecked} />
-            <span className='checkmark'></span>
-        </div>
+                <div className='pet__type-list'></div>
+                    {petTypes.map((pet, index) => {
+                        const isSelected = selectedPetType.includes(pet);
+                        return (
+                            <>
+                                <label key={index}></label>
+                                    <input
+                                    type="checkbox"
+                                    checked={isSelected}
+                                    onChange={() => {
+                                        handleSelect(pet)
+                                    }}
+                                    />
+                                    <span className='pet__type-check'>{pet}</span>
+                            </>
+                        )
+                    })}
         </div>
         
         <div className = 'result__container'>
