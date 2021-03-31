@@ -38,7 +38,7 @@ function App() {
       }
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, sessionUser]);
 
   if (!loaded) {
     return 'loading...';
