@@ -27,8 +27,14 @@
     margin-bottom: .6rem;
 }
 
+.pet__check-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .pet__type-check {
     margin-right: 1.2rem;
+    font-weight: bolder;
 }
 
 .result__container {

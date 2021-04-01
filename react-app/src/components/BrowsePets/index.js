@@ -23,10 +23,22 @@ const BrowsePets = () => {
     
     useEffect(() => {
         dispatch(getPets());
-        shufflePets(filteredPets);
-    }, [dispatch, filteredPets]);
+    }, [dispatch]);
     
     useEffect(() => {
+        shufflePets(filteredPets);
+    }, [filteredPets])
+    
+    useEffect(() => {
+        if (selectedPetType.length) {
+            const pets = petsFromStore.filter((pet) => selectedPetType.includes(pet.petType))
+            .filter((pet) => 
+            pet.name.toLowerCase().includes(search.toLowerCase()) ||
+            pet.petType.toLowerCase().includes(search.toLowerCase()) ||
+            pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
+            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
+            setFilteredPets(pets);
+        } else {
         setFilteredPets(
             petsFromStore.filter((pet) => 
             pet.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -34,7 +46,8 @@ const BrowsePets = () => {
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
-    }, [search]);
+        }
+    }, [search, selectedPetType]);
 
     
     const handleSelect = petType => {
@@ -55,11 +68,11 @@ return (
                     placeholder='Find New Friends by Name, Type, & Location' type='text'/>
             </div>
                 <div className='pet__type-list'>
+                    <div className='pet__check-box'>
                     {petTypes.map((pet, index) => {
                         const isSelected = selectedPetType.includes(pet);
                         return (
-                            <>
-                                <label key={index}>
+                                <label className='pet__type' key={index}>
                                     <input
                                     type="checkbox"
                                     checked={isSelected}
@@ -69,9 +82,9 @@ return (
                                     />
                                     <span className='pet__type-check'>{pet}</span>
                                 </label>
-                            </>
                         )
                     })}
+                    </div>
                 </div>
         </div>
         
