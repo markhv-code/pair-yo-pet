@@ -9,6 +9,8 @@ import './BrowsePets.css';
 const BrowsePets = () => {
     const [search, setSearch] = useState("");
     const [filteredPets, setFilteredPets] = useState([]);
+    const petTypes = ["Aquatic", "Bird", "Cat", "Dog", "Farm", "Reptile", "Other"]
+    const [selectedPetType, setSelectedPetType] = useState([]);
     const petsFromStore = useSelector((state) => Object.values(state.pets));
     const lgdInUser = useSelector((state) => state.session.user)
     
@@ -19,14 +21,24 @@ const BrowsePets = () => {
         array.sort(() => Math.random() - 0.5);
     }
     
-    
     useEffect(() => {
         dispatch(getPets());
-        shufflePets(filteredPets);
-    }, [dispatch, filteredPets]);
-    
+    }, [dispatch]);
     
     useEffect(() => {
+        shufflePets(filteredPets);
+    }, [filteredPets])
+    
+    useEffect(() => {
+        if (selectedPetType.length) {
+            const pets = petsFromStore.filter((pet) => selectedPetType.includes(pet.petType))
+            .filter((pet) => 
+            pet.name.toLowerCase().includes(search.toLowerCase()) ||
+            pet.petType.toLowerCase().includes(search.toLowerCase()) ||
+            pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
+            pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
+            setFilteredPets(pets);
+        } else {
         setFilteredPets(
             petsFromStore.filter((pet) => 
             pet.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -34,8 +46,17 @@ const BrowsePets = () => {
             pet.owner.city.toLowerCase().includes(search.toLowerCase()) ||
             pet.owner.stateAbbr.toLowerCase().includes(search.toLowerCase()))
         )
-    }, [search])
+        }
+    }, [search, selectedPetType]);
 
+    
+    const handleSelect = petType => {
+        const isSelected = selectedPetType.includes(petType);
+        const newSelection = isSelected
+        ? selectedPetType.filter(currentPetType => currentPetType !== petType)
+        : [...selectedPetType, petType];
+        setSelectedPetType(newSelection);
+    }
 
 if (!filteredPets) return null;
 
@@ -43,8 +64,28 @@ return (
     <>
         <div className='browse__container'>
             <div className='browse__bar'>
-                <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Find New Friends by Name, Type, & Location' type='text'/>
+                <input value={search} onChange={(e) => setSearch(e.target.value)} 
+                    placeholder='Find New Friends by Name, Type, & Location' type='text'/>
             </div>
+                <div className='pet__type-list'>
+                    <div className='pet__check-box'>
+                    {petTypes.map((pet, index) => {
+                        const isSelected = selectedPetType.includes(pet);
+                        return (
+                                <label className='pet__type' key={index}>
+                                    <input
+                                    type="checkbox"
+                                    checked={isSelected}
+                                    onChange={() => {
+                                        handleSelect(pet)
+                                    }}
+                                    />
+                                    <span className='pet__type-check'>{pet}</span>
+                                </label>
+                        )
+                    })}
+                    </div>
+                </div>
         </div>
         
         <div className = 'result__container'>

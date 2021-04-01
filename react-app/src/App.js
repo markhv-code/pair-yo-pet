@@ -31,6 +31,9 @@ function App() {
     if (sessionUser) {
       dispatch(getMessages());
     }
+  }, [dispatch, sessionUser]);
+  
+  useEffect(() => {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
@@ -38,7 +41,7 @@ function App() {
       }
       setLoaded(true);
     })();
-  }, [dispatch, sessionUser]);
+  }, [dispatch])
 
   if (!loaded) {
     return 'loading...';
