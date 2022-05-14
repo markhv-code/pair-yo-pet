@@ -11,7 +11,7 @@
 
 ## What is it?
 
-Pair Yo' Pet is a clone of the popular web app [OKCupid](https://www.okcupid.com/) with an fun pet lovin' twist.
+Pair Yo' Pet is a clone of the popular web app [OKCupid](https://www.okcupid.com/) with an fun pet-lovin' twist.
 
 ## Developing
 
